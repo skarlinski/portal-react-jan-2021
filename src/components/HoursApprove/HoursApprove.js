@@ -1,10 +1,12 @@
+import React from 'react';
+import './HoursApprove.css'
 class HoursApprove extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
   }
   render() {
     return (
-      <div></div>
+      <div className="p-hours-approve">Cool</div>
     )
   }
 }
