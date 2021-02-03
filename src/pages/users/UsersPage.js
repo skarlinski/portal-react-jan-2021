@@ -3,7 +3,7 @@ import './users.css'
 import PortalNavbar from '../../components/navbar/PortalNavbar';
 import ActiveUserContext from '../../shared/activeUserContext'
 import { Redirect } from 'react-router-dom'
-
+import profileIcon from './profile_icon.svg'
 const UsersPage = (props) => {
     const { handleLogout } = props;
     const activeUser = useContext(ActiveUserContext);
@@ -16,6 +16,7 @@ const UsersPage = (props) => {
         <div className="p-users">
             <PortalNavbar handleLogout={handleLogout}/>
             <h1>משתמשים</h1>
+            <img src={profileIcon}/> 
         </div>
     );
 }
