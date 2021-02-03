@@ -8,7 +8,6 @@ import UserDetailsPage from './pages/users/UserDetailsPage'
 import HoursReportPage from './pages/hours/HoursReportPage'
 import HoursApprovePage from './pages/hours/HoursApprovePage'
 import ActiveUserContext from './shared/activeUserContext'
-
 import './App.css';
 
 const App = () => {
