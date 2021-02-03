@@ -9,6 +9,7 @@ import HoursReportPage from './pages/hours/HoursReportPage'
 import HoursApprovePage from './pages/hours/HoursApprovePage'
 import ActiveUserContext from './shared/activeUserContext'
 import './App.css';
+import ComponentZoo from './pages/ComponentZoo';
 
 const App = () => {
 
@@ -47,6 +48,9 @@ const App = () => {
         </Route>
         <Route path="/hours-approve">
           <HoursApprovePage handleLogout={handleLogout}/>
+        </Route>
+        <Route path="/zoo">
+            <ComponentZoo></ComponentZoo>
         </Route>
       </Switch>
     </ActiveUserContext.Provider>
