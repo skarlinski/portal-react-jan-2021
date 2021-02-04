@@ -7,7 +7,7 @@ import {MONTHS_ARR} from '../../data/shared.js';
 class MonthFilter extends React.Component {
   constructor(props) {
     super(props);
-    
+    console.log(this.props);
     this.state = {
         monthNumber: new Date().getMonth() + 1,
         monthName: '',
@@ -20,7 +20,6 @@ class MonthFilter extends React.Component {
     }
 
   componentDidMount () {
-    
     let month = MONTHS_ARR[this.state.monthNumber-1];
     this.setState({
       monthName: month
@@ -33,8 +32,6 @@ class MonthFilter extends React.Component {
       this.setState({
         isDisabledNextBtn: true,
         btnNext: 'disabled',
-        monthNumber: 12,
-        monthName: 'דצמבר'
       })
     }
     
@@ -44,6 +41,7 @@ class MonthFilter extends React.Component {
       monthNumber: this.state.monthNumber+1,
       monthName: MONTHS_ARR[this.state.monthNumber]
     })
+    this.props.callbackMonth(this.state.monthNumber);
     // console.log(this.state);
   }
 
@@ -53,8 +51,6 @@ class MonthFilter extends React.Component {
       this.setState({
         isDisabledPrevBtn: true,
         btnPrev: 'disabled',
-        monthNumber: 0,
-        monthName: 'ינואר'
       })
     }
     
@@ -64,6 +60,7 @@ class MonthFilter extends React.Component {
       monthNumber: this.state.monthNumber-1,
       monthName: MONTHS_ARR[this.state.monthNumber-2]
     })
+    this.props.callbackMonth(this.state.monthNumber);
     // console.log(this.state);
   }
 
@@ -78,7 +75,6 @@ class MonthFilter extends React.Component {
                   <path id="chevron" d="M8 10V2H0V0h10v10z" transform="rotate(45 65.429 209.173)"/>
               </g>
             </svg>
-            {/* <img className="month-arrow-next" src={arrowDown} /> */}
           </button>
           <p className="month-text">{this.state.monthName}</p>
           <button className="pagination-btn" disabled={this.state.isDisabledPrevBtn} onClick={this.handleClickOnButtonPrev}>
@@ -87,7 +83,6 @@ class MonthFilter extends React.Component {
                   <path id="chevron" d="M8 10V2H0V0h10v10z" transform="rotate(45 65.429 209.173)"/>
               </g>
             </svg>
-            {/* <img className="month-arrow-prev" src={arrowDown} /> */}
           </button>
         </div>
       </div>
