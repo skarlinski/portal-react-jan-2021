@@ -10,6 +10,7 @@ class LiItem extends Component {
             <div>
                 <span><img src={icon}/></span>
                 <span>{title}</span>
+                {this.props.children}
             </div>
          );
     }

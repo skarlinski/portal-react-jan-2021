@@ -29,7 +29,13 @@ class SideNavbar extends Component {
                     <LiItem title="יעל אביבי" icon={profileIcon}/>
                 </div>
                 <div className="sidebar-options">
-                    <LiItem title="משתמשים" icon={userIcon}/>
+                    <LiItem className='collapsed' title="משתמשים" icon={userIcon}>
+                        <div className='collapsed-content' style={{height:'0px', overflow:'hidden'}}>
+                            <LiItem title="רשומים" icon={userIcon}/>
+                            <LiItem title="לא רשומים" icon={userIcon}/>
+                            <LiItem title="משתים" icon={userIcon}/>
+                        </div>
+                    </LiItem>
                     <LiItem title="קורסים" icon={bookIcon}/>
                     <LiItem title="דיווח שעות" icon={timeIcon}/>
                     <LiItem title="אישור שעות" icon={checkBoxIcon}/>
