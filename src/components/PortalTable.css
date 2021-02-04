@@ -1,0 +1,12 @@
+.c-portal-table {
+    color: gray;
+    font-size: small;
+    cursor: pointer;
+    width: 100%;
+}
+.c-portal-table th {
+    font-family: Assistant-SemiBold;
+}
+.c-portal-table td {
+    border-top-width: 3px;
+}
