@@ -3,7 +3,6 @@ import './hours.css'
 import PortalNavbar from '../../components/navbar/PortalNavbar';
 import ActiveUserContext from '../../shared/activeUserContext'
 import { Redirect } from 'react-router-dom';
-import HoursReport from '../../components/HoursReport/HoursReport';
 
 const HoursReportPage = (props) => {
     const { handleLogout } = props;
@@ -17,7 +16,6 @@ const HoursReportPage = (props) => {
         <div className="p-hours-report">
             <PortalNavbar handleLogout={handleLogout}/>
             <h1>דיווח שעות</h1>
-            <HoursReport activeUser={activeUser} />
         </div>
     );
 }

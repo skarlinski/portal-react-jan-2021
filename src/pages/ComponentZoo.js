@@ -1,6 +1,5 @@
 import React from 'react';
 import HoursApprove from '../components/HoursApprove/HoursApprove';
-import HoursReport from '../components/HoursReport/HoursReport';
 import ButtonSet from '../components/ButtonSet';
 
 class ComponentZoo extends React.Component{
@@ -12,8 +11,7 @@ class ComponentZoo extends React.Component{
     render(){
         return (
             <div>
-                {/* <HoursApprove /> */}
-                <HoursReport />
+                <HoursApprove />
             </div>
         )
     }
