@@ -5,7 +5,7 @@ import server from '../../shared/server'
 import { Redirect } from 'react-router-dom'
 import ActiveUserContext from '../../shared/activeUserContext'
 import ErrorMessage from '../../components/ErorMessage/ErorMessage';
-
+import logo from './appleseeds-logo.svg';
 const LoginPage = (props) => {
     const { handleLogin } = props;
     const [email, setEmail] = useState("");
@@ -44,7 +44,9 @@ const LoginPage = (props) => {
         return <Redirect to='/courses' />
     }
     const handleClose = () => {
-        setMsg("") ;   
+        setMsg("") ;  
+        setEmail("");
+        setPwd("");
     }
     
 
@@ -52,21 +54,23 @@ const LoginPage = (props) => {
 
 
         <Container className="p-login">
-            <h1>התחברות</h1>
+            {/* <h1>התחברות</h1> */}
+            <img src={logo}/>
             <Form>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label></Form.Label>
-                    <Form.Control value={email} type="email" placeholder="אימייל" onChange={e => setEmail(e.target.value)}/>
+                    <Form.Control className="input-text"  value={email} type="email" placeholder="אימייל" onChange={e => setEmail(e.target.value)}/>
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
                     <Form.Label></Form.Label>
-                    <Form.Control value={pwd} type="password" placeholder="סיסמה" onChange={e => setPwd(e.target.value)}/>
+                    <Form.Control className="input-text"  value={pwd} type="password" placeholder="סיסמה" onChange={e => setPwd(e.target.value)}/>
                 </Form.Group>
 
-                <Button variant="primary" type="button" onClick={login}>
+                <Button className="rounded-corner" variant="light" block type="button" onClick={login}>
                     התחבר
                 </Button>
+                <h5>שכחתי סיסמה</h5>
             </Form>
 
             {msg ? <ErrorMessage msg={msg} handleClose={handleClose}/> : null }
