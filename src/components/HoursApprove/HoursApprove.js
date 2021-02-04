@@ -8,19 +8,24 @@ class HoursApprove extends React.Component {
   constructor(props) {
     super(props);
     this.state={
-      searchMonth: new Date().getMonth() + 1
+      searchMonth: new Date().getMonth() + 1,
+      reports: []
     }
   }
 
   componentDidMount () {
-    console.log(this.state.searchMonth);
+    // console.log(this.state.searchMonth);
     this.fetchMonthData();
   }
 
   fetchMonthData = () => {
     server(this.props.activeUser, {month: this.state.searchMonth, year: "2020"}, 'GetAllReporters')
     .then(res => {
-      console.log(res);
+      console.log(res.data);
+      this.setState({
+        reports: res.data[1]
+      })
+      // console.log(this.state);
     })
   }
 
@@ -34,14 +39,15 @@ class HoursApprove extends React.Component {
     this.setState({
       searchMonth: month
     })
-    console.log(this.state);
+    // console.log(this.state);
   }
 
   render() {
+    console.log(this.state.reports);
     return (
       <div className="p-hours-approve">
         <MonthFilter callbackMonth={this.callbackMonth} />
-        <EmployeeCard />
+        <EmployeeCard sendReports={this.state.reports} num={3}/>
         <div></div>
       </div>
     )
