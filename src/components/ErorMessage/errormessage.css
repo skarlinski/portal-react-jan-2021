@@ -1,0 +1,16 @@
+.c-errormessage {
+    position: absolute;
+    /* top: -82px; */
+    bottom: 0px;
+    background-color: blue;
+    height: 83px;
+    padding : 20px 20px;
+     
+}
+.top-left {
+    position: relative;
+    top : -20px;
+    font-size: 30px;
+
+}
+

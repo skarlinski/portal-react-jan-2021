@@ -4,18 +4,22 @@ import './login.css'
 import server from '../../shared/server'
 import { Redirect } from 'react-router-dom'
 import ActiveUserContext from '../../shared/activeUserContext'
+import ErrorMessage from '../../components/ErorMessage/ErorMessage';
 
 const LoginPage = (props) => {
     const { handleLogin } = props;
     const [email, setEmail] = useState("");
     const [pwd, setPwd] = useState("");
+    const [msg, setMsg] = useState("");
     const activeUser = useContext(ActiveUserContext);
-
+    // const abc = "error in login";
     const login = () => {
-
+ // Change alert to text message like description by conditinal rendering 
         if(!email || !pwd)
 		{
-			alert("נא להזין פרטי משתמש");
+     //       const message = "נא להזין פרטי משתמש";
+            setMsg("נא להזין פרטי משתמש");
+			// alert("נא להזין פרטי משתמש");
 			return;
         }
         
@@ -23,20 +27,29 @@ const LoginPage = (props) => {
         server(null, data, "login").then(res => {
             console.log(res);
             if (res.data.error) {
-                alert("error in login");
+            //    const abc = <ErrorMessage msg={"דגשד"}/>
+            setMsg("שם המשתמש והסיסמה שגויים");
+                // alert("error in login");
             } else {
                 handleLogin(res.data);
             }
         }, err => {
-            console.error(err);
+        //    const message = "error in login";
+        setMsg(err);
+            // console.error(err);
         })
     }
 
     if (activeUser) {
         return <Redirect to='/courses' />
     }
+    const handleClose = () => {
+        setMsg("") ;   
+    }
+    
 
     return (
+
 
         <Container className="p-login">
             <h1>התחברות</h1>
@@ -55,7 +68,10 @@ const LoginPage = (props) => {
                     התחבר
                 </Button>
             </Form>
+
+            {msg ? <ErrorMessage msg={msg} handleClose={handleClose}/> : null }
         </Container>
+       
     );
 }
 
