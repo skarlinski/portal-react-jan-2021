@@ -7,16 +7,31 @@
   justify-content: center;
   box-shadow: 0px 3px 6px 0px #e8e8e8;
 }
+.pagination-wrap {
+  width: 220px;
+  display: flex;
+  justify-content: space-between;
+}
 .month-text {
   font-family: "Assistant-Bold";
   font-size: 28px;
   line-height: 18px;
   text-align: center;
-  margin: 0 41px 0 41px;
+  /* margin: 0 41px 0 41px; */
+}
+.pagination-btn {
+  border: none;
+  background-color: inherit;
 }
 .month-arrow-prev {
   transform: rotate(90deg);
 }
 .month-arrow-next {
   transform: rotate(-90deg);
+}
+.btn-active {
+  fill: #5d5d5d;
+}
+.btn-disabled {
+  fill: #efefef;
 }
