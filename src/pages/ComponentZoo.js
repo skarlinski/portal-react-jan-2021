@@ -1,16 +1,22 @@
 import React from 'react';
-import HoursApprove from '../components/HoursApprove/HoursApprove';
-import HoursReport from '../components/HoursReport/HoursReport';
+import ButtonSet from '../components/ButtonSet';
 
 class ComponentZoo extends React.Component{
 
+    clickme = (thebutton)=>{
+        console.log(thebutton.label);
+
+    }
     render(){
-        return (
-            <div>
-                {/* <HoursApprove /> */}
-                <HoursReport />
-            </div>
-        )
+        const myprops=[
+            {key:'on', label:'עובדים פעילים'},
+            {key:'off', label:'עובדים לא פעילים'},
+            ];
+
+        return <div>
+           myzoo
+           <ButtonSet buttons ={myprops} handleClick={this.clickme}/>
+        </div>
     }
 }
 export default ComponentZoo;
