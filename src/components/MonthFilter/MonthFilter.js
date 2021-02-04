@@ -1,99 +1,66 @@
 import React from 'react';
 import './MonthFilter.css';
 import arrowDown from '../../assets/images/arrow_down.svg';
+import {MONTHS_ARR} from '../../data/shared.js';
+
 
 class MonthFilter extends React.Component {
   constructor(props) {
     super(props);
+    console.log(this.props);
     this.state = {
         monthNumber: new Date().getMonth() + 1,
         monthName: '',
         isDisabledNextBtn: false,
         isDisabledPrevBtn: false,
+        btnNext: 'active',
+        btnPrev: 'active'
       }
       console.log(this.state);
     }
 
   componentDidMount () {
-    let month;
-    switch(this.state.monthNumber) {
-      case 1:
-        month='ינואר';
-        break;
-      case 2:
-        month='פברואר';
-        break;
-      case 3:
-        month='מרץ';
-        break;
-      case 4:
-        month='אפריל';
-        break;
-      case 5:
-        month='מאי';
-        break;
-      case 6:
-        month='יוני';
-        break;
-      case 7:
-        month='יולי';
-        break;
-      case 8:
-        month='אוגוסט';
-        break;
-      case 9:
-        month='ספטמבר';
-        break;
-      case 10:
-        month='אוקטובר';
-        break;
-      case 11:
-        month='נובמבר';
-        break;
-      case 12:
-        month='דצמבר';
-        break;
-    }
+    let month = MONTHS_ARR[this.state.monthNumber-1];
     this.setState({
       monthName: month
     })
   }
 
   handleClickOnButtonNext = () => {
-    const arrMonth = ['ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר']
-
+    
     if (this.state.monthNumber > 10) {
       this.setState({
         isDisabledNextBtn: true,
-        monthNumber: 12,
-        monthName: 'דצמבר'
+        btnNext: 'disabled',
       })
     }
     
     this.setState({
-      isDisabledPrevtBtn: false,
+      btnPrev: 'active',
+      isDisabledPrevBtn: false,
       monthNumber: this.state.monthNumber+1,
-      monthName: arrMonth[this.state.monthNumber]
+      monthName: MONTHS_ARR[this.state.monthNumber]
     })
+    this.props.callbackMonth(this.state.monthNumber);
     // console.log(this.state);
   }
 
   handleClickOnButtonPrev = () => {
-    const arrMonth = ['ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר']
 
     if (this.state.monthNumber < 3) {
       this.setState({
         isDisabledPrevBtn: true,
-        monthNumber: 0,
-        monthName: 'ינואר'
+        btnPrev: 'disabled',
       })
     }
     
     this.setState({
+      btnNext: 'active',
       isDisabledNextBtn: false,
       monthNumber: this.state.monthNumber-1,
-      monthName: arrMonth[this.state.monthNumber-2]
+      monthName: MONTHS_ARR[this.state.monthNumber-2]
     })
+    this.props.callbackMonth(this.state.monthNumber);
     // console.log(this.state);
   }
 
@@ -101,13 +68,23 @@ class MonthFilter extends React.Component {
     console.log(this.state);
     return (
       <div className="c-month-filter">
-        <button disabled={this.state.isDisabledNextBtn} onClick={this.handleClickOnButtonNext}>
-          <img className="month-arrow-next" src={arrowDown} />
-        </button>
-        <p className="month-text">{this.state.monthName}</p>
-        <button disabled={this.state.isDisabledPrevBtn} onClick={this.handleClickOnButtonPrev}>
-          <img className="month-arrow-prev" src={arrowDown} />
-        </button>
+        <div className="pagination-wrap">
+          <button className="pagination-btn" disabled={this.state.isDisabledNextBtn} onClick={this.handleClickOnButtonNext}>
+            <svg className={`month-arrow-next btn-${this.state.btnNext}`} src={arrowDown} xmlns="http://www.w3.org/2000/svg" width="14.142" height="14.142" viewBox="0 0 14.142 14.142">
+              <g id="arrow_down" transform="rotate(90 94.572 -65.43)">
+                  <path id="chevron" d="M8 10V2H0V0h10v10z" transform="rotate(45 65.429 209.173)"/>
+              </g>
+            </svg>
+          </button>
+          <p className="month-text">{this.state.monthName}</p>
+          <button className="pagination-btn" disabled={this.state.isDisabledPrevBtn} onClick={this.handleClickOnButtonPrev}>
+            <svg className={`month-arrow-prev btn-${this.state.btnPrev}`} src={arrowDown} xmlns="http://www.w3.org/2000/svg" width="14.142" height="14.142" viewBox="0 0 14.142 14.142">
+              <g id="arrow_down" transform="rotate(90 94.572 -65.43)">
+                  <path id="chevron" d="M8 10V2H0V0h10v10z" transform="rotate(45 65.429 209.173)"/>
+              </g>
+            </svg>
+          </button>
+        </div>
       </div>
     )
   }
