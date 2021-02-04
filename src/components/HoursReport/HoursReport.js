@@ -1,6 +1,6 @@
 import React from 'react';
 import './HoursReport.css';
-import MonthPicker from '../MonthPicker/MonthPicker';
+import MonthFilter from '../MonthFilter/MonthFilter';
 class HoursReport extends React.Component {
   constructor(props) {
     super(props)
@@ -8,7 +8,7 @@ class HoursReport extends React.Component {
   render() {
     return (
       <div className="p-hours-report">
-        <MonthPicker />
+        <MonthFilter />
       </div>
     )
   }
