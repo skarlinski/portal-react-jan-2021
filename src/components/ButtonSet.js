@@ -6,26 +6,21 @@ import './ButtonSet.css'
 
 class ButtonSet extends React.Component {
     constructor(props){
-        super();
+        super(props);
 
         this.state={
-            activeButtonId:undefined
+            activeButtonId:(this.props.buttons && this.props.buttons[0]) ? this.props.buttons[0].key : null
         }
     }
     handleClick=(statusButton)=>{
         this.setState({activeButtonId:statusButton.key});
-         this.props.clicked(statusButton)
+         this.props.handleClick(statusButton)
     }
-
-    componentDidMount(){
-        this.setState({activeButtonId:this.props.buttons[0].key});
-
-    }
-
+    
     render(){
         const styleActiveButton={fontWeight:"bold"}
         const buttonsList = this.props.buttons.map((button)=>{
-                return(<Button className="mr-10 ml-110 bt-worker" variant=""  id={button.key} key={button.key}
+                return(<Button className="mr-10 ml-110 bt-worker" variant="" key={button.key}
                         onClick={()=>this.handleClick(button)}
                         style ={(this.state.activeButtonId===button.key)? styleActiveButton: {}}> 
                         {button.label}

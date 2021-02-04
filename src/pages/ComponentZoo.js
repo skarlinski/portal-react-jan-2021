@@ -15,7 +15,7 @@ class ComponentZoo extends React.Component{
 
         return <div>
            myzoo
-           <ButtonSet buttons ={myprops} clicked={this.clickme}/>
+           <ButtonSet buttons ={myprops} handleClick={this.clickme}/>
         </div>
     }
 }
