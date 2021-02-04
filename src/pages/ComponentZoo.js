@@ -3,10 +3,19 @@ import ButtonSet from '../components/ButtonSet';
 
 class ComponentZoo extends React.Component{
 
+    clickme = (thebutton)=>{
+        console.log(thebutton.label);
+
+    }
     render(){
+        const myprops=[
+            {key:'on', label:'עובדים פעילים'},
+            {key:'off', label:'עובדים לא פעילים'},
+            ];
+
         return <div>
            myzoo
-           <ButtonSet/>
+           <ButtonSet buttons ={myprops} clicked={this.clickme}/>
         </div>
     }
 }

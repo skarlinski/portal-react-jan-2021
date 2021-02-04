@@ -1,0 +1,16 @@
+.c-button-set {
+    width:  360px;
+    border:1px;
+}
+.c-button-set  .bt-worker{
+/* display: flex; */
+background-color:white;
+color: #5d5d5d;
+font-style: normal;
+font-size: 15px;
+align-content: center;
+margin-right:10px;
+height: 78px;
+border:none;
+outline:none;
+}
