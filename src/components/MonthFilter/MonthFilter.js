@@ -5,6 +5,7 @@ import arrowDown from '../../assets/images/arrow_down.svg';
 class MonthFilter extends React.Component {
   constructor(props) {
     super(props);
+    
     this.state = {
         monthNumber: new Date().getMonth() + 1,
         monthName: '',
@@ -15,45 +16,8 @@ class MonthFilter extends React.Component {
     }
 
   componentDidMount () {
-    let month;
-    switch(this.state.monthNumber) {
-      case 1:
-        month='ינואר';
-        break;
-      case 2:
-        month='פברואר';
-        break;
-      case 3:
-        month='מרץ';
-        break;
-      case 4:
-        month='אפריל';
-        break;
-      case 5:
-        month='מאי';
-        break;
-      case 6:
-        month='יוני';
-        break;
-      case 7:
-        month='יולי';
-        break;
-      case 8:
-        month='אוגוסט';
-        break;
-      case 9:
-        month='ספטמבר';
-        break;
-      case 10:
-        month='אוקטובר';
-        break;
-      case 11:
-        month='נובמבר';
-        break;
-      case 12:
-        month='דצמבר';
-        break;
-    }
+    const arrMonth = ['ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר']
+    let month = arrMonth[this.state.monthNumber-1];
     this.setState({
       monthName: month
     })
@@ -71,7 +35,7 @@ class MonthFilter extends React.Component {
     }
     
     this.setState({
-      isDisabledPrevtBtn: false,
+      isDisabledPrevBtn: false,
       monthNumber: this.state.monthNumber+1,
       monthName: arrMonth[this.state.monthNumber]
     })
