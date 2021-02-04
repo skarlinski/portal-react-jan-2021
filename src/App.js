@@ -10,6 +10,7 @@ import HoursApprovePage from './pages/hours/HoursApprovePage'
 import ActiveUserContext from './shared/activeUserContext'
 import './App.css';
 import ComponentZoo from './pages/ComponentZoo';
+import SideNavbar from './components/sideNavbar/SideNavbar';
 
 const App = () => {
 
@@ -27,7 +28,16 @@ const App = () => {
 
   return (
     <ActiveUserContext.Provider value={activeUser}>
+
+    {/* <Route exact path={['/LoginPage', '/CoursesPage', '/CourseDetailsPage', '/UsersPage',
+    '/UserDetailsPage', '/HoursReportPage', '/HoursApprovePage', '/zoo']}>
+      <SideNavbar />
+    </Route> */}
+
       <Switch>
+      <Route exact path="/SideNavbar">
+          <SideNavbar handleLogin={handleLogin} />
+        </Route>
         <Route exact path="/">
           <LoginPage handleLogin={handleLogin} />
         </Route>

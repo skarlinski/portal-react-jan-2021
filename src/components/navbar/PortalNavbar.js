@@ -12,6 +12,7 @@ const PortalNavbar = (props) => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
+                        <Nav.Link href="#/SideNavbar">SideNavbar</Nav.Link>
                         <Nav.Link href="#/courses">קורסים</Nav.Link>
                         <Nav.Link href="#/users">משתמשים</Nav.Link>
                         <Nav.Link href="#/hours-report">דיווח שעות</Nav.Link>
