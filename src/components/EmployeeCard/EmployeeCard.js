@@ -15,6 +15,10 @@ class EmployeeCard extends React.Component {
     }
   }
 
+  componentDidMount () {
+    this.sumOfReports();
+  }
+
   componentDidUpdate (prevProps, prevState) {
     if (this.props.sendReports !== prevProps.sendReports) {
         this.sumOfReports();

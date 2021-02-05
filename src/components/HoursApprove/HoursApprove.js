@@ -9,7 +9,6 @@ class HoursApprove extends React.Component {
     super(props);
     this.state={
       searchMonth: new Date().getMonth() + 1,
-      // data: [],
       reports: []
     }
   }
@@ -17,7 +16,6 @@ class HoursApprove extends React.Component {
   componentDidMount () {
     // console.log(this.state.searchMonth);
     this.fetchMonthData();
-    // this.fetchReportsData();
   }
 
   fetchMonthData = () => {
@@ -25,27 +23,17 @@ class HoursApprove extends React.Component {
     .then(res => {
       // console.log(res.data);
       this.setState({
-        reports: res.data[1]
+        // reports: res.data[1]
+        reports: res.data
       })
-      // console.log(this.state);
     })
   }
 
-  // fetchReportsData = () => {
-  //   server(this.props.activeUser, {month: this.state.searchMonth, year: "2020"}, 'GetAllReporters')
-  //   .then(res => {
-  //     // console.log(res.data);
-  //     this.setState({
-  //       reports: res.data[1].reports
-  //     })
-  //     // console.log(this.state);
-  //   })
-  // }
+  create 
 
   componentDidUpdate (prevProps, prevState) {
     if (this.state.searchMonth !== prevState.searchMonth) {
         this.fetchMonthData();
-        this.fetchReportsData();
     }
   }
 
@@ -57,13 +45,17 @@ class HoursApprove extends React.Component {
   }
 
   render() {
+    const allReports = this.state.reports;
+    const employeeCards = allReports.map((report, index) => {
+      return <EmployeeCard key={index} sendReports={report} />
+    })
     // console.log(this.state.data);
     console.log(this.state.reports);
     return (
       <div className="p-hours-approve">
         <MonthFilter callbackMonth={this.callbackMonth} />
-        <EmployeeCard sendReports={this.state.reports} num={3}/>
-        <div></div>
+        {employeeCards}
+        <div className="hours-approve-footer"></div>
       </div>
     )
   }
