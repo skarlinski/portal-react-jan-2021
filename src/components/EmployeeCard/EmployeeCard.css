@@ -45,3 +45,7 @@
 .num-reject {
   color: #ff0000;
 }
+.employee-card-btn {
+  border: none;
+  background-color: inherit;
+}

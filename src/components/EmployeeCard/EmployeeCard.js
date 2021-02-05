@@ -11,7 +11,8 @@ class EmployeeCard extends React.Component {
       allReports: '',
       approval: '',
       pending: '',
-      reject: ''
+      reject: '',
+      position: 'down'
     }
   }
 
@@ -55,6 +56,13 @@ class EmployeeCard extends React.Component {
     console.log(arrReports);
   }
 
+  handleClick = () => {
+    let css = (this.state.position === 'down' ? "up" : "down");
+    this.setState({
+      position: css
+    })
+  }
+
   render () {
     const reports = this.props.sendReports;
     console.log(reports);
@@ -62,17 +70,20 @@ class EmployeeCard extends React.Component {
       <div className="c-employee-card">
         <div className="employee-wrap">
           <p className="employee-name">{reports.firstname} {reports.lastname}</p>
-            <div className="numbers-wrap">
-              <span className="num num-sum">{this.state.allReports}</span>
-              <span className="num num-pending">{this.state.pending}</span>
-              <span className="num num-approval">{this.state.approval}</span>
-              <span className="num num-reject">{this.state.reject}</span>
-            </div>
-          <svg className="arrow-down" src={arrowDown} xmlns="http://www.w3.org/2000/svg" width="14.142" height="14.142" viewBox="0 0 14.142 14.142">
+          <div className="numbers-wrap">
+            <span className="num num-sum">{this.state.allReports}</span>
+            <span className="num num-pending">{this.state.pending}</span>
+            <span className="num num-approval">{this.state.approval}</span>
+            <span className="num num-reject">{this.state.reject}</span>
+          </div>
+          <button className="employee-card-btn" onClick={this.handleClick}>
+            <svg className={`arrow-${this.state.position}`} src={arrowDown} xmlns="http://www.w3.org/2000/svg" width="14.142" height="14.142" viewBox="0 0 14.142 14.142">
               <g id="arrow_down" transform="rotate(90 94.572 -65.43)">
                   <path id="chevron" d="M8 10V2H0V0h10v10z" transform="rotate(45 65.429 209.173)"/>
               </g>
             </svg>
+          </button>
+          
         </div>
       </div>
     )

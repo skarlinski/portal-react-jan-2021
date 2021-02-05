@@ -2,6 +2,7 @@ import React from 'react';
 import './HoursApprove.css'
 import MonthFilter from '../MonthFilter/MonthFilter';
 import EmployeeCard from '../EmployeeCard/EmployeeCard';
+import ReportDetails from '../ReportDetails/ReportDetails'
 import server from '../../shared/server.js';
 
 class HoursApprove extends React.Component {
@@ -55,6 +56,7 @@ class HoursApprove extends React.Component {
       <div className="p-hours-approve">
         <MonthFilter callbackMonth={this.callbackMonth} />
         {employeeCards}
+        <ReportDetails />
         <div className="hours-approve-footer"></div>
       </div>
     )
