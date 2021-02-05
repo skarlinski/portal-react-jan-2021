@@ -15,46 +15,45 @@ class EmployeeCard extends React.Component {
     }
   }
 
-  // componentDidMount () {
-  //   this.sumOfReports();
-  // }
+  componentDidUpdate (prevProps, prevState) {
+    if (this.props.sendReports !== prevProps.sendReports) {
+        this.sumOfReports();
+        // const reports = this.props.sendReports
+        // console.log(reports);
+    }
+  }
 
-  // sumOfReports = () => {
-  //   const arrReports = this.props.sendReports.reports;
-  //   for (let i=0; i<arrReports.length; i++) {
-  //     let arrApproval = [];
-  //     if (this.props.sendReports.reports[i].approval === '1') {
-  //       arrApproval.push(this.props.sendReports.reports[i]);
-  //     }
-  //     let arrPending = [];
-  //     if (this.props.sendReports.reports[i].approval === '0') {
-  //       arrPending.push(this.props.sendReports.reports[i]);
-  //     }
-  //     let arrReject = [];
-  //     if (this.props.sendReports.reports[i].approval === '-1') {
-  //       arrReject.push(this.props.sendReports.reports[i]);
-  //     }
-  //     this.setState({
-  //       allReports: arrReports.length,
-  //       approval: arrApproval.length,
-  //       pending: arrPending.length,
-  //       reject: arrReject.length
-  //     })
-      
-  //     // console.log(arrApproval);
-  //     // console.log(arrPending);
-  //     // console.log(arrReject);
-  //   }
-    
-  //   // console.log(arrReports);
-  // }
+  sumOfReports = () => {
+    const arrReports = this.props.sendReports.reports;
+    let arrApproval = [];
+    let arrPending = [];
+    let arrReject = [];
+    for (let i=0; i<arrReports.length; i++) {
+      if (arrReports[i].approval === '1') {
+        arrApproval.push(arrReports[i]);
+      }
+      if (arrReports[i].approval === '0') {
+        arrPending.push(arrReports[i]);
+      }
+      if (arrReports[i].approval === '-1') {
+        arrReject.push(arrReports[i]);
+      }
+    }
+    console.log(arrApproval);
+    console.log(arrPending);
+    console.log(arrReject);
+    this.setState({
+      allReports: arrReports.length,
+      approval: arrApproval.length,
+      pending: arrPending.length,
+      reject: arrReject.length
+    })
+    console.log(arrReports);
+  }
 
   render () {
     const reports = this.props.sendReports;
-    const arrReports = this.props.sendReports.reports;
     console.log(reports);
-    console.log(arrReports);
-    console.log(this.state);
     return(
       <div className="c-employee-card">
         <div className="employee-wrap">

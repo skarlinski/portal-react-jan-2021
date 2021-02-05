@@ -9,6 +9,7 @@ class HoursApprove extends React.Component {
     super(props);
     this.state={
       searchMonth: new Date().getMonth() + 1,
+      // data: [],
       reports: []
     }
   }
@@ -16,12 +17,13 @@ class HoursApprove extends React.Component {
   componentDidMount () {
     // console.log(this.state.searchMonth);
     this.fetchMonthData();
+    // this.fetchReportsData();
   }
 
   fetchMonthData = () => {
     server(this.props.activeUser, {month: this.state.searchMonth, year: "2020"}, 'GetAllReporters')
     .then(res => {
-      console.log(res.data);
+      // console.log(res.data);
       this.setState({
         reports: res.data[1]
       })
@@ -29,9 +31,21 @@ class HoursApprove extends React.Component {
     })
   }
 
+  // fetchReportsData = () => {
+  //   server(this.props.activeUser, {month: this.state.searchMonth, year: "2020"}, 'GetAllReporters')
+  //   .then(res => {
+  //     // console.log(res.data);
+  //     this.setState({
+  //       reports: res.data[1].reports
+  //     })
+  //     // console.log(this.state);
+  //   })
+  // }
+
   componentDidUpdate (prevProps, prevState) {
     if (this.state.searchMonth !== prevState.searchMonth) {
         this.fetchMonthData();
+        this.fetchReportsData();
     }
   }
 
@@ -43,6 +57,7 @@ class HoursApprove extends React.Component {
   }
 
   render() {
+    // console.log(this.state.data);
     console.log(this.state.reports);
     return (
       <div className="p-hours-approve">
