@@ -2,7 +2,6 @@ import React from 'react';
 import './HoursApprove.css'
 import MonthFilter from '../MonthFilter/MonthFilter';
 import EmployeeCard from '../EmployeeCard/EmployeeCard';
-import ReportDetails from '../ReportDetails/ReportDetails'
 import server from '../../shared/server.js';
 import { Accordion } from 'react-bootstrap';
 
@@ -56,10 +55,9 @@ class HoursApprove extends React.Component {
     return (
       <div className="p-hours-approve">
         <MonthFilter callbackMonth={this.callbackMonth} />
-        <Accordion className="flex-column" defaultActiveKey="0">
+        <Accordion className="flex-column">
         {employeeCards}
         </Accordion>
-        <ReportDetails />
         <div className="hours-approve-footer"></div>
       </div>
     )

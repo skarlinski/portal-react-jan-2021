@@ -3,12 +3,12 @@ import './EmployeeCard.css';
 import arrowDown from '../../assets/images/arrow_down.svg';
 import { Accordion, Card } from 'react-bootstrap';
 import ContextAwareToggle from '../ContextAwareToggle/ContextAwareToggle';
-import ReportDetails from '../ReportDetails/ReportDetails'
+import SelectedDeployeeReports from '../SelectedDeployeeReports/SelectedDeployeeReports';
 
 class EmployeeCard extends React.Component {
   constructor (props) {
     super(props);
-    console.log(this.props);
+    // console.log(this.props);
     this.state = {
       allReports: '',
       approval: '',
@@ -46,16 +46,16 @@ class EmployeeCard extends React.Component {
         arrReject.push(arrReports[i]);
       }
     }
-    console.log(arrApproval);
-    console.log(arrPending);
-    console.log(arrReject);
+    // console.log(arrApproval);
+    // console.log(arrPending);
+    // console.log(arrReject);
     this.setState({
       allReports: arrReports.length,
       approval: arrApproval.length,
       pending: arrPending.length,
       reject: arrReject.length
     })
-    console.log(arrReports);
+    // console.log(arrReports);
   }
 
   handleClick = () => {
@@ -67,8 +67,8 @@ class EmployeeCard extends React.Component {
 
   render () {
     const reports = this.props.sendReports;
-    console.log(reports);
-    console.log(this.props.eventKey);
+    // console.log(reports);
+    // console.log(this.props.eventKey);
     return(
       <Card onClick={this.handleClick}>
         <Card.Header className="employee-wrap" >
@@ -89,7 +89,7 @@ class EmployeeCard extends React.Component {
         </Card.Header>
             <Accordion.Collapse eventKey={this.props.eventKey}>
               <Card.Body>
-                <ReportDetails />
+                <SelectedDeployeeReports reports={this.props.sendReports} />
               </Card.Body>
             </Accordion.Collapse>
       </Card>
