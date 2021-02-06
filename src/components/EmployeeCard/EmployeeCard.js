@@ -1,7 +1,9 @@
 import React from 'react';
 import './EmployeeCard.css';
 import arrowDown from '../../assets/images/arrow_down.svg';
-
+import { Accordion, Card } from 'react-bootstrap';
+import ContextAwareToggle from '../ContextAwareToggle/ContextAwareToggle';
+import ReportDetails from '../ReportDetails/ReportDetails'
 
 class EmployeeCard extends React.Component {
   constructor (props) {
@@ -66,26 +68,50 @@ class EmployeeCard extends React.Component {
   render () {
     const reports = this.props.sendReports;
     console.log(reports);
+    console.log(this.props.eventKey);
     return(
-      <div className="c-employee-card">
-        <div className="employee-wrap">
-          <p className="employee-name">{reports.firstname} {reports.lastname}</p>
-          <div className="numbers-wrap">
-            <span className="num num-sum">{this.state.allReports}</span>
-            <span className="num num-pending">{this.state.pending}</span>
-            <span className="num num-approval">{this.state.approval}</span>
-            <span className="num num-reject">{this.state.reject}</span>
-          </div>
-          <button className="employee-card-btn" onClick={this.handleClick}>
-            <svg className={`arrow-${this.state.position}`} src={arrowDown} xmlns="http://www.w3.org/2000/svg" width="14.142" height="14.142" viewBox="0 0 14.142 14.142">
-              <g id="arrow_down" transform="rotate(90 94.572 -65.43)">
-                  <path id="chevron" d="M8 10V2H0V0h10v10z" transform="rotate(45 65.429 209.173)"/>
-              </g>
-            </svg>
-          </button>
+      <Card onClick={this.handleClick}>
+        <Card.Header className="employee-wrap" >
+            <ContextAwareToggle eventKey={this.props.eventKey}>
+              <p className="employee-name">{reports.firstname} {reports.lastname}</p>
+              <div className="numbers-wrap">
+                <span className="num num-sum">{this.state.allReports}</span>
+                <span className="num num-pending">{this.state.pending}</span>
+                <span className="num num-approval">{this.state.approval}</span>
+                <span className="num num-reject">{this.state.reject}</span>
+              </div>
+              <svg className={`arrow-${this.state.position}`} src={arrowDown} xmlns="http://www.w3.org/2000/svg" width="14.142" height="14.142" viewBox="0 0 14.142 14.142">
+                <g id="arrow_down" transform="rotate(90 94.572 -65.43)">
+                    <path id="chevron" d="M8 10V2H0V0h10v10z" transform="rotate(45 65.429 209.173)"/>
+                </g>
+              </svg>
+            </ContextAwareToggle>
+        </Card.Header>
+            <Accordion.Collapse eventKey={this.props.eventKey}>
+              <Card.Body>
+                <ReportDetails />
+              </Card.Body>
+            </Accordion.Collapse>
+      </Card>
+      // <div className="c-employee-card">
+      //   <div className="employee-wrap">
+      //      <p className="employee-name">{reports.firstname} {reports.      lastname}</p>
+      //     <div className="numbers-wrap">
+      //       <span className="num num-sum">{this.state.allReports}</span>
+      //       <span className="num num-pending">{this.state.pending}</span>
+      //       <span className="num num-approval">{this.state.approval}</span>
+      //       <span className="num num-reject">{this.state.reject}</span>
+      //     </div>
+      //     <button className="employee-card-btn" onClick={this.handleClick}>
+      //       <svg className={`arrow-${this.state.position}`} src={arrowDown} xmlns="http://www.w3.org/2000/svg" width="14.142" height="14.142" viewBox="0 0 14.142 14.142">
+      //         <g id="arrow_down" transform="rotate(90 94.572 -65.43)">
+      //             <path id="chevron" d="M8 10V2H0V0h10v10z" transform="rotate(45 65.429 209.173)"/>
+      //         </g>
+      //       </svg>
+      //     </button>
           
-        </div>
-      </div>
+      //   </div>
+      // </div>
     )
   }
 }

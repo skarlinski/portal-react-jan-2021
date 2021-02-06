@@ -4,6 +4,7 @@ import MonthFilter from '../MonthFilter/MonthFilter';
 import EmployeeCard from '../EmployeeCard/EmployeeCard';
 import ReportDetails from '../ReportDetails/ReportDetails'
 import server from '../../shared/server.js';
+import { Accordion } from 'react-bootstrap';
 
 class HoursApprove extends React.Component {
   constructor(props) {
@@ -48,14 +49,16 @@ class HoursApprove extends React.Component {
   render() {
     const allReports = this.state.reports;
     const employeeCards = allReports.map((report, index) => {
-      return <EmployeeCard key={index} sendReports={report} />
+      return <EmployeeCard key={index} eventKey={index} sendReports={report} />
     })
     // console.log(this.state.data);
     console.log(this.state.reports);
     return (
       <div className="p-hours-approve">
         <MonthFilter callbackMonth={this.callbackMonth} />
+        <Accordion className="flex-column" defaultActiveKey="0">
         {employeeCards}
+        </Accordion>
         <ReportDetails />
         <div className="hours-approve-footer"></div>
       </div>
