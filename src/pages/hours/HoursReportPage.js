@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import './hours.css'
 import PortalNavbar from '../../components/navbar/PortalNavbar';
 import ActiveUserContext from '../../shared/activeUserContext'
-import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom'
 
 const HoursReportPage = (props) => {
     const { handleLogout } = props;
