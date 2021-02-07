@@ -70,8 +70,8 @@ class EmployeeCard extends React.Component {
     // console.log(reports);
     // console.log(this.props.eventKey);
     return(
-      <Card onClick={this.handleClick}>
-        <Card.Header className="employee-wrap" >
+      <Card >
+        <Card.Header  onClick={this.handleClick} className="employee-wrap" >
             <ContextAwareToggle eventKey={this.props.sendReports.userid}>
               <p className="employee-name">{reports.firstname} {reports.lastname}</p>
               <div className="numbers-wrap">

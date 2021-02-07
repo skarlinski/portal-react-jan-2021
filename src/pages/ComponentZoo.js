@@ -15,11 +15,7 @@ class ComponentZoo extends React.Component{
             ];
 
         return <div>
-           <PortalSearchBar handleSearch={this.handleSearch}
-            searchText={this.state.searchText}
-            handleSearch={this.handleSearch}
-            placeholderText="placeholder Text" resPageNum={3} 
-            currentPage={this.state.currentPage} pageChange={this.pageChange}/>
+          ss
         </div>
     }
 }
