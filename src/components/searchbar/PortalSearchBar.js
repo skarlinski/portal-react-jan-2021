@@ -39,13 +39,11 @@ displayArrows = () => {
                 </div>
             )
     }
-    const leftArrow = <span className="arrow" onClick={this.nextPage}>
-         <img src={arrLeftImg}/> </span>;
-    const rightArrow = <span className="arrow" onClick={this.prevPage}>
-         <img src={arrRightImg} /> </span>
+    const leftArrow = <span className="arrow" onClick={this.nextPage}><img src={arrLeftImg}/></span>;
+    const rightArrow = <span className="arrow" onClick={this.prevPage}><img src={arrRightImg}/></span>;
 
-    const leftArrowDisabled = <span className="disabled-arrow"> <img src={arrLeftImg}/> </span>;
-    const rightArrowDisbled = <span className="disabled-arrow"> <img src={arrRightImg} /> </span>;
+    const leftArrowDisabled = <span className="disabled-arrow"><img src={arrLeftImg}/></span>;
+    const rightArrowDisbled = <span className="disabled-arrow"><img src={arrRightImg}/></span>;
     
 
   
@@ -60,27 +58,18 @@ displayArrows = () => {
 }
 
 
-    render(){
-
-         
-        
-        
+    render(){ 
         return (
-            <div className="form-outline">
-                <div className="c-search-bar input-group rounded ">
-                <input type="search" value={this.state.value} 
-                    placeholder={this.props.placeholderText} className="form-control"
+                <div className="c-search-bar">
+                <div className="input-container">
+                <input type="text" value={this.state.value} 
+                    placeholder={this.props.placeholderText}
                      onChange={(e)=>this.setState({value: e.target.value})}/>
-                <span className="search-button">
-                <img  src={searchIcon} onClick={this.sendSearch}/>
-                </span>
+                
                 {this.displayArrows()}
-     
-           
-            
+                </div>
+                <img  className="search-button" src={searchIcon} onClick={this.sendSearch}/>
         </div>
-        
-            </div>
         )
     }
 }
