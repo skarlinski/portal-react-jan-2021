@@ -19,8 +19,8 @@ class HoursApprove extends React.Component {
     this.fetchMonthData();
   }
 
-  fetchMonthData = () => {
-    server(this.props.activeUser, {month: this.state.searchMonth, year: "2020"}, 'GetAllReporters')
+  fetchMonthData = () => { 
+    server(this.props.activeUser, {month: this.state.searchMonth, year: "2019"}, 'GetAllReporters')
     .then(res => {
       // console.log(res.data);
       this.setState({
@@ -34,6 +34,7 @@ class HoursApprove extends React.Component {
 
   componentDidUpdate (prevProps, prevState) {
     if (this.state.searchMonth !== prevState.searchMonth) {
+      // TODO: cancel the previous ajax requests
         this.fetchMonthData();
     }
   }
@@ -47,7 +48,7 @@ class HoursApprove extends React.Component {
 
   render() {
     const allReports = this.state.reports;
-    const employeeCards = allReports.map((report, index) => {
+    const employeeCards = allReports.map((report, index) => { // TODO: protect from no results case
       return <EmployeeCard key={index} eventKey={index} sendReports={report} />
     })
     // console.log(this.state.data);

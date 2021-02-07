@@ -10,6 +10,7 @@ class SelectedDeployeeReports extends React.Component {
   }
 
   render () {
+
     const reports = this.props.reports.reports;
     const allReports = reports.map((report, index) => {
       let starthour = moment([report.starthour], 'hh:mm');
@@ -21,8 +22,11 @@ class SelectedDeployeeReports extends React.Component {
       let projectId = report.projectid;
       let courseId = report.courseid;
       const reportPerimeter = this.props.reports.reportingPerimeter[projectId];
+      if( ! reportPerimeter ) {
+        return null;
+      }
       let courseName;
-      for (let i=0; i<reportPerimeter.courses.length; i++) {
+      for (let i=0; i < reportPerimeter.courses.length; i++) {
         if(reportPerimeter.courses[i].courseid === courseId) {
           courseName = reportPerimeter.courses[i].courseName
         }
