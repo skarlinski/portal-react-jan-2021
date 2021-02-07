@@ -1,8 +1,8 @@
 import React from 'react';
 import searchIcon from './search_icon.svg';
 import './PortalSearchBar.css';
-import arrLeft from './arrow_l.svg';
-import arrRight from './arrow_r.svg';
+import arrLeftImg from './arrow_l.svg';
+import arrRightImg from './arrow_r.svg';
 
 class PortalSearchBar extends React.Component{
     constructor(props){
@@ -36,56 +36,22 @@ displayArrows = () => {
                 <div className="nav-results">
                 </div>
             )
-
-
-
-        // dont display arrows
     }
+    const leftArrow = <span className="arrow"> <img src={arrLeftImg}/> </span>;
+    const rightArrow = <span className="arrow"> <img src={arrRightImg} /> </span>
 
-    if (this.props.resPageNum == 1) {
-        return (
-            <div className="nav-results">
-            <span className="disabledArrow"> <img src={arrRight} /> </span>
-            <span>{this.props.currentPage}</span>
-            <span className="disabledArrow"> <img src={arrLeft}/> </span>
-            </div>
-        )
-        // display both disabled arrow
-    }
-    if (this.props.currentPage == 1){
+    const leftArrowDisabled = <span className="disabled-arrow"> <img src={arrLeftImg}/> </span>;
+    const rightArrowDisbled = <span className="disabled-arrow"> <img src={arrRightImg} /> </span>;
+    
 
-        return (
-            <div className="nav-results">
-            <span className="disabledArrow"> <img src={arrRight}/> </span>
-            <span>{this.props.currentPage}</span>
-            <span> <img src={arrLeft} onClick={this.nextPage}/></span>
-            </div>
-        )
-
-        // display disabled right arrow
-    }
-    if (this.props.currentPage == this.props.resPagesNum){
-        return (
-            <div className="nav-results">
-            <span> <img src={arrRight} onClick={this.prevPage}/> </span>
-            <span>{this.props.currentPage}</span>
-            <span className="disabledArrow"> <img src={arrLeft}/> </span>
-            </div>
-        )
-
-        // display disabled left arrow
-    }
   
-    else {
-        return (
-            <div className="nav-results">
-            <span> <img src={arrRight} onClick={this.prevPage}/> </span>
-            <span>{this.props.currentPage}</span>
-            <span> <img src={arrLeft} onClick={this.nextPage}/> </span>
-            </div>
-        )
-        
-    }
+    return (
+        <div className="nav-results">
+            {(this.props.currentPage !== this.props.resPageNum)? leftArrow : leftArrowDisabled}
+             <span>{this.props.currentPage}</span>
+            {(this.props.currentPage > 0)? rightArrow : rightArrowDisbled}
+        </div>
+    )
 }
 
 
