@@ -18,6 +18,11 @@ class ComponentZoo extends React.Component{
     }
     
     render(){
+        const myprops=[
+            {key:'on', label:'עובדים פעילים'},
+            {key:'off', label:'עובדים לא פעילים'},
+            ];
+
         return <div>
            <PortalSearchBar handleSearch={this.handleSearch}
             searchText={this.state.searchText}
