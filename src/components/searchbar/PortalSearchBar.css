@@ -8,10 +8,12 @@
 .c-search-bar > img{
     height: 20px;
     width:40px;
+    cursor: pointer;
+
 
 }
 
-.c-search-bar >.arrow{
+.c-search-bar .arrow{
     cursor: pointer;
 }
 

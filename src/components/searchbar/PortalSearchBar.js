@@ -3,6 +3,8 @@ import searchIcon from './search_icon.svg';
 import './PortalSearchBar.css';
 import arrLeftImg from './arrow_l.svg';
 import arrRightImg from './arrow_r.svg';
+import arrLeftImgDis from './arrow_l_dis.svg';
+import arrRightImgDis from './arrow_r_dis.svg';
 
 class PortalSearchBar extends React.Component{
     constructor(props){
@@ -42,8 +44,8 @@ displayArrows = () => {
     const leftArrow = <span className="arrow" onClick={this.nextPage}><img src={arrLeftImg}/></span>;
     const rightArrow = <span className="arrow" onClick={this.prevPage}><img src={arrRightImg}/></span>;
 
-    const leftArrowDisabled = <span className="disabled-arrow"><img src={arrLeftImg}/></span>;
-    const rightArrowDisbled = <span className="disabled-arrow"><img src={arrRightImg}/></span>;
+    const leftArrowDisabled = <span className="disabled-arrow"><img src={arrLeftImgDis}/></span>;
+    const rightArrowDisbled = <span className="disabled-arrow"><img src={arrRightImgDis}/></span>;
     
 
   

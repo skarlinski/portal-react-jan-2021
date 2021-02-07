@@ -7,7 +7,7 @@ class ComponentZoo extends React.Component{
         this.state = {
             searchText:'',
             currentPage:0,
-            resPageNum:2
+            resPageNum:1
 
         }
     }
