@@ -1,23 +1,23 @@
 .c-input {
     display: block;
+    font-family: "Assistant-Regular";
     font-size: 12;
     font-style: normal;
     color: #5d5d5d;
-    max-width: 500px;
+    width: 100%;
+}
+.c-input .form-label-input{
+    font-weight: bold;
 }
 .c-input  .form-control-input:focus{
     box-shadow: 0 0 0 0.1rem rgb(0 0 0 / 100%);
 }
-    
 .c-input  .form-control-input{
     border:1px solid #ccc;
     min-height: 4vh;
     border-radius: 4px;
     padding: 0.5vw 0.75vw;
     background-color: #fff;
-    width: 100%;
     box-shadow:none;
-    margin-bottom: 2px
-    ;
-
+    margin-bottom: 2px;
 }
