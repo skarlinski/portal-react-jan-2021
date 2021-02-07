@@ -20,7 +20,7 @@ class HoursApprove extends React.Component {
   }
 
   fetchMonthData = () => {
-    server(this.props.activeUser, {month: this.state.searchMonth, year: "2020"}, 'GetAllReporters')
+    server(this.props.activeUser, {month: this.state.searchMonth, year: "2019"}, 'GetAllReporters')
     .then(res => {
       // console.log(res.data);
       this.setState({
