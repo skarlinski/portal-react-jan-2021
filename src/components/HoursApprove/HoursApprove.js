@@ -20,7 +20,7 @@ class HoursApprove extends React.Component {
   }
 
   fetchMonthData = () => { 
-    server(this.props.activeUser, {month: this.state.searchMonth, year: "2019"}, 'GetAllReporters')
+    server(this.props.activeUser, {month: this.state.searchMonth, year: "2020"}, 'GetAllReporters')
     .then(res => {
       // console.log(res.data);
       this.setState({
@@ -28,9 +28,7 @@ class HoursApprove extends React.Component {
         reports: res.data
       })
     })
-  }
-
-  create 
+  } 
 
   componentDidUpdate (prevProps, prevState) {
     if (this.state.searchMonth !== prevState.searchMonth) {
@@ -48,6 +46,9 @@ class HoursApprove extends React.Component {
 
   render() {
     const allReports = this.state.reports;
+    if (!allReports) {
+      return null
+    }
     const employeeCards = allReports.map((report, index) => { // TODO: protect from no results case
       return <EmployeeCard key={index} eventKey={index} sendReports={report} />
     })
