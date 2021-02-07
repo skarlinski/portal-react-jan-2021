@@ -3,20 +3,28 @@ import PortalSearchBar from '../components/searchbar/PortalSearchBar';
 
 class ComponentZoo extends React.Component{
     constructor(props){
+        super(props)
         this.state = {
-            searchText:''
+            searchText:'',
+            currentPage:0,
+            resPageNum:0
+
         }
     }
     handleSearch = (text) => console.log('the text is' + text);
-    pageChange = (page) => console.log(page);
+    pageChange = (page) => {
+        this.setState({currentPage: page})
+        console.log(page);
+    }
     
     render(){
         return <div>
            <PortalSearchBar handleSearch={this.handleSearch}
             searchText={this.state.searchText}
             handleSearch={this.handleSearch}
-            placeholderText="placeholder Text" resPageNum={3} 
-            currentPage={2} pageChange={this.pageChange}/>
+            pageChange={this.pageChange}
+            placeholderText="placeholder Text" resPageNum={this.state.resPageNum} 
+            currentPage={this.state.currentPage} />
         </div>
     }
 }
