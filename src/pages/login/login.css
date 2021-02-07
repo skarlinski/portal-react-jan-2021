@@ -18,6 +18,10 @@
     width: 310px;
     height: 50px;
 }
+.p-login input::placeholder, .p-login input:focus, .p-login input { /* Firefox, Chrome, Opera */ 
+    color: white;
+    font-size:20px;
+} 
 .p-login .submit-button {
     border-radius: 20px;
     background-color: white;
