@@ -56,19 +56,19 @@ const LoginPage = (props) => {
 
         <Container className="p-login">
             {/* <h1>התחברות</h1> */}
-            <img src={logo}/>
+            <img src={logo} className="m-btm"/>
         
              
             <Form className="p-centered">
             
                 <Form.Group controlId="formBasicEmail">
-                    <Form.Label></Form.Label>
+                    {/* <Form.Label></Form.Label> */}
                     <Form.Control className="input-text"  value={email} type="email" placeholder="אימייל" onChange={e => setEmail(e.target.value)}/>
                 </Form.Group>
             
                 <Form.Group controlId="formBasicPassword">
-                    <Form.Label></Form.Label>
-                    <Form.Control className="input-text"  value={pwd} type="password" placeholder="סיסמה" onChange={e => setPwd(e.target.value)}/>
+                    {/* <Form.Label></Form.Label> */}
+                    <Form.Control className="input-text m-btm"  value={pwd} type="password" placeholder="סיסמה" onChange={e => setPwd(e.target.value)}/>
                 </Form.Group>
 
                 <Button className="submit-button" variant="light" block type="button" onClick={login}>
@@ -78,7 +78,7 @@ const LoginPage = (props) => {
             </Form>
             
             {msg ? <ErrorMessage errMsg={msg} msgIcon={msgIcon} bgColor="white" txtColor="#ffa1a1" handleClose={handleClose}/> : null }
-        </Container>
+        </Container> 
        
     );
 }

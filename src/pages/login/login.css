@@ -4,7 +4,7 @@
     height: 100vh;
     text-align: center;
     background-color: #1b166e;
-    padding: 0px;
+    padding: 20px 0px;
     color : white;
     font-weight: bold;
 }
@@ -17,15 +17,18 @@
     color: white;
     width: 310px;
     height: 50px;
+    margin-bottom: 20px;
 }
 .p-login input::placeholder, .p-login input:focus, .p-login input { /* Firefox, Chrome, Opera */ 
     color: white;
-    font-size:20px;
+    font-size:25px;
 } 
 .p-login .submit-button {
     border-radius: 20px;
     background-color: white;
     color:#1b166e;
+    font-size:25px;
+    font-weight: bold;
    
 }
 .p-login .input-text {
@@ -42,4 +45,8 @@
 
 .p-lineup {
     display: flex;
+}
+
+.m-btm {
+    margin-bottom: 150px !important;
 }
