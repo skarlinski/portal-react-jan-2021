@@ -2,10 +2,11 @@ import React from 'react';
 import ButtonSet from '../components/ButtonSet';
 
 class ComponentZoo extends React.Component{
-
-    clickme = (thebutton)=>{
-        console.log(thebutton.label);
-
+    constructor(props){
+        this.state = {
+            searchText:'',
+            currentPage:0
+        }
     }
     render(){
         const myprops=[
@@ -14,8 +15,11 @@ class ComponentZoo extends React.Component{
             ];
 
         return <div>
-           myzoo
-           <ButtonSet buttons ={myprops} handleClick={this.clickme}/>
+           <PortalSearchBar handleSearch={this.handleSearch}
+            searchText={this.state.searchText}
+            handleSearch={this.handleSearch}
+            placeholderText="placeholder Text" resPageNum={3} 
+            currentPage={this.state.currentPage} pageChange={this.pageChange}/>
         </div>
     }
 }
