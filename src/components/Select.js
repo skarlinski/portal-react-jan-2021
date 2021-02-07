@@ -3,16 +3,9 @@ import { Form } from 'react-bootstrap';
 import './Select.css'
 
 class Select extends React.Component{
-    constructor(props){
-        super(props);
-        this.state={
-            selectedOption:this.props.optionsKey? this.props.optionsKey:null,
-        }
-    }
-    handleSelection= (ChossenOption) =>{
-        this.setState({selectedOption:ChossenOption.target.value})
-        this.props.handleSelection(ChossenOption.target.value)
 
+    handleSelection= (ChossenOption) =>{
+        this.props.handleSelection(ChossenOption.target.value)
     }
     render(){
         const optionsOfSelect = this.props.options.map((item) =>{
@@ -20,7 +13,7 @@ class Select extends React.Component{
         });
         return(<div className="c-select">
                 <Form.Label className="label-select">{this.props.title}</Form.Label>
-                <Form.Control className="select" as="select" value={this.state.selectedOption}
+                <Form.Control className="select" as="select" value={this.props.optionsKey}
                 onChange={this.handleSelection}>
                     {optionsOfSelect}
                 </Form.Control>
