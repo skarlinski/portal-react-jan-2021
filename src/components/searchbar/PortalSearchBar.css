@@ -1,10 +1,40 @@
 
 .c-search-bar >.search-button >img{
-    height: 15px;
+    height: 30px;
+    padding: 6px 5px 0 5px;
+    
+
 }
 
-.c-search-bar{
-    width: 40%;
+
+
+.c-search-bar >.arrow{
+    cursor: pointer;
+}
+
+.c-search-bar {
+    
+    position: relative;
+    
+}
+
+.input-group input{
+    width: 336px;
+    height: 45px;
+    border-radius: 23px;
+    background-color:#efefef;
+    color: #707070
+    
+
+
+    ;
+}
+
+.c-search-bar .nav-results{
+    position:absolute;
+    left:12%;
+    top:5px;
+    
 }
 
 

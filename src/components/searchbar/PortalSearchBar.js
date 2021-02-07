@@ -13,8 +13,10 @@ class PortalSearchBar extends React.Component{
         }
     }
 
-    sendSearch = (event) =>{
-        this.props.handleSearch(event.target.value)
+    
+
+    sendSearch = () =>{
+        this.props.handleSearch(this.state.value)
     }
 
     prevPage = () =>  {
@@ -37,8 +39,10 @@ displayArrows = () => {
                 </div>
             )
     }
-    const leftArrow = <span className="arrow"> <img src={arrLeftImg}/> </span>;
-    const rightArrow = <span className="arrow"> <img src={arrRightImg} /> </span>
+    const leftArrow = <span className="arrow" onClick={this.nextPage}>
+         <img src={arrLeftImg}/> </span>;
+    const rightArrow = <span className="arrow" onClick={this.prevPage}>
+         <img src={arrRightImg} /> </span>
 
     const leftArrowDisabled = <span className="disabled-arrow"> <img src={arrLeftImg}/> </span>;
     const rightArrowDisbled = <span className="disabled-arrow"> <img src={arrRightImg} /> </span>;
@@ -47,9 +51,10 @@ displayArrows = () => {
   
     return (
         <div className="nav-results">
-            {(this.props.currentPage !== this.props.resPageNum)? leftArrow : leftArrowDisabled}
-             <span>{this.props.currentPage}</span>
             {(this.props.currentPage > 0)? rightArrow : rightArrowDisbled}
+            <span>{this.props.currentPage +1}</span>
+            {(this.props.currentPage +1 !== this.props.resPageNum)? leftArrow : leftArrowDisabled}
+          
         </div>
     )
 }
@@ -63,10 +68,11 @@ displayArrows = () => {
         return (
             <div className="form-outline">
                 <div className="c-search-bar input-group rounded ">
-                <input type="search" value={this.state.value}
-                    placeholder={this.props.placeholderText} className="form-control"/>
+                <input type="search" value={this.state.value} 
+                    placeholder={this.props.placeholderText} className="form-control"
+                     onChange={(e)=>this.setState({value: e.target.value})}/>
                 <span className="search-button">
-                <img src={searchIcon} onClick={this.sendSearch}/>
+                <img  src={searchIcon} onClick={this.sendSearch}/>
                 </span>
                 {this.displayArrows()}
      
