@@ -3,9 +3,15 @@
 }
 .report-details {
   width: 100%;
+}
+.approval {
   background-color: #ffa1a1;
-  /* background-color: #a1d47f; */
-  /* background-color: #ffd300; */
+}
+.pending {
+  background-color: #a1d47f;
+}
+.reject {
+  background-color: #ffd300;
 }
 .report-wrap {
   width: 92%;
@@ -45,4 +51,8 @@
   font-size: 8px;
   line-height: 9px;
   padding-bottom: 16px;
+}
+.report-btn {
+  border-radius: 50%;
+  background-color: #fff;
 }

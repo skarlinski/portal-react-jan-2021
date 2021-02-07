@@ -26,6 +26,9 @@ class SelectedDeployeeReports extends React.Component {
         if(reportPerimeter.courses[i].courseid === courseId) {
           courseName = reportPerimeter.courses[i].courseName
         }
+        if(courseId === null) {
+          courseName = 'כללי'
+        }
       }
       let actionId = report.actionid;
       let subject;
@@ -34,15 +37,26 @@ class SelectedDeployeeReports extends React.Component {
           subject = reportPerimeter.subjects[i].subject
         }
       }
+      let reportStyle;
+      if (report.approval === '1') {
+        reportStyle = 'approval'
+      }
+      if (report.approval === '0') {
+        reportStyle = 'pending'
+      }
+      if (report.approval === '-1') {
+        reportStyle = 'reject'
+      }
+      console.log(reportStyle);
 
       return (
         <div key={index}>
           <div className="report-details-header">
-            <input type="radio" />
-            <input type="radio" />
-            <input type="radio" />
+            <input className="report-btn" type="button" />
+            <input className="report-btn" type="button" />
+            <input className="report-btn" type="button" />
           </div>
-          <div className="report-details">
+          <div className={`report-details ${reportStyle}`}>
             <div className="report-wrap">
               <div className="details-row">
                 <input className="report-checkbox" type="checkbox" />
