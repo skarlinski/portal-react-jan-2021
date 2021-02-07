@@ -2,13 +2,14 @@ import React from 'react';
 import { Table } from 'react-bootstrap';
 import './PortalTable.css'
 
-class TableComp extends React.Component{
+class PortalTable extends React.Component{
     constructor(props){
         super(props);
     }
     render(){
         const {headers, data, handleClick} = this.props;
-
+        const trs = data.map(item => <tr onClick={() => handleClick(item)}>
+            {headers.map(col => <td>{item[col.key]}</td>)}</tr>)
         return (
             <div>
               <Table className='c-portal-table' responsive >
@@ -16,7 +17,7 @@ class TableComp extends React.Component{
                     <tr>{headers.map(col => <th>{col.header}</th>)}</tr>
                 </thead>
                 <tbody >
-                    {data.map(item => <tr onClick={() => this.props.handleClick(item)}>{headers.map(col => <td>{item[col.key]}</td>)}</tr>)}
+                    {trs}
                 </tbody>
               </Table>
           </div>
@@ -24,4 +25,4 @@ class TableComp extends React.Component{
      }
 }
 
-export default TableComp;
+export default PortalTable;
