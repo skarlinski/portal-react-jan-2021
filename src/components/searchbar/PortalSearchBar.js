@@ -26,18 +26,12 @@ class PortalSearchBar extends React.Component{
         this.props.pageChange(this.props.currentPage + 1)
     }
 
-    
- 
+     
 
-//  if:
-//                 this.props.resPagesNum == 0 dont display arrows 
-//                 this.props.currentPage == 1 display disabled right arrow
-//                 this.props.currentPage == this.props.resPagesNum display disabled left arrow
-//                 this.props.resPageNum == 1 display both disabled arrows 
+
 
 displayArrows = () => {
-            
-    if (this.props.resPagesNum === 0){
+    if (this.props.resPageNum === 0){
             return (
                 <div className="nav-results">
                 </div>
@@ -46,6 +40,17 @@ displayArrows = () => {
 
 
         // dont display arrows
+    }
+
+    if (this.props.resPageNum == 1) {
+        return (
+            <div className="nav-results">
+            <span className="disabledArrow"> <img src={arrRight} /> </span>
+            <span>{this.props.currentPage}</span>
+            <span className="disabledArrow"> <img src={arrLeft}/> </span>
+            </div>
+        )
+        // display both disabled arrow
     }
     if (this.props.currentPage == 1){
 
@@ -70,16 +75,7 @@ displayArrows = () => {
 
         // display disabled left arrow
     }
-    if (this.props.resPageNum == 1) {
-        return (
-            <div className="nav-results">
-            <span className="disabledArrow"> <img src={arrRight} /> </span>
-            <span>{this.props.currentPage}</span>
-            <span className="disabledArrow"> <img src={arrLeft}/> </span>
-            </div>
-        )
-        // display both disabled arrow
-    }
+  
     else {
         return (
             <div className="nav-results">
