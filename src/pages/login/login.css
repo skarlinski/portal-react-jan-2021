@@ -1,10 +1,12 @@
 
 
 .p-login {
-    height: 100%;
-    font-size: 30px;
+    height: 640px;
     text-align: center;
     background-color: #1b166e;
+    padding: 0px;
+    color : white;
+    font-weight: bold;
 }
 
 
@@ -24,4 +26,15 @@
 .p-login .input-text {
     background-color: #1b166e;
     border-color: white;
+}
+
+.p-centered {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.p-lineup {
+    display: flex;
 }

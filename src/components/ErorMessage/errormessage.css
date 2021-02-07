@@ -2,15 +2,18 @@
     position: absolute;
     /* top: -82px; */
     bottom: 0px;
-    background-color: white;
+    /* background-color: white; */
     height: 83px;
     padding : 20px 20px;
+    /* color: #ffa1a1; */
+    font-size: 15px;
      
 }
 .top-left {
     position: relative;
     top : -20px;
     font-size: 30px;
+    color: #5d5d5d;
 
 }
 
