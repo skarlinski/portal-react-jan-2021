@@ -1,5 +1,5 @@
 import React from 'react';
-import './PortalTabView' ;
+import './PortalTabView.css' ;
 
 class PortalTabView extends React.Component {
     constructor(props) {
@@ -8,9 +8,16 @@ class PortalTabView extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>PortalTabView</h1>
-            </div>
+            <div className="c-portal-table-view">
+                <nav>
+                    <ul>
+                        <li><a href="#">פורטל</a></li>
+                        <li><a href="#">קורסים</a></li>
+                        <li><a href="">אודות</a></li>
+                        <li><a href="#">דיווח</a></li>
+                    </ul>
+               </nav>
+          </div>
         )
     }
 }

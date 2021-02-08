@@ -1,5 +1,11 @@
 import React from 'react';
 import ButtonSet from '../components/ButtonSet';
+import PortalTable from '../components/PortalTable';
+import PortalTabView from '../components/PortalTabView/PortalTabView';
+import CoursesPage from './courses/CoursesPage';
+import LoginPage from './login/LoginPage';
+
+
 
 class ComponentZoo extends React.Component{
 
@@ -14,8 +20,8 @@ class ComponentZoo extends React.Component{
             ];
 
         return <div>
-           myzoo
-           <ButtonSet buttons ={myprops} handleClick={this.clickme}/>
+           
+           <PortalTabView />
         </div>
     }
 }
