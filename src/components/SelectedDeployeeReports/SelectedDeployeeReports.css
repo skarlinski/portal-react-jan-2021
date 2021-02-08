@@ -11,21 +11,21 @@
   background-color: #a1d47f;
   border-color: #a1d47f;
 }
-.approval-label {
+.label-approval {
   color: #a1d47f;
 }
 .pending {
   background-color: #ffd300;
   border-color: #ffd300;
 }
-.pending-label {
+.label-pending {
   color: #ffd300;
 }
 .reject {
   background-color: #ffa1a1;
   border-color: #ffa1a1;
 }
-.reject-label {
+.label-reject {
   color: #ffa1a1;
 }
 .report-wrap {

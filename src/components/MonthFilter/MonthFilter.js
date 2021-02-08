@@ -7,28 +7,21 @@ import {MONTHS_ARR} from '../../data/shared.js';
 class MonthFilter extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props);
+    // console.log(this.props);
     this.state = {
-        monthNumber: new Date().getMonth() + 1,
-        monthName: '',
+        monthNumber: new Date().getMonth(),
+        monthName: MONTHS_ARR[new Date().getMonth()],
         isDisabledNextBtn: false,
         isDisabledPrevBtn: false,
         btnNext: 'active',
         btnPrev: 'active'
       }
-      console.log(this.state);
+      // console.log(this.state);
     }
-
-  componentDidMount () {
-    let month = MONTHS_ARR[this.state.monthNumber-1];
-    this.setState({
-      monthName: month
-    })
-  }
 
   handleClickOnButtonNext = () => {
     
-    if (this.state.monthNumber > 10) {
+    if (this.state.monthNumber > 9) {
       this.setState({
         isDisabledNextBtn: true,
         btnNext: 'disabled',
@@ -39,15 +32,15 @@ class MonthFilter extends React.Component {
       btnPrev: 'active',
       isDisabledPrevBtn: false,
       monthNumber: this.state.monthNumber+1,
-      monthName: MONTHS_ARR[this.state.monthNumber]
+      monthName: MONTHS_ARR[this.state.monthNumber+1]
     })
-    this.props.callbackMonth(this.state.monthNumber);
+    this.props.callbackMonth(this.state.monthNumber+1);
     // console.log(this.state);
   }
 
   handleClickOnButtonPrev = () => {
 
-    if (this.state.monthNumber < 3) {
+    if (this.state.monthNumber < 2) {
       this.setState({
         isDisabledPrevBtn: true,
         btnPrev: 'disabled',
@@ -58,14 +51,14 @@ class MonthFilter extends React.Component {
       btnNext: 'active',
       isDisabledNextBtn: false,
       monthNumber: this.state.monthNumber-1,
-      monthName: MONTHS_ARR[this.state.monthNumber-2]
+      monthName: MONTHS_ARR[this.state.monthNumber-1]
     })
-    this.props.callbackMonth(this.state.monthNumber);
+    this.props.callbackMonth(this.state.monthNumber-1);
     // console.log(this.state);
   }
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <div className="c-month-filter">
         <div className="pagination-wrap">

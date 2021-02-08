@@ -10,7 +10,7 @@ function ContextAwareToggle({ children, eventKey, callback }) {
     () => callback && callback(eventKey),
   );
 
-  const isCurrentEventKey = currentEventKey === eventKey;
+  // const isCurrentEventKey = currentEventKey === eventKey;
 
   return (
     <button

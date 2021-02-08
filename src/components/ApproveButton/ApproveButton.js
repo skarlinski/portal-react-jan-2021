@@ -58,3 +58,24 @@
 //   }
 // }
 // export default ApproveButton;
+import React from 'react';
+import './ApproveButton.css';
+
+class ApproveButton extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render () {
+    
+    return (
+      <div className="btn-wrap">
+         <span className={`btn-label label-${this.props.button.status}`}>{this.props.button.label}</span>
+         <div className={`report-btn btn-${this.props.button.status}`} >
+           <div className={`btn-circle btn-${this.props.button.status}`}></div>
+         </div>
+       </div>
+    )
+  }
+}
+export default ApproveButton;

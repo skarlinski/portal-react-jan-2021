@@ -3,12 +3,13 @@ import './SelectedDeployeeReports.css';
 import moment from 'moment';
 import 'moment-duration-format';
 import ApproveButton from '../ApproveButton/ApproveButton';
+import ApproveButtonsSet from '../ApproveButtonsSet/ApproveButtonsSet';
 import server from '../../shared/server.js';
 
 class SelectedDeployeeReports extends React.Component {
   constructor (props) {
     super (props);
-    console.log(this.props);
+    // console.log(this.props);
     this.state = {
       viewReports: [],
       isActiveApprove: '',
@@ -18,16 +19,31 @@ class SelectedDeployeeReports extends React.Component {
   }
 
   componentDidMount () {
-    const reports = this.props.reports.reports;
-    console.log(reports);
+    this.showReports();
+  }
 
+  componentDidUpdate (prevProps, prevState) {
+    if (this.props.reports !== prevProps.reports) {
+      this.showReports();
+    }
+  }
+
+  getDuration = (data) => {
+    let starthour = moment([data.starthour], 'hh:mm');
+    let finishhour = moment([data.finishhour], 'hh:mm');
+    let hours = moment.duration(finishhour.diff(starthour, 'minutes'),
+    'minutes').format('h [ש\'] m [ד\']', {
+        trim: "large"
+    });
+    return hours;
+  }
+
+  showReports = () => {
+    const reports = this.props.reports.reports;
+    // console.log(reports);
     const allReports = reports.map((report, index) => {
-      let starthour = moment([report.starthour], 'hh:mm');
-      let finishhour = moment([report.finishhour], 'hh:mm');
-      let hours = moment.duration(finishhour.diff(starthour, 'minutes'),
-      'minutes').format('h [ש\'] m [ד\']', {
-         trim: "large"
-      });
+      let hours = this.getDuration(report);
+
       let projectId = report.projectid;
       let courseId = report.courseid;
       const reportPerimeter = this.props.reports.reportingPerimeter[projectId];
@@ -43,7 +59,7 @@ class SelectedDeployeeReports extends React.Component {
           courseName = 'כללי';
         }
       }
-      console.log(courseName);
+      // console.log(courseName);
       let actionId = report.actionid;
       let subject;
       for (let i=0; i<reportPerimeter.subjects.length; i++) {
@@ -83,28 +99,29 @@ class SelectedDeployeeReports extends React.Component {
 
       return (
         <div key={index}>
-          {/* <ApproveButton sendReports={this.props.reports}/> */}
+          
           <div className="report-details-header">
-            <div className="buttons-wrap">
+            <ApproveButtonsSet />
+            {/* <div className="buttons-wrap">
               <div className="btn-wrap">
-                <span className="btn-label approval-label">אשר</span>
+                <span className="btn-label label-approval">אשר</span>
                 <div className={`report-btn btn-approval ${isActiveApproval}`} onClick={this.handleClickOnApprovalBtn} >
                   <div className={`btn-circle btn-approval ${isActiveApproval}`}></div>
                 </div>
               </div>
               <div className="btn-wrap">
-                <span className="btn-label pending-label">ממתין</span>
+                <span className="btn-label label-pending">ממתין</span>
                 <div className={`report-btn btn-pending ${isActivePending}`} onClick={this.handleClickOnApprovalBtn}>
                   <div className={`btn-circle btn-pending ${isActivePending}`}></div>
                 </div>
               </div>
               <div className="btn-wrap">
-                <span className="btn-label reject-label">דחה</span>
+                <span className="btn-label label-reject">דחה</span>
                 <div className={`report-btn btn-reject ${isActiveReject}`} onClick={this.handleClickOnApprovalBtn}>
                   <div className={`btn-circle btn-reject ${isActiveReject}`}></div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className={`report-details ${reportStyle}`}>
             <div className="report-wrap">
@@ -138,9 +155,9 @@ class SelectedDeployeeReports extends React.Component {
   }
 
   handleClickOnApprovalBtn = (e) => {
-    console.log(e);
+    // console.log(e);
     if (e.target.className === "btn-circle btn-approval ") {
-      console.log('approval');
+      // console.log('approval');
       server(this.props.activeUser, {checkdate2: true, reportids: ["81735"],
       status: 1}, 'SetReportApproval')
       .then(res => {
@@ -148,7 +165,7 @@ class SelectedDeployeeReports extends React.Component {
       })
     }
     if (e.target.className === "btn-circle btn-pending ") {
-      console.log('pending');
+      // console.log('pending');
       server(this.props.activeUser, {checkdate2: true, reportids: ["81735"],
       status: 0}, 'SetReportApproval')
       .then(res => {
@@ -156,7 +173,7 @@ class SelectedDeployeeReports extends React.Component {
       })
     }
     if (e.target.className === "btn-circle btn-reject ") {
-      console.log('reject');
+      // console.log('reject');
       server(this.props.activeUser, {checkdate2: true, reportids: ["81735"],
       status: -1}, 'SetReportApproval')
       .then(res => {
@@ -166,105 +183,8 @@ class SelectedDeployeeReports extends React.Component {
   }
 
   render () {
-
-    const reports = this.props.reports.reports;
-    
-    // const allReports = reports.map((report, index) => {
-    //   let starthour = moment([report.starthour], 'hh:mm');
-    //   let finishhour = moment([report.finishhour], 'hh:mm');
-    //   let hours = moment.duration(finishhour.diff(starthour, 'minutes'),
-    //   'minutes').format('h [ש\'] m [ד\']', {
-    //      trim: "large"
-    //   });
-    //   let projectId = report.projectid;
-    //   let courseId = report.courseid;
-    //   const reportPerimeter = this.props.reports.reportingPerimeter[projectId];
-    //   if( ! reportPerimeter ) {
-    //     return null;
-    //   }
-    //   let courseName;
-    //   for (let i=0; i < reportPerimeter.courses.length; i++) {
-    //     if(reportPerimeter.courses[i].courseid === courseId) {
-    //       courseName = reportPerimeter.courses[i].courseName
-    //     }
-    //     if(!courseId) {
-    //       courseName = 'כללי';
-    //     }
-    //   }
-    //   console.log(courseName);
-    //   let actionId = report.actionid;
-    //   let subject;
-    //   for (let i=0; i<reportPerimeter.subjects.length; i++) {
-    //     if(reportPerimeter.subjects[i].reportsubjectid === actionId) {
-    //       subject = reportPerimeter.subjects[i].subject
-    //     }
-    //   }
-    //   let reportStyle;
-    //   if (report.approval === '1') {
-    //     reportStyle = 'approval'
-    //   }
-    //   if (report.approval === '0') {
-    //     reportStyle = 'pending'
-    //   }
-    //   if (report.approval === '-1') {
-    //     reportStyle = 'reject';
-    //   }
-    //   console.log(reportStyle);
-
-    //   return (
-    //     <div key={index}>
-    //       <div className="report-details-header">
-    //         <div className="buttons-wrap">
-    //           <div className="btn-wrap">
-    //             <span className="btn-label">אשר</span>
-    //             <div className="report-btn" type="button">
-    //               <div className="btn-circle"></div>
-    //             </div>
-    //           </div>
-    //           <div className="btn-wrap">
-    //             <span className="btn-label">ממתין</span>
-    //             <div className="report-btn" type="button">
-    //               <div className="btn-circle"></div>
-    //             </div>
-    //           </div>
-    //           <div className="btn-wrap">
-    //             <span className="btn-label">דחה</span>
-    //             <div className="report-btn" type="button">
-    //               <div className="btn-circle"></div>
-    //             </div>
-    //           </div>
-    //         </div>
-    //       </div>
-    //       <div className={`report-details ${reportStyle}`}>
-    //         <div className="report-wrap">
-    //           <div className="details-row">
-    //             <input className="report-checkbox" type="checkbox" />
-    //             <span className="details-text">תאריך: {report.date}</span>
-    //             <span className="details-text">סה''כ שעות: {hours}</span>
-    //           </div>
-    //           <div className="report-row">
-    //        <div className="report-column">
-    //         <span className="report-head">פרויקט</span>
-    //         <span className="report-text">{reportPerimeter.projectName}</span>
-    //        </div>
-    //        <div className="report-column">
-    //          <span className="report-head">מס/שם קורס</span>
-    //          <span className="report-text">{courseName}</span>
-    //        </div>
-    //        <div className="report-column">
-    //          <span className="report-head">נושא פעילות</span>
-    //          <span className="report-text">{subject}</span>
-    //        </div>
-    //      </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   )
-    // })
-    
     return (
       <div>
-        {/* {allReports} */}
         {this.state.viewReports}
       </div>
     )

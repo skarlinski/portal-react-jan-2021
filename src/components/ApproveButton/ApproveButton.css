@@ -1,0 +1,26 @@
+.report-btn {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  background-color: #f8f8f8;
+  border-width: 0.5px;
+  border-style: solid;
+  /* border-color: #707070; */
+  border-radius: 50px;
+  cursor: pointer;
+}
+.btn-circle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.btn-label {
+  font-family: "Assistant-Regular";
+  font-size: 9px;
+  line-height: 10px;
+  margin-bottom: 11px;
+  display: inline-block;
+}
