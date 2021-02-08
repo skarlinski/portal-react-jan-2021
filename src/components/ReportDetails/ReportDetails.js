@@ -1,26 +1,14 @@
 import React from 'react';
-import './SelectedDeployeeReports.css';
+import './ReportDetails.css';
 import moment from 'moment';
 import 'moment-duration-format';
-import ApproveButtonsSet from '../ApproveButtonsSet/ApproveButtonsSet';
-import server from '../../shared/server.js';
 
-class SelectedDeployeeReports extends React.Component {
+class ReportDetails extends React.Component {
   constructor (props) {
-    super (props);
-    // console.log(this.props);
+    super(props);
+    console.log(this.props);
     this.state = {
       viewReports: []
-    }
-  }
-
-  componentDidMount () {
-    this.showReports();
-  }
-
-  componentDidUpdate (prevProps, prevState) {
-    if (this.props.reports !== prevProps.reports) {
-      this.showReports();
     }
   }
 
@@ -73,13 +61,9 @@ class SelectedDeployeeReports extends React.Component {
       if (report.approval === '-1') {
         reportStyle = 'reject';
       }
-
+      
       return (
-        <div key={report.reportid}>
-          <div className="report-details-header">
-            <ApproveButtonsSet getEventKey={this.getEventKey} getStatus={reportStyle}/>
-          </div>
-          <div className={`report-details ${reportStyle}`}>
+        <div className={`report-details ${reportStyle}`}>
             <div className="report-wrap">
               <div className="details-row">
                 <input className="report-checkbox" type="checkbox" />
@@ -102,45 +86,11 @@ class SelectedDeployeeReports extends React.Component {
          </div>
             </div>
           </div>
-        </div>
       )
     })
     this.setState({
       viewReports: allReports
     })
-  }
-
-  getEventKey = (indexBtn) => {
-    let eventKey = indexBtn;
-    this.handleClickOnApprovalBtn(eventKey);
-  }
-
-  handleClickOnApprovalBtn = (e) => {
-    console.log(e);
-    if (e===0) {
-      console.log('approval');
-      // server(this.props.activeUser, {checkdate2: true, reportids: ["81735"],
-      // status: 1}, 'SetReportApproval')
-      // .then(res => {
-      //   console.log(res);
-      // })
-    }
-    if (e===1) {
-      console.log('pending');
-      // server(this.props.activeUser, {checkdate2: true, reportids: ["81735"],
-      // status: 0}, 'SetReportApproval')
-      // .then(res => {
-      //   console.log(res);
-      // })
-    }
-    if (e===2) {
-      console.log('reject');
-      // server(this.props.activeUser, {checkdate2: true, reportids: ["81735"],
-      // status: -1}, 'SetReportApproval')
-      // .then(res => {
-      //   console.log(res);
-      // })
-    }
   }
 
   render () {
@@ -151,4 +101,4 @@ class SelectedDeployeeReports extends React.Component {
     )
   }
 }
-export default SelectedDeployeeReports;
+export default ReportDetails;
