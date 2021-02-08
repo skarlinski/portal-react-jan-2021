@@ -15,7 +15,6 @@ class PortalTabView extends React.Component {
                         <li><a href="#">קורסים</a></li>
                         <li><a href="">אודות</a></li>
                         <li><a href="#">דיווח</a></li>
-                        <li><a href="#">דיווח</a></li>
                     </ul>
                </nav>
           </div>
