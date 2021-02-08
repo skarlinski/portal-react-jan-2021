@@ -1,17 +1,23 @@
 import React, { Component } from 'react';
+import './sideNavbar.css';
+
 
 class LiItem extends Component {
     constructor(props) {
         super(props);
     }
     render() { 
-        const {title, icon} = this.props;
+        const {title, icon, children, arrowDown} = this.props;
         return ( 
-            <div>
-                <span><img src={icon}/></span>
+        <div className="c-liItemBorder">
+            <div onClick={this.props.handleCollapse}
+            className="c-liItem" >
+                <span className=" m-3"><img src={icon}/></span>
                 <span>{title}</span>
-                {this.props.children}
+                {arrowDown}
             </div>
+            {children}
+        </div>
          );
     }
 }
