@@ -116,6 +116,10 @@ class SelectedDeployeeReports extends React.Component {
     this.handleClickOnApprovalBtn(eventKey, reportId);
   }
 
+  // refreshPage = () => {
+  // window.location.reload();
+  // }
+
   handleClickOnApprovalBtn = (eventKey, reportId) => {
     console.log(eventKey, reportId);
     if (eventKey===0) {
@@ -142,6 +146,7 @@ class SelectedDeployeeReports extends React.Component {
         console.log(res);
       })
     }
+    // this.refreshPage();
   }
 
   render () {
