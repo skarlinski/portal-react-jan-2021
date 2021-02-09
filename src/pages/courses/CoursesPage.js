@@ -74,7 +74,7 @@ const CoursesPage = (props) => {
                         handleClick={handleClick}/> : ''}
             </div>
             <div className="f-courses">
-                <ButtonSet buttons={buttons}/>
+                <ButtonSet buttons={buttons} handleClick={handleClick}/>
             </div>
             
         </div>
