@@ -16,6 +16,8 @@ const App = () => {
 
   const [activeUser, setActiveUser] = useState(localStorage.activeUser ? JSON.parse(localStorage.activeUser) : null);
 
+  const [isNavOpen, setIsNavOpen] = useState(false);
+
   const handleLogin = (activeUser) => {
     setActiveUser(activeUser);
     localStorage.activeUser = JSON.stringify(activeUser);
@@ -36,7 +38,12 @@ const App = () => {
 
       <Switch>
       <Route exact path="/SideNavbar">
-          <SideNavbar handleLogin={handleLogin} />
+        <button onClick={()=>{setIsNavOpen(!isNavOpen)}}>open navbar</button>
+          <SideNavbar 
+          handleLogin={handleLogin}
+          isNavOpen={isNavOpen}
+          setIsNavOpen={setIsNavOpen}
+          />
         </Route>
         <Route exact path="/">
           <LoginPage handleLogin={handleLogin} />

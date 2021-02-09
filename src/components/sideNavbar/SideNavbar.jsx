@@ -15,8 +15,6 @@ import arrowDown from './icons/arrowDown.svg';
 import appleSeedsLogo from './icons/appleSeedsLogo.svg';
 
 
-
-
 class SideNavbar extends Component {
     constructor(props) {
         super(props);
@@ -25,16 +23,15 @@ class SideNavbar extends Component {
         }
     }
 
+
     handleCollapse = () => {
         const userCollapse = !this.state.userCollapse
         this.setState({userCollapse})
     }
 
     render() { 
-        // const collapsedStyle = {
-        //     height:'0px',
-        //      overflow:'hidden'
-        // }
+        const {isNavOpen, setIsNavOpen} = this.props;
+
         const arrowDownspan = <span className="arrow"><img src={arrowDown} /></span>;
 
         const collapsedStyle = (this.state.userCollapse)? 
@@ -44,11 +41,11 @@ class SideNavbar extends Component {
         :arrowDownspan;
 
         return ( 
-        <div className="sidebar-wrap">
+        <div className="sidebar-bg" onClick={this.handleOpenSideNav}>
 
             <div className="sidebar">
                 <div className="sidebar-header">
-                    <span>X</span>
+                    <span onClick={this.handleCloseSideNav}>X</span>
                     <img src={appleSeedsLogo}/>
                     
                 </div>

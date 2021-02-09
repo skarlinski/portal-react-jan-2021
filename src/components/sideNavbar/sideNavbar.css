@@ -2,6 +2,11 @@
   width: 74.4vw;
   height: 100vh;
   border: #665d5d5d solid 1px;
+  font-size: 20px;
+}
+
+.sidebarClose {
+  width: 0vw;
 }
 
 .sidebar-header {
@@ -19,6 +24,7 @@
   padding: 1.8vh 0 1.8vh 0;
   color: #5d5d5d;
   height: 10.86vh;
+  font-family: Assistant-SemiBold;
 }
 .sidebar-options {
   display: flex;
