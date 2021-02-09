@@ -3,7 +3,7 @@ import PortalSearchBar from '../../components/searchbar/PortalSearchBar';
 
 
 
-class ComponentZoo extends React.Component{
+class tempZoo extends React.Component{
     constructor(props){
         super(props)
         this.state = {
@@ -35,4 +35,4 @@ class ComponentZoo extends React.Component{
         </div>
     }
 }
-export default ComponentZoo;
+export default tempZoo;

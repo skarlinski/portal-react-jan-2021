@@ -43,11 +43,19 @@ const UsersPage = (props) => {
         console.log(data);
     };
 
+
+    //gets the wanted search text (a string) from the search-bar module 
+    // and makes an ajax call using the text string  (in the "search" key) and with "0" in the "pages" key
     const handleSearch = (text) => console.log('the text is' + text);
 
+    //1. gets the wanted page num (integer) from the search-bar module (the currnet num +/- 1) and makes an ajax call 
+    //    using the new page number (in the "pages" key)
+    //2. update the new page number in the "currentPage" variable in the state
+
     const pageChange = (page) => {
-        this.setState({currentPage: page})
-        console.log(resPageNum);
+        
+        // this.setState({currentPage: page})
+        console.log(page);
     }
 
     const headers = [
@@ -67,23 +75,22 @@ const UsersPage = (props) => {
     
     ]
 
+    const placeholderText = "חיפוש עובד"
+
     const buttons = [{key:'on', label:'עובדים  פעילים'},{key:'off', label:'עובדים לא פעילים'}]
 
-    //create array with the data from the state 
     const usersList = users.users.users
-    console.log(usersList)
 
     
 
     return (
         <div className="p-users">
             <PortalNavbar handleLogout={handleLogout}/>
-            <h1>עובדים</h1>
             <PortalSearchBar handleSearch={handleSearch}
             searchText={searchText}
             handleSearch={handleSearch}
             pageChange={pageChange}
-            placeholderText="placeholder Text" resPageNum={resPageNum} 
+            placeholderText={placeholderText} resPageNum={resPageNum} 
             currentPage={currentPage} />
             {usersList? <PortalTable headers={headers} data={usersList}  handleClick={handleClick}/>: ''}
             
