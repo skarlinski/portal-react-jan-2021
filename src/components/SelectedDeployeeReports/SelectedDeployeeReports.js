@@ -3,6 +3,7 @@ import './SelectedDeployeeReports.css';
 import moment from 'moment';
 import 'moment-duration-format';
 import ApproveButtonsSet from '../ApproveButtonsSet/ApproveButtonsSet';
+import Checkbox from '../Checkbox/Checkbox';
 import server from '../../shared/server.js';
 
 class SelectedDeployeeReports extends React.Component {
@@ -10,8 +11,20 @@ class SelectedDeployeeReports extends React.Component {
     super (props);
     // console.log(this.props);
     this.state = {
-      viewReports: []
+      viewReports: [],
+      selectedReports: []
     }
+  }
+
+  handleSelectedCheckboxes = (isChecked,value) => {
+    console.log(isChecked, value);
+    if (isChecked === true) {
+      this.state.selectedReports.push(value)
+    }
+    if (isChecked === false) {
+      this.state.selectedReports.splice(this.state.selectedReports.indexOf(value), 1)
+    }
+    console.log(this.state);
   }
 
   componentDidMount () {
@@ -82,7 +95,11 @@ class SelectedDeployeeReports extends React.Component {
           <div className={`report-details ${reportStyle}`}>
             <div className="report-wrap">
               <div className="details-row">
-                <input className="report-checkbox" type="checkbox" />
+                <Checkbox
+                  label={report.reportid}
+                  key={report.reportid}
+                  isChecked={this.handleSelectedCheckboxes}
+                />
                 <span className="details-text">תאריך: {report.date}</span>
                 <span className="details-text">סה''כ שעות: {hours}</span>
               </div>
@@ -124,7 +141,7 @@ class SelectedDeployeeReports extends React.Component {
     console.log(eventKey, reportId);
     if (eventKey===0) {
       console.log('approval');
-      server(this.props.activeUser, {checkdate2: true, reportids: [reportId],
+      server(this.props.activeUser, {checkdate2: true, reportids: [reportId] && this.state.selectedReports,
       status: 1}, 'SetReportApproval')
       .then(res => {
         console.log(res);
@@ -132,7 +149,7 @@ class SelectedDeployeeReports extends React.Component {
     }
     if (eventKey===1) {
       console.log('pending');
-      server(this.props.activeUser, {checkdate2: true, reportids: [reportId],
+      server(this.props.activeUser, {checkdate2: true, reportids: [reportId] && this.state.selectedReports,
       status: 0}, 'SetReportApproval')
       .then(res => {
         console.log(res);
@@ -140,13 +157,14 @@ class SelectedDeployeeReports extends React.Component {
     }
     if (eventKey===2) {
       console.log('reject');
-      server(this.props.activeUser, {checkdate2: true, reportids: [reportId],
+      server(this.props.activeUser, {checkdate2: true, reportids: [reportId] && this.state.selectedReports,
       status: -1}, 'SetReportApproval')
       .then(res => {
         console.log(res);
       })
     }
     // this.refreshPage();
+    // this.handleSelectedCheckboxes();
   }
 
   render () {
