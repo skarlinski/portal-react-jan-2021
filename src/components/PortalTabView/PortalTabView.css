@@ -25,3 +25,14 @@ nav > ul > li > a {
     text-decoration: none;
     color: #1b166e;
 }
+a:hover {
+    text-decoration: none;
+}
+
+/* nav > ul .active {
+    background-color: lightblue;
+} */
+
+nav > ul a:active {
+    background-color: lightblue;
+}

@@ -19,9 +19,15 @@ class ComponentZoo extends React.Component{
             {key:'off', label:'עובדים לא פעילים'},
             ];
 
+        const myarray =[{header:"פרופיל", view:"/portal"},
+                        {header:"קורסים", view:"/yeshomim"},
+                        {header:"עובדים", view:"/yeshomim"},
+                        {header:"דיווח", view:"/yeshomim"}   
+                    ]
+
         return <div>
            
-           <PortalTabView />
+           <PortalTabView array={myarray}/>
         </div>
     }
 }
