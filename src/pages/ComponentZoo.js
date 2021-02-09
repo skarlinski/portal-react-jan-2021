@@ -19,10 +19,10 @@ class ComponentZoo extends React.Component{
             {key:'off', label:'עובדים לא פעילים'},
             ];
 
-        const myarray =[{header:"פרופיל", view:"/portal"},
-                        {header:"קורסים", view:"/yeshomim"},
-                        {header:"עובדים", view:"/yeshomim"},
-                        {header:"דיווח", view:"/yeshomim"}   
+        const myarray =[{header:"פרופיל", view:(<div>פרופיל</div>)},
+                        {header:"קורסים", view:(<div>קורסים</div>)},
+                        {header:"עובדים", view:(<div>עובדים</div>)},
+                        {header:"דיווח", view:(<div>דיווח</div>)}   
                     ]
 
         return <div>

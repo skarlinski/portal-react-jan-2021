@@ -1,14 +1,20 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
 import './PortalTabView.css' ;
 
 class PortalTabView extends React.Component {
     constructor(props) {
         super(props) ;
+        this.state = {
+            currentView : null
+        }
     }
+
+    
     
     render() {
         const listHeadrs = this.props.array.map((item) => {
-           return <li><a href="">{item.header}</a></li>
+           return <li><a onClick={() => this.setState({ currentView : item.view})}> {item.header}</a></li>
         })
         return (
             <div className="c-portal-table-view">
@@ -22,6 +28,9 @@ class PortalTabView extends React.Component {
                         <li><a href="">דיווח</a></li> */}
                     </ul>
                </nav>
+               <Container>
+               {this.state.currentView}
+               </Container>
           </div>
         )
     }
