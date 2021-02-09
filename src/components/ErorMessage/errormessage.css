@@ -1,11 +1,8 @@
 .c-errormessage {
     position: absolute;
-    /* top: -82px; */
     bottom: 0px;
-    /* background-color: white; */
     height: 120px;
     padding : 20px 20px;
-    /* color: #ffa1a1; */
     font-size: 20px;
      
 }
@@ -14,6 +11,7 @@
     top : -20px;
     font-size: 30px;
     color: #5d5d5d;
+    cursor:pointer;
 
 }
 
