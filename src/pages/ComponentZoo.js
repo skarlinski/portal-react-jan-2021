@@ -1,21 +1,13 @@
-import React from 'react';
-import ButtonSet from '../components/ButtonSet';
+import React, { useState } from 'react';
+import PortalSearchBar from '../components/searchbar/PortalSearchBar';
 
-class ComponentZoo extends React.Component{
-
-    clickme = (thebutton)=>{
-        console.log(thebutton.label);
-
-    }
     render(){
-        const myprops=[
-            {key:'on', label:'עובדים פעילים'},
-            {key:'off', label:'עובדים לא פעילים'},
-            ];
-
+        const   title = "מס טלפון";
+        const placeholder = "input-placeholder";
         return <div>
            myzoo
-           <ButtonSet buttons ={myprops} handleClick={this.clickme}/>
+           <Input title={title} placeholder={placeholder} handleChange={this.handleChange} />
+           <Input title={""} placeholder={placeholder} handleChange={this.handleChange} />
         </div>
     }
 }

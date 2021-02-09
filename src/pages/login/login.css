@@ -1,0 +1,57 @@
+
+
+.p-login {
+    height: 100vh;
+    text-align: center;
+    background-color: #1b166e;
+    padding: 20px 0px;
+    color : white;
+    font-weight: bold;
+}
+
+
+
+.p-login .input-text, .p-login .submit-button {
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    width: 310px;
+    height: 50px;
+
+}
+.p-login input::placeholder, .p-login input:focus, .p-login input { /* Firefox, Chrome, Opera */ 
+    color: white;
+    font-size:25px;
+} 
+.p-login .submit-button {
+    border-radius: 20px;
+    background-color: white;
+    color:#1b166e;
+    font-size:25px;
+    font-weight: bold;
+   
+}
+.p-login .input-text {
+    background-color: #1b166e;
+    border-color: white;
+}
+
+.p-centered {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.p-lineup {
+    display: flex;
+}
+
+.m-btm {
+ 
+    margin-bottom: 150px
+}
+
+.m-small {
+    margin-bottom: 20px; 
+}
