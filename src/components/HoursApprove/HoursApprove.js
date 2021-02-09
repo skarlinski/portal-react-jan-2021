@@ -58,7 +58,7 @@ class HoursApprove extends React.Component {
       return null
     }
     const employeeCards = allReports.map((report, index) => { // TODO: protect from no results case
-      return <EmployeeCard key={index} eventKey={index} sendReports={report} />
+      return <EmployeeCard key={index} eventKey={index} sendReports={report} activeUser={this.props.activeUser} />
     })
     // console.log(this.state.data);
     // console.log(this.state.reports);

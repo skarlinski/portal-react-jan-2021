@@ -89,29 +89,10 @@ class EmployeeCard extends React.Component {
         </Card.Header>
             <Accordion.Collapse eventKey={this.props.sendReports.userid}>
               <Card.Body>
-                <SelectedDeployeeReports reports={this.props.sendReports} />
+                <SelectedDeployeeReports reports={this.props.sendReports} activeUser={this.props.activeUser}/>
               </Card.Body>
             </Accordion.Collapse>
       </Card>
-      // <div className="c-employee-card">
-      //   <div className="employee-wrap">
-      //      <p className="employee-name">{reports.firstname} {reports.      lastname}</p>
-      //     <div className="numbers-wrap">
-      //       <span className="num num-sum">{this.state.allReports}</span>
-      //       <span className="num num-pending">{this.state.pending}</span>
-      //       <span className="num num-approval">{this.state.approval}</span>
-      //       <span className="num num-reject">{this.state.reject}</span>
-      //     </div>
-      //     <button className="employee-card-btn" onClick={this.handleClick}>
-      //       <svg className={`arrow-${this.state.position}`} src={arrowDown} xmlns="http://www.w3.org/2000/svg" width="14.142" height="14.142" viewBox="0 0 14.142 14.142">
-      //         <g id="arrow_down" transform="rotate(90 94.572 -65.43)">
-      //             <path id="chevron" d="M8 10V2H0V0h10v10z" transform="rotate(45 65.429 209.173)"/>
-      //         </g>
-      //       </svg>
-      //     </button>
-          
-      //   </div>
-      // </div>
     )
   }
 }

@@ -77,7 +77,7 @@ class SelectedDeployeeReports extends React.Component {
       return (
         <div key={report.reportid}>
           <div className="report-details-header">
-            <ApproveButtonsSet getEventKey={this.getEventKey} getStatus={reportStyle}/>
+            <ApproveButtonsSet getEventKey={this.getEventKey} getStatus={reportStyle} getReportId={report.reportid}/>
           </div>
           <div className={`report-details ${reportStyle}`}>
             <div className="report-wrap">
@@ -119,27 +119,27 @@ class SelectedDeployeeReports extends React.Component {
     console.log(e);
     if (e===0) {
       console.log('approval');
-      // server(this.props.activeUser, {checkdate2: true, reportids: ["81735"],
-      // status: 1}, 'SetReportApproval')
-      // .then(res => {
-      //   console.log(res);
-      // })
+      server(this.props.activeUser, {checkdate2: true, reportids: ["81755"],
+      status: 1}, 'SetReportApproval')
+      .then(res => {
+        console.log(res);
+      })
     }
     if (e===1) {
       console.log('pending');
-      // server(this.props.activeUser, {checkdate2: true, reportids: ["81735"],
-      // status: 0}, 'SetReportApproval')
-      // .then(res => {
-      //   console.log(res);
-      // })
+      server(this.props.activeUser, {checkdate2: true, reportids: ["81755"],
+      status: 0}, 'SetReportApproval')
+      .then(res => {
+        console.log(res);
+      })
     }
     if (e===2) {
       console.log('reject');
-      // server(this.props.activeUser, {checkdate2: true, reportids: ["81735"],
-      // status: -1}, 'SetReportApproval')
-      // .then(res => {
-      //   console.log(res);
-      // })
+      server(this.props.activeUser, {checkdate2: true, reportids: ["81755"],
+      status: -1}, 'SetReportApproval')
+      .then(res => {
+        console.log(res);
+      })
     }
   }
 

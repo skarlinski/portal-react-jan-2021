@@ -18,13 +18,14 @@ class ApproveButtonsSet extends React.Component {
   handleOnClick = (ind) => {
     console.log(ind);
     this.props.getEventKey(ind);
+    
   }
 
   render () {
     return (
       <div className="buttons-wrap">
         { this.state.buttons.map((button, index) => {
-          return <ApproveButton key={index+button.status} button={button} eventKey={index} handleClick={this.handleOnClick} />
+          return <ApproveButton key={index+button.status} button={button} eventKey={index} handleClick={this.handleOnClick} reportid={this.props.getReportId}/>
         }) }
       </div>
     )
