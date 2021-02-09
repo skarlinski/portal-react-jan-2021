@@ -110,32 +110,33 @@ class SelectedDeployeeReports extends React.Component {
     })
   }
 
-  getEventKey = (indexBtn) => {
+  getEventKey = (indexBtn, report) => {
     let eventKey = indexBtn;
-    this.handleClickOnApprovalBtn(eventKey);
+    let reportId = report
+    this.handleClickOnApprovalBtn(eventKey, reportId);
   }
 
-  handleClickOnApprovalBtn = (e) => {
-    console.log(e);
-    if (e===0) {
+  handleClickOnApprovalBtn = (eventKey, reportId) => {
+    console.log(eventKey, reportId);
+    if (eventKey===0) {
       console.log('approval');
-      server(this.props.activeUser, {checkdate2: true, reportids: ["81755"],
+      server(this.props.activeUser, {checkdate2: true, reportids: [reportId],
       status: 1}, 'SetReportApproval')
       .then(res => {
         console.log(res);
       })
     }
-    if (e===1) {
+    if (eventKey===1) {
       console.log('pending');
-      server(this.props.activeUser, {checkdate2: true, reportids: ["81755"],
+      server(this.props.activeUser, {checkdate2: true, reportids: [reportId],
       status: 0}, 'SetReportApproval')
       .then(res => {
         console.log(res);
       })
     }
-    if (e===2) {
+    if (eventKey===2) {
       console.log('reject');
-      server(this.props.activeUser, {checkdate2: true, reportids: ["81755"],
+      server(this.props.activeUser, {checkdate2: true, reportids: [reportId],
       status: -1}, 'SetReportApproval')
       .then(res => {
         console.log(res);

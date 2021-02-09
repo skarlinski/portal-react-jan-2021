@@ -15,9 +15,9 @@ class ApproveButtonsSet extends React.Component {
     }
   }
 
-  handleOnClick = (ind) => {
-    console.log(ind);
-    this.props.getEventKey(ind);
+  handleOnClick = (ind, id) => {
+    console.log(ind, id);
+    this.props.getEventKey(ind, id);
     
   }
 
