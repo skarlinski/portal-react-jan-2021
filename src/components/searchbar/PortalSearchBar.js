@@ -3,8 +3,8 @@ import searchIcon from './search_icon.svg';
 import './PortalSearchBar.css';
 import arrLeftImg from './arrow_l.svg';
 import arrRightImg from './arrow_r.svg';
-import arrLeftImgDis from './arrow_l_dis.svg';
-import arrRightImgDis from './arrow_r_dis.svg';
+import arrLeftImgDisabled from './arrow_l_dis.svg';
+import arrRightImgDisabled from './arrow_r_dis.svg';
 
 class PortalSearchBar extends React.Component{
     constructor(props){
@@ -30,10 +30,6 @@ class PortalSearchBar extends React.Component{
         this.props.pageChange(this.props.currentPage + 1)
     }
 
-     
-
-
-
 displayArrows = () => {
     if (this.props.resPageNum === 0){
             return (
@@ -44,8 +40,8 @@ displayArrows = () => {
     const leftArrow = <span className="arrow" onClick={this.nextPage}><img src={arrLeftImg}/></span>;
     const rightArrow = <span className="arrow" onClick={this.prevPage}><img src={arrRightImg}/></span>;
 
-    const leftArrowDisabled = <span className="disabled-arrow"><img src={arrLeftImgDis}/></span>;
-    const rightArrowDisbled = <span className="disabled-arrow"><img src={arrRightImgDis}/></span>;
+    const leftArrowDisabled = <span className="disabled-arrow"><img src={arrLeftImgDisabled}/></span>;
+    const rightArrowDisbled = <span className="disabled-arrow"><img src={arrRightImgDisabled}/></span>;
     
 
   
@@ -56,10 +52,8 @@ displayArrows = () => {
             {(this.props.currentPage +1 !== this.props.resPageNum)? leftArrow : leftArrowDisabled}
           
         </div>
-    )
-}
-
-
+        )
+    }
     render(){ 
         return (
                 <div className="c-search-bar">
