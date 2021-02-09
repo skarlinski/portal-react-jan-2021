@@ -9,7 +9,11 @@ class ButtonSet extends React.Component {
         super(props);
 
         this.state={
-            activeButtonId:(this.props.buttons && this.props.buttons[0]) ? this.props.buttons[0].key : null
+            activeButtonId:(this.props.buttons) ? this.props.buttons[0].key : null
+            // activeButtonId:(this.props.buttons && this.props.buttons[0]) ? this.props.buttons[2].key : null
+
+            // activeButtonId: null
+
         }
     }
     handleClick=(statusButton)=>{
