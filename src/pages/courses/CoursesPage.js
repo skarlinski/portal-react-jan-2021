@@ -1,40 +1,74 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './courses.css'
 import PortalNavbar from '../../components/navbar/PortalNavbar';
+import PortalTable from '../../components/PortalTable';
 import ActiveUserContext from '../../shared/activeUserContext'
 import { Redirect } from 'react-router-dom'
 import server from '../../shared/server';
-import { act } from 'react-dom/test-utils';
 
-class CoursesPage extends React.Component{
-    constructor(props){
-        super(props);
-        this.activeUser = {token: '1304918f47c5f86e54935c4bed5563afbfd0c'};
-        this.state = {
-            courses: []
-        }
-    }
-    componentDidMount(){
-        server(this.activeUser, {"search":"","sorting":"courseid","desc":false,"coursestatus":1,"page":0}, 'SearchCourses').then( res => {
+const CoursesPage = (props) => {
+    const { handleLogout } = props;
+    const activeUser = useContext(ActiveUserContext);
+    const [courses, setCourses] = useState([]);
+
+    useEffect(() => {
+        server(activeUser, {"search": "", "sorting": "courseid", "desc": false, "coursestatus": 1,
+        "page": 0}, 'SearchCourses').then( res => {
             console.log(res)
-            this.setState({courses: res.data.courses}) 
+            console.log(res.data.courses)
+            setCourses({courses: res.data.courses}) 
         })
-    }
-    render(){
-    if (!this.activeUser) {
+    }, []);
+
+    if (!activeUser) {
         return <Redirect to='/' />
-    }
-    const coursesList = this.state.courses.map( (course) => {
-        return <div>{course.name} - {course.subname} - {course.year}</div>
-    } )
+    };
+
+    const handleClick = (data) => {
+        console.log(data);
+    };
+
+    const headers = 
+        [
+            {
+                header: 'שם קורס מקוצר', 
+                key: 'name'
+            }, 
+            {
+                header: 'פרוייקט', 
+                key: 'project'
+            }, 
+            {
+                header: 'מדריך', 
+                key: 'teachers'
+            }
+        ];
+        // const data =
+        //   [
+        //     {
+        //         cityname: "תל אביב",
+		// 		code: "07TX",
+		// 		courseid: "59",
+		// 		name: "עובדים מלמדים עובדים",
+		// 		project: "פנימי",
+		// 		studentnum: "9",
+		// 		subname: "עובדים מלמדים עובדים",
+		// 		subnameinarabic: "עובדים מלמדים עובדים",
+		// 		teachers: "ניר חנס",
+		// 		year: "2017"
+        //     }
+		//   ];
+        const coursesList = courses.courses
     return (
         <div className="p-courses">
-            <PortalNavbar handleLogout={this.props.handleLogout}/>
+            <PortalNavbar handleLogout={handleLogout}/>
             <h1>קורסים</h1>
-            {coursesList}
+            <div className="l-courses">
+            {coursesList ? <PortalTable headers={headers} data={coursesList} 
+                    handleClick={handleClick}/> : ''}
+            </div>
         </div>
     );
-    }
 }
 
 export default CoursesPage;
