@@ -5,6 +5,7 @@ import PortalTable from '../../components/PortalTable';
 import ActiveUserContext from '../../shared/activeUserContext'
 import { Redirect } from 'react-router-dom'
 import server from '../../shared/server';
+import ButtonSet from '../../components/ButtonSet';
 
 const CoursesPage = (props) => {
     const { handleLogout } = props;
@@ -43,6 +44,11 @@ const CoursesPage = (props) => {
                 key: 'teachers'
             }
         ];
+        const buttons =
+            [
+                {key:'on', label:'עובדים פעילים'},
+                {key:'off', label:'עובדים לא פעילים'},
+            ];
         // const data =
         //   [
         //     {
@@ -64,9 +70,13 @@ const CoursesPage = (props) => {
             <PortalNavbar handleLogout={handleLogout}/>
             <h1>קורסים</h1>
             <div className="l-courses">
-            {coursesList ? <PortalTable headers={headers} data={coursesList} 
-                    handleClick={handleClick}/> : ''}
+                {coursesList ? <PortalTable headers={headers} data={coursesList} 
+                        handleClick={handleClick}/> : ''}
             </div>
+            <div className="f-courses">
+                <ButtonSet buttons={buttons}/>
+            </div>
+            
         </div>
     );
 }
