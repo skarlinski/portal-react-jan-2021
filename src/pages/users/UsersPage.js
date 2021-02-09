@@ -5,6 +5,8 @@ import ActiveUserContext from '../../shared/activeUserContext'
 import { Redirect } from 'react-router-dom'
 import profileIcon from './profile_icon.svg'
 import PortalTable from '../../components/PortalTable';
+import ButtonSet from '../../components/ButtonSet';
+
 //import server
 //import portal table
 
@@ -23,6 +25,7 @@ const UsersPage = (props) => {
         console.log(data);
     };
 
+
     const headers = [
         {
             header:'שם',
@@ -40,6 +43,8 @@ const UsersPage = (props) => {
     
     ]
 
+    const buttons = [{key:'', label:'עובדים לא פעילים'},{key:'', label:'עובדים פעילים'}]
+
     //create array with the data from the sate 
     const usersList = []
 
@@ -54,7 +59,7 @@ const UsersPage = (props) => {
             placeholderText="placeholder Text" resPageNum={this.state.resPageNum} 
             currentPage={this.state.currentPage} /> */}
             {usersList? <PortalTable headers={headers} data={usersList}  handleClick={handleClick}/>: ''}
-            {/* <PortalButtonSet/> */}
+            <ButtonSet buttons={buttons} handleClick={handleClick}/>
         </div>
     );
 }
