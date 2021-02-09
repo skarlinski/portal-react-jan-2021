@@ -18,15 +18,29 @@ const CoursesPage = (props) => {
             console.log(res)
             console.log(res.data.courses)
             setCourses({courses: res.data.courses}) 
-        })
+        });
     }, []);
 
     if (!activeUser) {
         return <Redirect to='/' />
     };
-
     const handleClick = (data) => {
         console.log(data);
+    };
+    const clickCoursestatus = (data) => {
+        console.log(data);
+        if(data.key === "off"){
+            server(activeUser, {"search": "", "sorting": "courseid", "desc": false, 
+            "coursestatus": 0, "page": 0}, 'SearchCourses').then( res => {
+                setCourses({courses: res.data.courses}) 
+            });
+        }
+        else{
+            server(activeUser, {"search": "", "sorting": "courseid", "desc": false, 
+            "coursestatus": 1, "page": 0}, 'SearchCourses').then( res => {
+                setCourses({courses: res.data.courses}) 
+            });
+        }
     };
 
     const headers = 
@@ -46,8 +60,8 @@ const CoursesPage = (props) => {
         ];
         const buttons =
             [
-                {key:'on', label:'עובדים פעילים'},
-                {key:'off', label:'עובדים לא פעילים'},
+                {key:'on', label:'קורסים פעילים'},
+                {key:'off', label:'קורסים לא פעילים'},
             ];
         // const data =
         //   [
@@ -74,7 +88,7 @@ const CoursesPage = (props) => {
                         handleClick={handleClick}/> : ''}
             </div>
             <div className="f-courses">
-                <ButtonSet buttons={buttons} handleClick={handleClick}/>
+                <ButtonSet buttons={buttons} handleClick={clickCoursestatus}/>
             </div>
             
         </div>
