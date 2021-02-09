@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import PortalSearchBar from '../components/searchbar/PortalSearchBar';
+import PortalSearchBar from '../../components/searchbar/PortalSearchBar';
+
+
 
 class ComponentZoo extends React.Component{
     constructor(props){

@@ -7,6 +7,7 @@ import profileIcon from './profile_icon.svg'
 import PortalTable from '../../components/PortalTable';
 import ButtonSet from '../../components/ButtonSet';
 import server from '../../shared/server';
+import PortalSearchBar from '../../components/searchbar/PortalSearchBar';
 
 
 
@@ -24,13 +25,12 @@ const UsersPage = (props) => {
     //read data from api using server function
 
     useEffect(() => {
-    server(activeUser, {"search":"","sorting":"userid","desc":false,"userstatus":1,"page":-1,"v":2.3} ,'SearchStaffUnderMe').then(res => {
+    server(activeUser, {"search":"","sorting":"userid","desc":false,"userstatus":1,"page":0,"v":2.3} ,'SearchStaffUnderMe').then(res => {
         console.log(res);
-        console.log(res.data)
-        console.log(res.data[0])
+        console.log(res.data.pages);
 
-
-        setUsers({users:res.data})
+        setPageNum({resPageNum:res.data.pages});
+        setUsers({users:res.data});
     })
 },[]);
     
@@ -47,7 +47,7 @@ const UsersPage = (props) => {
 
     const pageChange = (page) => {
         this.setState({currentPage: page})
-        console.log(page);
+        console.log(resPageNum);
     }
 
     const headers = [
@@ -70,7 +70,8 @@ const UsersPage = (props) => {
     const buttons = [{key:'on', label:'עובדים  פעילים'},{key:'off', label:'עובדים לא פעילים'}]
 
     //create array with the data from the state 
-    const usersList = users.users
+    const usersList = users.users.users
+    console.log(usersList)
 
     
 
