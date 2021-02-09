@@ -11,7 +11,7 @@ class SubLiItem extends Component {
         return ( 
         <div>
             <div className="c-subLiItem">
-                <span className="icon m-3"><img src={icon}/></span>
+                <span className="m-3"><img src={icon}/></span>
                 <span>{title}</span>
             </div>
         </div>

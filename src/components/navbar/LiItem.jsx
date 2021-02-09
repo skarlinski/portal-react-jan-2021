@@ -13,7 +13,7 @@ class LiItem extends Component {
             <div onClick={this.props.handleCollapse}
             className="c-liItem" >
                 <span className=" m-3"><img src={icon}/></span>
-                <span>{title}</span>
+                <span><a href={this.props.route}>{title}</a></span>
                 {arrowDown}
             </div>
             {children}

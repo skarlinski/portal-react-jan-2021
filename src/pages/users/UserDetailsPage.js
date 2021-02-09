@@ -14,7 +14,11 @@ const UserDetailsPage = (props) => {
 
     return (
         <div className="p-user-details">
-            <PortalNavbar handleLogout={handleLogout}/>
+            <PortalNavbar 
+            handleLogout={handleLogout}
+            activeUser={activeUser}
+            pageName={'פרטי משתמש'}
+            />
             <h1>פרטי משתמש</h1>
         </div>
     );

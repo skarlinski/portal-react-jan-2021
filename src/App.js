@@ -10,13 +10,10 @@ import HoursApprovePage from './pages/hours/HoursApprovePage'
 import ActiveUserContext from './shared/activeUserContext'
 import './App.css';
 import ComponentZoo from './pages/ComponentZoo';
-import SideNavbar from './components/sideNavbar/SideNavbar';
 
 const App = () => {
 
   const [activeUser, setActiveUser] = useState(localStorage.activeUser ? JSON.parse(localStorage.activeUser) : null);
-
-  const [isNavOpen, setIsNavOpen] = useState(false);
 
   const handleLogin = (activeUser) => {
     setActiveUser(activeUser);
@@ -30,21 +27,7 @@ const App = () => {
 
   return (
     <ActiveUserContext.Provider value={activeUser}>
-
-    {/* <Route exact path={['/LoginPage', '/CoursesPage', '/CourseDetailsPage', '/UsersPage',
-    '/UserDetailsPage', '/HoursReportPage', '/HoursApprovePage', '/zoo']}>
-      <SideNavbar />
-    </Route> */}
-
       <Switch>
-      <Route exact path="/SideNavbar">
-        <button onClick={()=>{setIsNavOpen(!isNavOpen)}}>open navbar</button>
-          <SideNavbar 
-          handleLogin={handleLogin}
-          isNavOpen={isNavOpen}
-          setIsNavOpen={setIsNavOpen}
-          />
-        </Route>
         <Route exact path="/">
           <LoginPage handleLogin={handleLogin} />
         </Route>
