@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './users.css'
 import PortalNavbar from '../../components/navbar/PortalNavbar';
 import ActiveUserContext from '../../shared/activeUserContext'
@@ -6,9 +6,9 @@ import { Redirect } from 'react-router-dom'
 import profileIcon from './profile_icon.svg'
 import PortalTable from '../../components/PortalTable';
 import ButtonSet from '../../components/ButtonSet';
+import server from '../../shared/server';
 
-//import server
-//import portal table
+
 
 const UsersPage = (props) => {
     const { handleLogout } = props;
@@ -16,7 +16,19 @@ const UsersPage = (props) => {
     const [users , setUsers] = useState([]);
 
     //read data from api using server function
+
+    useEffect(() => {
+    server(activeUser, {"search":"","sorting":"userid","desc":false,"userstatus":1,"page":-1,"v":2.3} ,'SearchStaffUnderMe').then(res => {
+        console.log(res);
+        console.log(res.data)
+        console.log(res.data[0])
+
+
+        setUsers({users:res.data})
+    })
+},[]);
     
+
     if (!activeUser) {
         return <Redirect to='/' />
     }
@@ -29,24 +41,26 @@ const UsersPage = (props) => {
     const headers = [
         {
             header:'שם',
-            key:''
+            key:'firstname'
         },
         {
             header:'שם משפחה',
-            key:''
+            key:'lastname'
         },
         {
             header:'אימייל',
-            key:''
+            key:'email'
         }
     
     
     ]
 
-    const buttons = [{key:'', label:'עובדים לא פעילים'},{key:'', label:'עובדים פעילים'}]
+    const buttons = [{key:'on', label:'עובדים  פעילים'},{key:'off', label:'עובדים לא פעילים'}]
 
-    //create array with the data from the sate 
-    const usersList = []
+    //create array with the data from the state 
+    const usersList = users.users
+
+    
 
     return (
         <div className="p-users">
@@ -59,6 +73,8 @@ const UsersPage = (props) => {
             placeholderText="placeholder Text" resPageNum={this.state.resPageNum} 
             currentPage={this.state.currentPage} /> */}
             {usersList? <PortalTable headers={headers} data={usersList}  handleClick={handleClick}/>: ''}
+            
+
             <ButtonSet buttons={buttons} handleClick={handleClick}/>
         </div>
     );
