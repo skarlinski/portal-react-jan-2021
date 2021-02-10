@@ -3,6 +3,7 @@ import './EmployeeCard.css';
 import arrowDown from '../../assets/images/arrow_down.svg';
 import { Accordion, Card } from 'react-bootstrap';
 import ContextAwareToggle from '../ContextAwareToggle/ContextAwareToggle';
+import MultipleApproveButtons from '../MultipleApproveButtons/MultipleApproveButtons';
 import SelectedDeployeeReports from '../SelectedDeployeeReports/SelectedDeployeeReports';
 
 class EmployeeCard extends React.Component {
@@ -86,9 +87,11 @@ class EmployeeCard extends React.Component {
                 </g>
               </svg>
             </ContextAwareToggle>
+            
         </Card.Header>
             <Accordion.Collapse eventKey={this.props.sendReports.userid}>
               <Card.Body>
+                <MultipleApproveButtons />
                 <SelectedDeployeeReports reports={this.props.sendReports} activeUser={this.props.activeUser}/>
               </Card.Body>
             </Accordion.Collapse>

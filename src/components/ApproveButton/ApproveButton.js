@@ -7,10 +7,6 @@ class ApproveButton extends React.Component {
     // console.log(this.props);
   }
 
-  // sendButtonPerimeters = () => {
-  //   this.props.handleClick(this.props.eventKey)
-  // }
-
   render () {
     return (
       <div className="btn-wrap">

@@ -35,6 +35,8 @@
 }
 .details-row {
   padding-top: 9px;
+  align-items: center;
+  display: flex;
 }
 .report-checkbox {
   margin-left: 29px;

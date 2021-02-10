@@ -17,14 +17,14 @@ class SelectedDeployeeReports extends React.Component {
   }
 
   handleSelectedCheckboxes = (isChecked,value) => {
-    console.log(isChecked, value);
+    // console.log(isChecked, value);
     if (isChecked === true) {
       this.state.selectedReports.push(value)
     }
     if (isChecked === false) {
       this.state.selectedReports.splice(this.state.selectedReports.indexOf(value), 1)
     }
-    console.log(this.state);
+    // console.log(this.state);
   }
 
   componentDidMount () {
