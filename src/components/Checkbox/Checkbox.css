@@ -16,7 +16,7 @@
   -o-appearance: none;
   position: absolute;
 }
-.fa-check {
+.checkbox .checked-icon {
   position: absolute;
   width: 9px;
   height: 9px;

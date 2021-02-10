@@ -9,7 +9,6 @@ import server from '../../shared/server.js';
 class SelectedDeployeeReports extends React.Component {
   constructor (props) {
     super (props);
-    // console.log(this.props);
     this.state = {
       viewReports: [],
       selectedReports: []
@@ -24,7 +23,10 @@ class SelectedDeployeeReports extends React.Component {
     if (isChecked === false) {
       this.state.selectedReports.splice(this.state.selectedReports.indexOf(value), 1)
     }
-    // console.log(this.state);
+  }
+
+  handleAllChecked = () => {
+    console.log('yes');
   }
 
   componentDidMount () {
@@ -49,7 +51,7 @@ class SelectedDeployeeReports extends React.Component {
 
   showReports = () => {
     const reports = this.props.reports.reports;
-    console.log(reports);
+    // console.log(reports);
     const allReports = reports.map((report, index) => {
       let hours = this.getDuration(report);
 
@@ -99,6 +101,7 @@ class SelectedDeployeeReports extends React.Component {
                   label={report.reportid}
                   key={report.reportid}
                   isChecked={this.handleSelectedCheckboxes}
+                  handleAllChecked={this.handleAllChecked}
                 />
                 <span className="details-text">תאריך: {report.date}</span>
                 <span className="details-text">סה''כ שעות: {hours}</span>
