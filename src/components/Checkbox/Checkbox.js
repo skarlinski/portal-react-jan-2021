@@ -2,24 +2,34 @@ import React from 'react';
 import './Checkbox.css';
 
 class Checkbox extends React.Component {
-  state = {
-    isChecked: false,
+  constructor (props) {
+    super(props);
+    this.state = {
+      isChecked: false
+    }
   }
 
   handleChanges = (e) => {
     this.toggleCheckboxChange();
     this.props.isChecked(e.target.checked, e.target.value)
-    console.log(e.target.checked, e.target.value);
+    // console.log(e.target.checked, e.target.value);
+  }
+
+  componentDidUpdate (prevProps, prevState) {
+    if (this.props.isAllChecked !== prevProps.isAllChecked) {
+      this.setState({
+        isChecked: this.props.isAllChecked
+      })
+    }
   }
 
   toggleCheckboxChange = () => {
 
     this.setState(({ isChecked }) => (
       {
-        isChecked: !isChecked,
+        isChecked: !isChecked
       }
     ));
-   
   }
 
   render() {

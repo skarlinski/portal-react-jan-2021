@@ -77,8 +77,9 @@ class EmployeeCard extends React.Component {
     // console.log(isChecked);
   }
 
+  
+
   render () {
-    console.log(this.state);
     const reports = this.props.sendReports;
     // console.log(reports);
     // console.log(this.props.eventKey);
