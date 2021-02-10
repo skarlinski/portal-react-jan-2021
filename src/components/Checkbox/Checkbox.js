@@ -12,7 +12,7 @@ class Checkbox extends React.Component {
   handleChanges = (e) => {
     this.toggleCheckboxChange();
     this.props.isChecked(e.target.checked, e.target.value)
-    // console.log(e.target.checked, e.target.value);
+    console.log(e.target.checked, e.target.value);
   }
 
   componentDidUpdate (prevProps, prevState) {
