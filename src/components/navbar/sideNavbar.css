@@ -1,8 +1,17 @@
+.rest-page-bg {
+  background-color: #49494970;
+  width: 25.6vw;
+  min-height: 100vh;
+  left: 0px;
+  position: fixed;
+}
 .sidebar {
   width: 74.4vw;
   height: 100vh;
   border: #665d5d5d solid 1px;
   font-size: 20px;
+  position: fixed;
+  z-index: 1;
 }
 .main-header {
   width: 100vw;

@@ -107,6 +107,7 @@ class PortalNavbar extends Component {
                 </div>
 
             </div>
+            <div className="rest-page-bg"></div>
         </div>
 
          );
