@@ -32,26 +32,25 @@ class SelectedDeployeeReports extends React.Component {
     this.handleSelectedReports()
   }
    
-  isAllChecked = () => {
-    let arrReports = [];
-    for (let i=0; i<this.props.reports.reports.length; i++) {
-      arrReports.push(this.props.reports.reports[i].reportid)
-    }
+  // isAllChecked = () => {
+  //   let arrReports = [];
+  //   for (let i=0; i<this.props.reports.reports.length; i++) {
+  //     arrReports.push(this.props.reports.reports[i].reportid)
+  //   }
     
-    if (this.props.isAllChecked === true) {
-      this.setState ({
-        allCheckedReports: arrReports
-      })
-    }
-    // console.log(this.state);
-  }
+    
+  //     this.setState ({
+  //       allCheckedReports: arrReports
+  //     })
+   
+  // }
 
   componentDidMount () {
     // this.setState({
     //     allChecked: this.props.isAllChecked
     // })
     this.showReports();
-    this.isAllChecked();
+    // this.isAllChecked();
   }
 
   componentDidUpdate (prevProps, prevState) {
@@ -60,8 +59,9 @@ class SelectedDeployeeReports extends React.Component {
     }
     if (this.props.isAllChecked !== prevProps.isAllChecked) {
       this.showReports();
-      this.isAllChecked();
+      // this.isAllChecked(this.props.isAllChecked);
     }
+    // console.log(this.props.isAllChecked);
     // if (this.state.allCheckedReports !== prevState.allCheckedReports) {
     //   this.showReports();
     // }
@@ -174,7 +174,7 @@ class SelectedDeployeeReports extends React.Component {
   // }
 
   handleClickOnApprovalBtn = (eventKey, reportId) => {
-    // console.log(this.props.changeStatus);
+    console.log(this.state.allCheckedReports);
     console.log(eventKey, reportId);
     if (eventKey===0) {
       console.log('approval');

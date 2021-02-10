@@ -83,11 +83,15 @@ class EmployeeCard extends React.Component {
   }
 
   callbackSelectedReports = (reports) => {
-    console.log(reports);
+    // console.log(reports);
     this.setState({
       selectedReports: reports
     })
-    console.log(this.state);
+    // console.log(this.state);
+  }
+
+  getDeployeeReports = (report) => {
+    console.log(report);
   }
 
   // handleSendAll = (status) => {
@@ -124,8 +128,8 @@ class EmployeeCard extends React.Component {
         </Card.Header>
             <Accordion.Collapse eventKey={this.props.sendReports.userid}>
               <Card.Body>
-                <MultipleApproveButtons activeUser={this.props.activeUser} callbackAllChecked={this.callbackAllChecked} sendSelectedReports={this.state.selectedReports}/>
-                <SelectedDeployeeReports reports={this.props.sendReports} activeUser={this.props.activeUser} isAllChecked={this.state.allChecked} getSelectedReports={this.callbackSelectedReports}/>
+                <MultipleApproveButtons activeUser={this.props.activeUser} callbackAllChecked={this.callbackAllChecked} sendSelectedReports={this.state.selectedReports} isAllChecked={this.state.allChecked} />
+                <SelectedDeployeeReports reports={this.props.sendReports} activeUser={this.props.activeUser} isAllChecked={this.state.allChecked} getSelectedReports={this.callbackSelectedReports} getDeployeeReports={this.getDeployeeReports}/>
               </Card.Body>
             </Accordion.Collapse>
       </Card>
