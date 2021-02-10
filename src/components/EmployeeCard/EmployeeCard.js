@@ -16,7 +16,9 @@ class EmployeeCard extends React.Component {
       pending: '',
       reject: '',
       position: 'down',
-      allChecked: null
+      allChecked: null,
+      selectedReports: null
+      // changeStatus: null
     }
   }
 
@@ -33,6 +35,9 @@ class EmployeeCard extends React.Component {
           this.callbackAllChecked();
         }
     }
+    // if (this.state.selectedReports !== prevState.selectedReports) {
+    //   this.callbackSelectedReports();
+    // }
   }
 
   sumOfReports = () => {
@@ -77,9 +82,24 @@ class EmployeeCard extends React.Component {
     // console.log(isChecked);
   }
 
-  
+  callbackSelectedReports = (reports) => {
+    console.log(reports);
+    this.setState({
+      selectedReports: reports
+    })
+    console.log(this.state);
+  }
+
+  // handleSendAll = (status) => {
+  //   console.log(status);
+  //   this.setState({
+  //     changeStatus: status
+  //   })
+  //   console.log(this.state);
+  // }
 
   render () {
+    // console.log(this.state.selectedReports);
     const reports = this.props.sendReports;
     // console.log(reports);
     // console.log(this.props.eventKey);
@@ -104,8 +124,8 @@ class EmployeeCard extends React.Component {
         </Card.Header>
             <Accordion.Collapse eventKey={this.props.sendReports.userid}>
               <Card.Body>
-                <MultipleApproveButtons callbackAllChecked={this.callbackAllChecked}/>
-                <SelectedDeployeeReports reports={this.props.sendReports} activeUser={this.props.activeUser} isAllChecked={this.state.allChecked}/>
+                <MultipleApproveButtons activeUser={this.props.activeUser} callbackAllChecked={this.callbackAllChecked} sendSelectedReports={this.state.selectedReports}/>
+                <SelectedDeployeeReports reports={this.props.sendReports} activeUser={this.props.activeUser} isAllChecked={this.state.allChecked} getSelectedReports={this.callbackSelectedReports}/>
               </Card.Body>
             </Accordion.Collapse>
       </Card>

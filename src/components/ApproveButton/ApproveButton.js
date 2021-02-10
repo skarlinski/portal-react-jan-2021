@@ -2,10 +2,6 @@ import React from 'react';
 import './ApproveButton.css';
 
 class ApproveButton extends React.Component {
-  constructor(props) {
-    super(props);
-    // console.log(this.props);
-  }
 
   render () {
     return (

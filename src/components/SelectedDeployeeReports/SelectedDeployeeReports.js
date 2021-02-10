@@ -17,6 +17,10 @@ class SelectedDeployeeReports extends React.Component {
     // console.log(this.props);
   }
 
+  handleSelectedReports = () => {
+    this.props.getSelectedReports(this.state.selectedReports)
+  }
+
   handleSelectedCheckboxes = (isChecked,value) => {
     // console.log(isChecked, value);
     if (isChecked === true) {
@@ -25,6 +29,7 @@ class SelectedDeployeeReports extends React.Component {
     if (isChecked === false) {
       this.state.selectedReports.splice(this.state.selectedReports.indexOf(value), 1)
     }
+    this.handleSelectedReports()
   }
    
   isAllChecked = () => {
@@ -38,7 +43,7 @@ class SelectedDeployeeReports extends React.Component {
         allCheckedReports: arrReports
       })
     }
-    console.log(this.state);
+    // console.log(this.state);
   }
 
   componentDidMount () {
@@ -57,6 +62,12 @@ class SelectedDeployeeReports extends React.Component {
       this.showReports();
       this.isAllChecked();
     }
+    // if (this.state.allCheckedReports !== prevState.allCheckedReports) {
+    //   this.showReports();
+    // }
+    //  if (this.props.changeStatus !== prevProps.changeStatus) {
+    //    this.showReports();
+    //  }
     // console.log(this.props);
   }
 
@@ -163,11 +174,11 @@ class SelectedDeployeeReports extends React.Component {
   // }
 
   handleClickOnApprovalBtn = (eventKey, reportId) => {
-    console.log(this.state.allCheckedReports);
+    // console.log(this.props.changeStatus);
     console.log(eventKey, reportId);
     if (eventKey===0) {
       console.log('approval');
-      server(this.props.activeUser, {checkdate2: true, reportids: [reportId] && this.state.selectedReports && this.state.allCheckedReports,
+      server(this.props.activeUser, {checkdate2: true, reportids: [reportId] || this.state.selectedReports || this.state.allCheckedReports,
       status: 1}, 'SetReportApproval')
       .then(res => {
         console.log(res);
@@ -175,7 +186,7 @@ class SelectedDeployeeReports extends React.Component {
     }
     if (eventKey===1) {
       console.log('pending');
-      server(this.props.activeUser, {checkdate2: true, reportids: [reportId] && this.state.selectedReports && this.state.allCheckedReports,
+      server(this.props.activeUser, {checkdate2: true, reportids: [reportId] || this.state.selectedReports || this.state.allCheckedReports,
       status: 0}, 'SetReportApproval')
       .then(res => {
         console.log(res);
@@ -183,7 +194,7 @@ class SelectedDeployeeReports extends React.Component {
     }
     if (eventKey===2) {
       console.log('reject');
-      server(this.props.activeUser, {checkdate2: true, reportids: [reportId] && this.state.selectedReports && this.state.allCheckedReports,
+      server(this.props.activeUser, {checkdate2: true, reportids: [reportId] || this.state.selectedReports || this.state.allCheckedReports,
       status: -1}, 'SetReportApproval')
       .then(res => {
         console.log(res);

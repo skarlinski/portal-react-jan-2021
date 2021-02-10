@@ -1,5 +1,6 @@
 import React from 'react';
 import './MultipleApproveButtons.css';
+import server from '../../shared/server.js';
 
 class MultipleApproveButtons extends React.Component {
   constructor (props) {
@@ -7,13 +8,14 @@ class MultipleApproveButtons extends React.Component {
     this.state = {
       isChecked: false
     }
+    // console.log(this.props);
   }
 
   componentDidUpdate (prevProps, prevState) {
     if(this.state.isChecked !== prevState.isChecked) {
       this.props.callbackAllChecked(this.state.isChecked); 
     }
-  }
+   }
 
   handleAllChecked = () => {
     this.setState(({ isChecked }) => ({
@@ -22,6 +24,27 @@ class MultipleApproveButtons extends React.Component {
     )
     // this.props.callbackAllChecked(this.state.isChecked)  
   }
+
+  // handleClickOnAllApproveButton = (e) => {
+  //   console.log(e.target.attributes.dataName.value);
+  //   this.props.handleSendAll(e.target.attributes.dataName.value);
+  // }
+
+  handleClickOnApproveSelected = (e) => {
+      server(this.props.activeUser, {checkdate2: true, reportids: this.props.sendSelectedReports,
+      status: 1}, 'SetReportApproval')
+      .then(res => {
+        console.log(res);
+      })
+  }
+
+  handleClickOnRejectSelected = (e) => {
+      server(this.props.activeUser, {checkdate2: true, reportids: this.props.sendSelectedReports,
+      status: -1}, 'SetReportApproval')
+      .then(res => {
+        console.log(res);
+      })
+    }
 
   render () {
     return(
@@ -34,11 +57,11 @@ class MultipleApproveButtons extends React.Component {
         <span className="multiple-button-label">סמן הכל</span>
         </div>
         <div className="multiple-button-wrap">
-          <div className="multiple-button multiple-button-approve"></div>
+          <div className="multiple-button multiple-button-approve" onClick={this.handleClickOnApproveSelected} ></div>
         <span className="multiple-button-label">אישור מסומנים</span>
         </div>
         <div className="multiple-button-wrap">
-          <div className="multiple-button multiple-button-reject"></div>
+          <div className="multiple-button multiple-button-reject" onClick={this.handleClickOnRejectSelected} ></div>
           <span className="multiple-button-label">דחיית מסומנים</span>
         </div>
       </div>
