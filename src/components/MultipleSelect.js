@@ -38,7 +38,7 @@ class MultipleSelect extends React.Component{
         const selectedOptions=this.props.selectedOptions.map((item,index)=>{
             return(
                 <span key={index}>{item.label} 
-                    <span onClick={()=>this.handleSelectionDelete(index)} style={{fontWeight:"bold",cursor: "pointer"}}> x</span>
+                    <span className="selected-options" onClick={()=>this.handleSelectionDelete(index)} style={{fontWeight:"bold",cursor: "pointer"}}> x</span>
                 </span>);
         });
         const noMoreOptionsStyle = this.state.unselectedOptions.length===0 ? {display:"block"}:{display:"none"};
