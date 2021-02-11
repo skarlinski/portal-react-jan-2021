@@ -28,13 +28,14 @@ const CourseDetailsPage = (props) => {
             setShortName(res.data.subname);
             setFullName(res.data.name);
             setCourseData(res.data);
+            console.log(courseData)
         })
     },[])
     if (!activeUser) {
         return <Redirect to='/' />
-    }
+    }  
     const headers = [
-        {header: 'קורס' , view: <CourseGeneralDetails courseData={courseData}/>},
+        {header: 'קורס' , view: <CourseGeneralDetails courseData={courseData} />},
         {header: 'סילבוס' , view: <CourseSyllabus courseData={courseData} />},
         {header: 'סטודנטים' , view: <CourseStudents courseData={courseData}/>},
         {header: 'מדריכים' , view: <CourseTeachers courseData={courseData}/>},
