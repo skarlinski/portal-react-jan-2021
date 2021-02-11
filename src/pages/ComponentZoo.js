@@ -13,7 +13,6 @@ render(){
 return null
 }
 }
-}
 export default ComponentZoo;
 
 

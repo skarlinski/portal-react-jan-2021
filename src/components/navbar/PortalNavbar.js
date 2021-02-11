@@ -102,8 +102,8 @@ class PortalNavbar extends Component {
                     <LiItem route={"/#/hours-approve"} title="אישור שעות" icon={checkBoxIcon}/>
                     </div>
                 </div>
-                <div className="log-out">
-                <LiItem title="התנתקות" icon={onOffIcon}/>
+                <div className="log-out" onClick={() => {localStorage.clear()}}>
+                <LiItem title="התנתקות"  icon={onOffIcon}/>
                 </div>
 
             </div>
