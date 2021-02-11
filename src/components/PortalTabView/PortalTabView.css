@@ -5,14 +5,15 @@ nav {
 
 li {
     list-style: none;
-    width: 90px;
 }
 nav > ul {
     display : flex;
+    justify-content: space-between;
 }
 
 ul {
     padding-right: 0px;
+
     
 }
 nav > ul > li {

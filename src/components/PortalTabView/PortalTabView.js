@@ -9,9 +9,6 @@ class PortalTabView extends React.Component {
             current : (this.props.array) ? this.props.array[0] : null
         }
     }
-   
-
-    
     render() {
         const styleActiveTab={fontWeight:"bold" , borderBottom: "3px solid"} 
         const listHeadrs = this.props.array.map((item) => {
