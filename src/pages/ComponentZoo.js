@@ -25,6 +25,7 @@ class ComponentZoo extends React.Component {
                     ]
                     return null;
 }
+}
 export default ComponentZoo;
 
 
