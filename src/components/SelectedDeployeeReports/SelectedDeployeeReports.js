@@ -12,7 +12,8 @@ class SelectedDeployeeReports extends React.Component {
     this.state = {
       viewReports: [],
       selectedReports: [],
-      allCheckedReports: []
+      // allCheckedReports: [],
+      arrChecked: []
     }
     // console.log(this.props);
   }
@@ -21,9 +22,9 @@ class SelectedDeployeeReports extends React.Component {
     this.props.getSelectedReports(this.state.selectedReports)
   }
   //don't work
-  handleAllDeployeeReports = () => {
-    this.props.getDeployeeReports(this.state.selectedReports);
-  }
+  // handleAllDeployeeReports = () => {
+  //   this.props.getDeployeeReports(this.state.selectedReports);
+  // }
 
   handleSelectedCheckboxes = (isChecked,value) => {
     // console.log(isChecked, value);
@@ -34,6 +35,13 @@ class SelectedDeployeeReports extends React.Component {
       this.state.selectedReports.splice(this.state.selectedReports.indexOf(value), 1)
     }
     this.handleSelectedReports()
+  }
+
+  getChecked = (checked) => {
+    console.log(checked);
+    this.state.arrChecked.push(checked);
+    console.log(this.state.arrChecked);
+    this.props.getArrChecked(this.state.arrChecked);
   }
    
   // isAllChecked = () => {
@@ -55,7 +63,7 @@ class SelectedDeployeeReports extends React.Component {
     // })
     this.showReports();
     // this.isAllChecked();
-    this.handleAllDeployeeReports();
+    // this.handleAllDeployeeReports();
   }
 
   componentDidUpdate (prevProps, prevState) {
@@ -66,6 +74,9 @@ class SelectedDeployeeReports extends React.Component {
       this.showReports();
       // this.isAllChecked(this.props.isAllChecked);
     }
+    // if (this.state.arrChecked !== prevProps.arrChecked) {
+    //   this.getChecked();
+    // }
     // console.log(this.props.isAllChecked);
     // if (this.state.allCheckedReports !== prevState.allCheckedReports) {
     //   this.showReports();
@@ -125,7 +136,7 @@ class SelectedDeployeeReports extends React.Component {
       if (report.approval === '-1') {
         reportStyle = 'reject';
       }
-      console.log(reportStyle, report.approval);
+      // console.log(reportStyle, report.approval);
       return (
         <div key={report.reportid}>
           <div className="report-details-header">
@@ -139,7 +150,7 @@ class SelectedDeployeeReports extends React.Component {
                   key={report.reportid}
                   isChecked={this.handleSelectedCheckboxes}
                   isAllChecked={this.props.isAllChecked}
-                  // handleAllCkecked={this.handleAllChecked}
+                  getChecked={this.getChecked}
                 />
                 <span className="details-text">תאריך: {report.date}</span>
                 <span className="details-text">סה''כ שעות: {hours}</span>
@@ -183,7 +194,7 @@ class SelectedDeployeeReports extends React.Component {
     console.log(eventKey, reportId);
     if (eventKey===0) {
       console.log('approval');
-      server(this.props.activeUser, {checkdate2: true, reportids: [reportId] || this.state.selectedReports || this.state.allCheckedReports,
+      server(this.props.activeUser, {checkdate2: true, reportids: [reportId] || this.state.selectedReports || this.state.allCheckedReports || this.state.arrChecked,
       status: 1}, 'SetReportApproval')
       .then(res => {
         console.log(res);
@@ -194,7 +205,7 @@ class SelectedDeployeeReports extends React.Component {
     }
     if (eventKey===1) {
       console.log('pending');
-      server(this.props.activeUser, {checkdate2: true, reportids: [reportId] || this.state.selectedReports || this.state.allCheckedReports,
+      server(this.props.activeUser, {checkdate2: true, reportids: [reportId] || this.state.selectedReports || this.state.allCheckedReports || this.state.arrChecked,
       status: 0}, 'SetReportApproval')
       .then(res => {
         console.log(res);
@@ -203,7 +214,7 @@ class SelectedDeployeeReports extends React.Component {
     }
     if (eventKey===2) {
       console.log('reject');
-      server(this.props.activeUser, {checkdate2: true, reportids: [reportId] || this.state.selectedReports || this.state.allCheckedReports,
+      server(this.props.activeUser, {checkdate2: true, reportids: [reportId] || this.state.selectedReports || this.state.allCheckedReports || this.state.arrChecked,
       status: -1}, 'SetReportApproval')
       .then(res => {
         console.log(res);

@@ -17,14 +17,15 @@ class EmployeeCard extends React.Component {
       reject: '',
       position: 'down',
       allChecked: null,
-      selectedReports: null
+      selectedReports: null,
+      arrChecked: []
       // changeStatus: null
     }
   }
 
   componentDidMount () {
     this.sumOfReports();
-    this.getDeployeeReports(); 
+    // this.getDeployeeReports(); 
   }
 
   componentDidUpdate (prevProps, prevState) {
@@ -91,8 +92,15 @@ class EmployeeCard extends React.Component {
     // console.log(this.state);
   }
 
-  getDeployeeReports = (report) => {
-    console.log(report);
+  // getDeployeeReports = (report) => {
+  //   console.log(report);
+  // }
+
+  getArrChecked = (checked) =>{
+    console.log(checked);
+    this.setState({
+      arrChecked: checked
+    })
   }
 
   // handleSendAll = (status) => {
@@ -129,8 +137,8 @@ class EmployeeCard extends React.Component {
         </Card.Header>
             <Accordion.Collapse eventKey={this.props.sendReports.userid}>
               <Card.Body>
-                <MultipleApproveButtons activeUser={this.props.activeUser} callbackAllChecked={this.callbackAllChecked} sendSelectedReports={this.state.selectedReports} isAllChecked={this.state.allChecked} />
-                <SelectedDeployeeReports reports={this.props.sendReports} activeUser={this.props.activeUser} isAllChecked={this.state.allChecked} getSelectedReports={this.callbackSelectedReports} getDeployeeReports={this.getDeployeeReports} updateReports={this.props.updateReports} />
+                <MultipleApproveButtons activeUser={this.props.activeUser} callbackAllChecked={this.callbackAllChecked} sendSelectedReports={this.state.selectedReports} isAllChecked={this.state.allChecked} sendArrChecked={this.state.arrChecked}/>
+                <SelectedDeployeeReports reports={this.props.sendReports} activeUser={this.props.activeUser} isAllChecked={this.state.allChecked} getSelectedReports={this.callbackSelectedReports} updateReports={this.props.updateReports} getArrChecked={this.getArrChecked}/>
               </Card.Body>
             </Accordion.Collapse>
       </Card>
