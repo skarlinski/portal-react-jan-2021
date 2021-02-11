@@ -26,27 +26,22 @@ class MultipleSelect extends React.Component{
     }
 
     handleSelectionDelete = (index) =>{
-        const obj = this.props.selectedOptions[index];
-        const array =this.props.selectedOptions;
-        array.splice(index,1);
-        const newunselectedList = this.sortList(this.state.unselectedOptions.concat(obj));
+        const selectedObj = this.props.selectedOptions[index];
+        const newselectedList =this.props.selectedOptions;
+        newselectedList.splice(index,1);
+        const newunselectedList = this.sortList(this.state.unselectedOptions.concat(selectedObj));
         this.setState({unselectedOptions:newunselectedList});
-        this.props.handleSelection(array, obj, false);
+        this.props.handleSelection(newselectedList, selectedObj, false);
     }
 
-    render(){
-        const selectedOptions=this.props.selectedOptions.map((item,index)=>{
-            return(
-                <span key={index}>{item.label} 
-                    <span className="selected-options" onClick={()=>this.handleSelectionDelete(index)} style={{fontWeight:"bold",cursor: "pointer"}}> x</span>
-                </span>);
-        });
+    modalMultiSelect =()=>{
         const noMoreOptionsStyle = this.state.unselectedOptions.length===0 ? {display:"block"}:{display:"none"};
+        const SelectStyle=this.state.unselectedOptions.length===0?{display:"none"}:{display:"block",cursor: "pointer"}
         const unselectedOptions = this.state.unselectedOptions.map((item,index) =>{
             return(<option key={item.value} value={index}>{item.label}</option>);
         });
-        const SelectStyle=this.state.unselectedOptions.length===0?{display:"none"}:{display:"block",cursor: "pointer"}
-        const modal=(<Modal className="c-multiple-select-modal" show={this.state.showModal} onHide={()=>{this.setState({showModal:false})}}>
+
+        return(<Modal className="c-multiple-select-modal" show={this.state.showModal} onHide={()=>{this.setState({showModal:false})}}>
                     <Modal.Header className="modal-header">
                         <Modal.Title>בחר מבין האפשרויות</Modal.Title>
                     </Modal.Header>
@@ -60,12 +55,19 @@ class MultipleSelect extends React.Component{
                     </Form>
                     <span style={noMoreOptionsStyle}>אין אפשרויות נוספות</span>
                     </Modal.Body>
-            </Modal>
-            
-        );
+            </Modal>);
+    }
+
+    render(){
+        const selectedOptions=this.props.selectedOptions.map((item,index)=>{
+            return(
+                <span key={index}>{item.label} 
+                    <span className="selected-options" onClick={()=>this.handleSelectionDelete(index)} style={{fontWeight:"bold",cursor: "pointer"}}> x</span>
+                </span>);
+        });
         return(<div className="c-multiple-select">
             <span className="title">{this.props.title}</span>
-                 {modal}
+                 {this.modalMultiSelect()}
             <div className="selectedValue">{selectedOptions}
             <span className="addOptionSign" onClick={()=>{this.setState({showModal:true})}}>+</span>
             </div>
