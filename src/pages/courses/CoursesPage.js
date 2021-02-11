@@ -7,6 +7,7 @@ import { Redirect } from 'react-router-dom'
 import server from '../../shared/server';
 
 import PortalSearchBar from '../../components/searchbar/PortalSearchBar';
+import ButtonSet from '../../components/ButtonSet';
 
 const CoursesPage = (props) => {
     const { handleLogout } = props;
