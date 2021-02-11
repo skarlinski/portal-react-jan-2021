@@ -73,8 +73,18 @@ class EmployeeCard extends React.Component {
   }
 
   callbackAllChecked = (isChecked) => {
+    if(this.state.arrChecked.length > 0 ) {
+      this.setState({
+        arrChecked: []
+      })
+      return;
+    }
+    
+    const allReportIds = this.props.sendReports.reports.map((item)=>{
+      return item.reportid;
+    })
     this.setState({
-      allChecked: isChecked
+      arrChecked: allReportIds
     })
     // console.log(isChecked);
   }
@@ -87,11 +97,26 @@ class EmployeeCard extends React.Component {
     // console.log(this.state);
   }
 
-  getArrChecked = (checked, isChecked) =>{
+  setChecked = (checked, reportId) =>{
     // console.log(isChecked);
-    this.setState({
-      arrChecked: checked
-    })
+
+    if( checked && this.state.arrChecked.indexOf(reportId) === -1) {
+      this.setState({
+        arrChecked: this.state.arrChecked.concat(reportId)
+      })
+    }
+    else{
+      const newChecked = this.state.arrChecked.filter( (item) => {
+        if(item === reportId && checked === false) {
+          return false;
+        } 
+        return true;
+      })
+      this.setState({
+        arrChecked: newChecked
+      })
+    }
+
   }
 
   render () {
@@ -121,7 +146,7 @@ class EmployeeCard extends React.Component {
             <Accordion.Collapse eventKey={this.props.sendReports.userid}>
               <Card.Body>
                 <MultipleApproveButtons activeUser={this.props.activeUser} callbackAllChecked={this.callbackAllChecked} sendSelectedReports={this.state.selectedReports} isAllChecked={this.state.allChecked} sendArrChecked={this.state.arrChecked} updateReports={this.props.updateReports}/>
-                <SelectedDeployeeReports reports={this.props.sendReports} activeUser={this.props.activeUser} isAllChecked={this.state.allChecked} getSelectedReports={this.callbackSelectedReports} updateReports={this.props.updateReports} getArrChecked={this.getArrChecked}/>
+                <SelectedDeployeeReports reports={this.props.sendReports} activeUser={this.props.activeUser} arrChecked={this.state.arrChecked} isAllChecked={this.state.allChecked} getSelectedReports={this.callbackSelectedReports} updateReports={this.props.updateReports} setChecked={this.setChecked}/>
               </Card.Body>
             </Accordion.Collapse>
       </Card>

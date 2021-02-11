@@ -12,7 +12,6 @@ class SelectedDeployeeReports extends React.Component {
     this.state = {
       viewReports: [],
       selectedReports: [],
-      arrChecked: []
     }
     // console.log(this.props);
   }
@@ -31,12 +30,6 @@ class SelectedDeployeeReports extends React.Component {
     }
     this.handleSelectedReports()
   }
-
-  getChecked = (checked, isChecked) => {
-    console.log(this.state.arrChecked);
-    this.state.arrChecked.push(checked);
-    this.props.getArrChecked(this.state.arrChecked);    
-  }
    
   componentDidMount () {
     this.showReports();
@@ -47,6 +40,9 @@ class SelectedDeployeeReports extends React.Component {
       this.showReports();
     }
     if (this.props.isAllChecked !== prevProps.isAllChecked) {
+      this.showReports();
+    }
+    if( this.props.arrChecked !== prevProps.arrChecked){
       this.showReports();
     }
   }
@@ -112,9 +108,9 @@ class SelectedDeployeeReports extends React.Component {
                 <Checkbox
                   label={report.reportid}
                   key={report.reportid}
-                  isChecked={this.handleSelectedCheckboxes}
+                  isChecked={(this.props.arrChecked.includes(report.reportid))}
                   isAllChecked={this.props.isAllChecked}
-                  getChecked={this.getChecked}
+                  setChecked={this.props.setChecked}
                 />
                 <span className="details-text">תאריך: {report.date}</span>
                 <span className="details-text">סה''כ שעות: {hours}</span>
