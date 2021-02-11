@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import './courses.css'
 import PortalNavbar from '../../components/navbar/PortalNavbar';
 import ActiveUserContext from '../../shared/activeUserContext'
-import { Redirect } from 'react-router-dom'
+import { Redirect, useParams } from 'react-router-dom'
 
 const CoursesPage = (props) => {
     const { handleLogout } = props;
@@ -11,6 +11,7 @@ const CoursesPage = (props) => {
     if (!activeUser) {
         return <Redirect to='/' />
     }
+
 
     return (
         <div className="p-courses">

@@ -7,19 +7,119 @@ import profileIcon from './profile_icon.svg'
 const UsersPage = (props) => {
     const { handleLogout } = props;
     const activeUser = useContext(ActiveUserContext);
+    const [users , setUsers] = useState([]);
+    const [searchText , setText] = useState('');
+    const [currentPage , setCurrPage] = useState(0);
+    const [resPageNum , setPageNum] = useState(0);
+
+
+
+
+    //read data from api using server function
+
+    useEffect(() => {
+    server(activeUser, {"search":searchText,"sorting":"userid","desc":false,"userstatus":1,"page":currentPage} ,'SearchStaffUnderMe').then(res => {
+        console.log(res);
+        console.log(res.data.pages);
+
+        setPageNum({resPageNum:res.data.pages});
+        setUsers({users:res.data.users});
+    })
+    },[searchText, currentPage]);
     
     if (!activeUser) {
         return <Redirect to='/' />
     }
     
+    const handleClick = (data) => {
+        console.log(data);
+    };
+
+
+    //gets the wanted search text (a string) from the search-bar module 
+    // and makes an ajax call using the text string  (in the "search" key) and with "0" in the "pages" key
+    const handleSearch = (text) => {
+        setText(text);
+    }
+
+
+
+    //1. gets the wanted page num (integer) from the search-bar module (the currnet num +/- 1) and makes an ajax call 
+    //    using the new page number (in the "pages" key)
+    //2. update the new page number in the "currentPage" variable in the state
+
+    const pageChange = (page) => {
+        setCurrPage(page);
+    }
+
+    const clickUserStatus = (data) => {
+        console.log(data);
+        if(data.key === "off"){
+            server(activeUser, {"search": "", "sorting": "courseid", "desc": false, 
+            "userstatus": 0, "page": 0}, 'SearchCourses').then( res => {
+                setUsers({users: res.data.users}) 
+            });
+        }
+        else{
+            server(activeUser, {"search": "", "sorting": "courseid", "desc": false, 
+            "userstatus": 1, "page": 0}, 'SearchCourses').then( res => {
+                setUsers({users: res.data.users}) 
+            });
+        }
+        console.log(users)
+    };
+
+    const temp = (data) => {
+        let keyVar = (data.key === "off") ? 0 : 1;
+        server(activeUser, {"search": "", "sorting": "courseid", "desc": false, 
+        "userstatus": keyVar, "page": 0}, 'SearchCourses').then( res => {
+            setUsers({users: res.data.users}) 
+        });
+
+    }
+
+    const headers = [
+        {
+            header:'שם',
+            key:'firstname'
+        },
+        {
+            header:'שם משפחה',
+            key:'lastname'
+        },
+        {
+            header:'אימייל',
+            key:'email'
+        }
+    
+    
+    ]
+
+    const placeholderText = "חיפוש עובד";
+
+    const buttons = [{key:'on', label:'עובדים  פעילים'},{key:'off', label:'עובדים לא פעילים'}];
+    
+    const usersList = (users && users.users) ? users.users.users: null;
+
+    
+
+    
+
+    
+
     return (
         <div className="p-users">
-            <PortalNavbar 
-            handleLogout={handleLogout}
-            activeUser={activeUser}
-            pageName={'משתמשים'}/>
-            <h1>משתמשים</h1>
-            <img src={profileIcon}/> 
+            <PortalNavbar handleLogout={handleLogout}/>
+            <PortalSearchBar handleSearch={handleSearch}
+            searchText={searchText}
+            handleSearch={handleSearch}
+            pageChange={pageChange}
+            placeholderText={placeholderText} resPageNum={resPageNum} 
+            currentPage={currentPage} />
+            {usersList? <PortalTable headers={headers} data={usersList}  handleClick={handleClick}/>: ''}
+            
+
+            <ButtonSet buttons={buttons} handleClick={clickUserStatus}/>
         </div>
     );
 }
