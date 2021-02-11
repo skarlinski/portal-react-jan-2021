@@ -24,6 +24,7 @@ class EmployeeCard extends React.Component {
 
   componentDidMount () {
     this.sumOfReports();
+    this.getDeployeeReports(); 
   }
 
   componentDidUpdate (prevProps, prevState) {
@@ -129,7 +130,7 @@ class EmployeeCard extends React.Component {
             <Accordion.Collapse eventKey={this.props.sendReports.userid}>
               <Card.Body>
                 <MultipleApproveButtons activeUser={this.props.activeUser} callbackAllChecked={this.callbackAllChecked} sendSelectedReports={this.state.selectedReports} isAllChecked={this.state.allChecked} />
-                <SelectedDeployeeReports reports={this.props.sendReports} activeUser={this.props.activeUser} isAllChecked={this.state.allChecked} getSelectedReports={this.callbackSelectedReports} getDeployeeReports={this.getDeployeeReports}/>
+                <SelectedDeployeeReports reports={this.props.sendReports} activeUser={this.props.activeUser} isAllChecked={this.state.allChecked} getSelectedReports={this.callbackSelectedReports} getDeployeeReports={this.getDeployeeReports} updateReports={this.props.updateReports} />
               </Card.Body>
             </Accordion.Collapse>
       </Card>

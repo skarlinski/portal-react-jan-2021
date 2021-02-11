@@ -31,6 +31,7 @@ class MultipleApproveButtons extends React.Component {
   // }
 
   handleClickOnApproveSelected = (e) => {
+    console.log(this.props.sendSelectedReports);
       server(this.props.activeUser, {checkdate2: true, reportids: this.props.sendSelectedReports,
       status: 1}, 'SetReportApproval')
       .then(res => {

@@ -20,6 +20,10 @@ class SelectedDeployeeReports extends React.Component {
   handleSelectedReports = () => {
     this.props.getSelectedReports(this.state.selectedReports)
   }
+  //don't work
+  handleAllDeployeeReports = () => {
+    this.props.getDeployeeReports(this.state.selectedReports);
+  }
 
   handleSelectedCheckboxes = (isChecked,value) => {
     // console.log(isChecked, value);
@@ -51,6 +55,7 @@ class SelectedDeployeeReports extends React.Component {
     // })
     this.showReports();
     // this.isAllChecked();
+    this.handleAllDeployeeReports();
   }
 
   componentDidUpdate (prevProps, prevState) {
@@ -120,7 +125,7 @@ class SelectedDeployeeReports extends React.Component {
       if (report.approval === '-1') {
         reportStyle = 'reject';
       }
-
+      console.log(reportStyle, report.approval);
       return (
         <div key={report.reportid}>
           <div className="report-details-header">
@@ -182,7 +187,10 @@ class SelectedDeployeeReports extends React.Component {
       status: 1}, 'SetReportApproval')
       .then(res => {
         console.log(res);
+        this.props.updateReports();
+        
       })
+      
     }
     if (eventKey===1) {
       console.log('pending');
@@ -190,6 +198,7 @@ class SelectedDeployeeReports extends React.Component {
       status: 0}, 'SetReportApproval')
       .then(res => {
         console.log(res);
+        this.props.updateReports();
       })
     }
     if (eventKey===2) {
@@ -198,6 +207,7 @@ class SelectedDeployeeReports extends React.Component {
       status: -1}, 'SetReportApproval')
       .then(res => {
         console.log(res);
+        this.props.updateReports();
       })
     }
     // this.refreshPage();
