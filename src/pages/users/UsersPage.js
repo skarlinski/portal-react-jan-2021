@@ -84,6 +84,7 @@ useEffect(() => {
             currentPage={currentPage} />
             {usersList? <PortalTable headers={headers} data={usersList}/>: ''}
             <ButtonSet buttons={buttons} handleClick={clickUserStatus}/>
+
         </div>
     );
 }

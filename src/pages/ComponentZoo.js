@@ -1,38 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
+import ButtonSet from '../components/ButtonSet';
+import PortalTable from '../components/PortalTable';
+import PortalTabView from '../components/PortalTabView/PortalTabView';
+import CoursesPage from './courses/CoursesPage';
+import LoginPage from './login/LoginPage';
+
+import { InputGroup } from 'react-bootstrap';
 import PortalSearchBar from '../components/searchbar/PortalSearchBar';
-
-
-
-class ComponentZoo extends React.Component{
-    constructor(props){
-        super(props)
-        this.state = {
-            searchText:'',
-            currentPage:0,
-            resPageNum:1
-
-        }
-    }
-    handleSearch = (text) => console.log('the text is' + text);
-    pageChange = (page) => {
-        this.setState({currentPage: page})
-        console.log(page);
-    }
-    
+class ComponentZoo extends React.Component {
     render(){
         const myprops=[
-            {key:'on', label:'עובדים פעילים'},
-            {key:'off', label:'עובדים לא פעילים'},
+            {key:'off', label:'עובדים פעילים'},
+            {key:'on', label:'עובדים לא פעילים'},
+            {key:'else', label:'bob'},
+            {key:'what', label:'david'}
             ];
 
-        return <div>
-           <PortalSearchBar handleSearch={this.handleSearch}
-            searchText={this.state.searchText}
-            handleSearch={this.handleSearch}
-            pageChange={this.pageChange}
-            placeholderText="placeholder Text" resPageNum={this.state.resPageNum} 
-            currentPage={this.state.currentPage} />
-        </div>
-    }
+        
+
+        const myarray =[{header:"פרופיל", view:<ButtonSet buttons={myprops} handleClick={this.clickme}/>},
+                        {header:"קורסים", view:(<div>קורסים</div>)},
+                        {header:"עובדים", view:(<div>עובדים</div>)},
+                        {header:"דיווח", view:(<div>דיווח</div>)}   
+                    ]
+                    return null;
 }
 export default ComponentZoo;
+
+
