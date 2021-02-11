@@ -14,7 +14,11 @@ const HoursReportPage = (props) => {
 
     return (
         <div className="p-hours-report">
-            <PortalNavbar handleLogout={handleLogout}/>
+            <PortalNavbar 
+            handleLogout={handleLogout}
+            activeUser={activeUser}
+            pageName={'דיווח שעות'}
+            />
             <h1>דיווח שעות</h1>
         </div>
     );

@@ -14,7 +14,11 @@ const HoursApprovePage = (props) => {
 
     return (
         <div className="p-hours-approve">
-            <PortalNavbar handleLogout={handleLogout}/>
+            <PortalNavbar 
+            handleLogout={handleLogout}
+            activeUser={activeUser}
+            pageName={'אישור שעות'}
+            />
             <h1>אישור שעות</h1>
         </div>
     );

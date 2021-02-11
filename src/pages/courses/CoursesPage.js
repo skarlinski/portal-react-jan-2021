@@ -14,7 +14,11 @@ const CoursesPage = (props) => {
 
     return (
         <div className="p-courses">
-            <PortalNavbar handleLogout={handleLogout}/>
+            <PortalNavbar 
+            handleLogout={handleLogout} 
+            activeUser={activeUser}
+            pageName={'קורסים'}
+            />
             <h1>קורסים</h1>
         </div>
     );
