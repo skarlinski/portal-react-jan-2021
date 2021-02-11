@@ -6,11 +6,15 @@ import ActiveUserContext from '../../shared/activeUserContext'
 import { Redirect } from 'react-router-dom'
 import server from '../../shared/server';
 import ButtonSet from '../../components/ButtonSet';
+import PortalSearchBar from '../../components/searchbar/PortalSearchBar';
 
 const CoursesPage = (props) => {
     const { handleLogout } = props;
     const activeUser = useContext(ActiveUserContext);
     const [courses, setCourses] = useState([]);
+    const [searchText , setText] = useState('');
+    const [currentPage , setCurrPage] = useState(0);
+    const [resPageNum , setPageNum] = useState(0);
 
     useEffect(() => {
         server(activeUser, {"search": "", "sorting": "courseid", "desc": false, "coursestatus": 1,
@@ -26,6 +30,9 @@ const CoursesPage = (props) => {
     };
     const handleClick = (data) => {
         console.log(data);
+        console.log(data.courseid);
+        // return <Redirect push to="/#/courses/data.courseid" />
+        window.location = "/#/courses/" + data.courseid;
     };
     const clickCoursestatus = (data) => {
         console.log(data);
@@ -42,7 +49,12 @@ const CoursesPage = (props) => {
             });
         }
     };
-
+    
+    const handleSearch = (text) => console.log('the text is' + text);
+    const pageChange = (page) => {
+        this.setState({currentPage: page})
+        console.log(page);
+    }
     const headers = 
         [
             {
@@ -83,6 +95,11 @@ const CoursesPage = (props) => {
         <div className="p-courses">
             <PortalNavbar handleLogout={handleLogout}/>
             <h1>קורסים</h1>
+            <div className="search-courses">
+                <PortalSearchBar handleSearch={handleSearch} searchText={searchText}
+                    pageChange={pageChange} placeholderText="חיפוש קורס" 
+                    resPageNum={resPageNum} currentPage={currentPage} />
+            </div>
             <div className="l-courses">
                 {coursesList ? <PortalTable headers={headers} data={coursesList} 
                         handleClick={handleClick}/> : ''}
