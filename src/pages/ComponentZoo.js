@@ -6,8 +6,6 @@ import CoursesPage from './courses/CoursesPage';
 import LoginPage from './login/LoginPage';
 
 import { InputGroup } from 'react-bootstrap';
-
-
 import PortalSearchBar from '../components/searchbar/PortalSearchBar';
 class ComponentZoo extends React.Component {
     render(){
