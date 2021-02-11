@@ -27,7 +27,7 @@ class PortalSearchBar extends React.Component{
     
 
     nextPage = () =>  {
-        debugger
+        
         this.props.pageChange(this.props.currentPage + 1)
     }
 

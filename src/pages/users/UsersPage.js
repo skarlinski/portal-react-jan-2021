@@ -26,9 +26,7 @@ const UsersPage = (props) => {
 
     useEffect(() => {
     server(activeUser, {"search":"","sorting":"userid","desc":false,"userstatus":1,"page":0,"v":2.3} ,'SearchStaffUnderMe').then(res => {
-        console.log(res);
-        console.log(res.data.pages);
-
+    
         setPageNum({resPageNum:res.data.pages});
         setUsers({users:res.data});
     })
@@ -61,9 +59,6 @@ const UsersPage = (props) => {
     //2. update the new page number in the "currentPage" variable in the state
 
     const pageChange = (page) => {
-        console.log(page);
-        console.log(currentPage);
-
         server(activeUser, {"search":"","sorting":"userid","desc":false,"userstatus":1,"page":page,"v":2.3} ,'SearchStaffUnderMe').then(res => {
             setCurrPage({currentPage:page});
             setUsers({users:res.data});
