@@ -34,6 +34,7 @@ useEffect(() => {
 
     
     const handleSearch = (text) => {
+        setCurrPage(0);
         setText(text);
     }
 
@@ -42,7 +43,8 @@ useEffect(() => {
         }
           
     const clickUserStatus = (data) => {
-        let keyVar = (data.key === "off")? 0 : 1;
+        setCurrPage(0);
+        const keyVar = (data.key === "off")? 0 : 1;
         setUserStatus(keyVar);
     }
 
@@ -67,7 +69,8 @@ useEffect(() => {
 
     const buttons = [{key:'on', label:'עובדים  פעילים'},{key:'off', label:'עובדים לא פעילים'}];
 
-    const usersList = users.users;
+    const usersList = users;
+
 
 
     return (
