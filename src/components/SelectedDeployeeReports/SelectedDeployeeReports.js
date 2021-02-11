@@ -12,7 +12,6 @@ class SelectedDeployeeReports extends React.Component {
     this.state = {
       viewReports: [],
       selectedReports: [],
-      // allCheckedReports: [],
       arrChecked: []
     }
     // console.log(this.props);
@@ -21,10 +20,6 @@ class SelectedDeployeeReports extends React.Component {
   handleSelectedReports = () => {
     this.props.getSelectedReports(this.state.selectedReports)
   }
-  //don't work
-  // handleAllDeployeeReports = () => {
-  //   this.props.getDeployeeReports(this.state.selectedReports);
-  // }
 
   handleSelectedCheckboxes = (isChecked,value) => {
     // console.log(isChecked, value);
@@ -38,35 +33,13 @@ class SelectedDeployeeReports extends React.Component {
   }
 
   getChecked = (checked, isChecked) => {
-    // console.log(checked, isChecked);
-    // if (isChecked === true) {
-      this.state.arrChecked.push(checked);
-      console.log(this.state.arrChecked);
-      this.props.getArrChecked(this.state.arrChecked);
-    // }
-    
+    console.log(this.state.arrChecked);
+    this.state.arrChecked.push(checked);
+    this.props.getArrChecked(this.state.arrChecked);    
   }
    
-  // isAllChecked = () => {
-  //   let arrReports = [];
-  //   for (let i=0; i<this.props.reports.reports.length; i++) {
-  //     arrReports.push(this.props.reports.reports[i].reportid)
-  //   }
-    
-    
-  //     this.setState ({
-  //       allCheckedReports: arrReports
-  //     })
-   
-  // }
-
   componentDidMount () {
-    // this.setState({
-    //     allChecked: this.props.isAllChecked
-    // })
     this.showReports();
-    // this.isAllChecked();
-    // this.handleAllDeployeeReports();
   }
 
   componentDidUpdate (prevProps, prevState) {
@@ -75,19 +48,7 @@ class SelectedDeployeeReports extends React.Component {
     }
     if (this.props.isAllChecked !== prevProps.isAllChecked) {
       this.showReports();
-      // this.isAllChecked(this.props.isAllChecked);
     }
-    // if (this.state.arrChecked !== prevProps.arrChecked) {
-    //   this.getChecked();
-    // }
-    // console.log(this.props.isAllChecked);
-    // if (this.state.allCheckedReports !== prevState.allCheckedReports) {
-    //   this.showReports();
-    // }
-    //  if (this.props.changeStatus !== prevProps.changeStatus) {
-    //    this.showReports();
-    //  }
-    // console.log(this.props);
   }
 
   getDuration = (data) => {
@@ -188,10 +149,6 @@ class SelectedDeployeeReports extends React.Component {
     this.handleClickOnApprovalBtn(eventKey, reportId);
   }
 
-  // refreshPage = () => {
-  // window.location.reload();
-  // }
-
   handleClickOnApprovalBtn = (eventKey, reportId) => {
     console.log(this.state.allCheckedReports);
     console.log(eventKey, reportId);
@@ -202,9 +159,7 @@ class SelectedDeployeeReports extends React.Component {
       .then(res => {
         console.log(res);
         this.props.updateReports();
-        
       })
-      
     }
     if (eventKey===1) {
       console.log('pending');
@@ -224,8 +179,6 @@ class SelectedDeployeeReports extends React.Component {
         this.props.updateReports();
       })
     }
-    // this.refreshPage();
-    // this.handleSelectedCheckboxes();
   }
 
   render () {

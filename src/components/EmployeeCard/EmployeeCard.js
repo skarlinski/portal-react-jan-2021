@@ -19,13 +19,11 @@ class EmployeeCard extends React.Component {
       allChecked: null,
       selectedReports: null,
       arrChecked: []
-      // changeStatus: null
     }
   }
 
   componentDidMount () {
     this.sumOfReports();
-    // this.getDeployeeReports(); 
   }
 
   componentDidUpdate (prevProps, prevState) {
@@ -37,9 +35,6 @@ class EmployeeCard extends React.Component {
           this.callbackAllChecked();
         }
     }
-    // if (this.state.selectedReports !== prevState.selectedReports) {
-    //   this.callbackSelectedReports();
-    // }
   }
 
   sumOfReports = () => {
@@ -92,10 +87,6 @@ class EmployeeCard extends React.Component {
     // console.log(this.state);
   }
 
-  // getDeployeeReports = (report) => {
-  //   console.log(report);
-  // }
-
   getArrChecked = (checked, isChecked) =>{
     // console.log(isChecked);
     this.setState({
@@ -103,17 +94,9 @@ class EmployeeCard extends React.Component {
     })
   }
 
-  // handleSendAll = (status) => {
-  //   console.log(status);
-  //   this.setState({
-  //     changeStatus: status
-  //   })
-  //   console.log(this.state);
-  // }
-
   render () {
-    // console.log(this.state.selectedReports);
     const reports = this.props.sendReports;
+    // console.log(this.state.selectedReports);
     // console.log(reports);
     // console.log(this.props.eventKey);
     return(
