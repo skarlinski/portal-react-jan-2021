@@ -1,9 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './users.css'
 import PortalNavbar from '../../components/navbar/PortalNavbar';
 import ActiveUserContext from '../../shared/activeUserContext'
 import { Redirect } from 'react-router-dom'
 import profileIcon from './profile_icon.svg'
+import server from '../../shared/server';
+import PortalSearchBar from '../../components/searchbar/PortalSearchBar';
+import PortalTable from '../../components/PortalTable';
+import ButtonSet from '../../components/ButtonSet';
 const UsersPage = (props) => {
     const { handleLogout } = props;
     const activeUser = useContext(ActiveUserContext);

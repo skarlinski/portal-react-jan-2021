@@ -25,7 +25,8 @@ class ComponentZoo extends React.Component {
                         {header:"עובדים", view:(<div>עובדים</div>)},
                         {header:"דיווח", view:(<div>דיווח</div>)}   
                     ]
-                    return null;
+        return null;
+                }
 }
 export default ComponentZoo;
 
