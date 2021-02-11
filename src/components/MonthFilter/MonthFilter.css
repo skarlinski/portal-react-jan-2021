@@ -1,0 +1,31 @@
+.c-month-filter {
+  margin-bottom: 30px;
+}
+.pagination-wrap {
+  width: 220px;
+  display: flex;
+  justify-content: space-between;
+}
+.month-text {
+  font-family: "Assistant-Bold";
+  font-size: 28px;
+  line-height: 18px;
+  text-align: center;
+  margin: 0;
+}
+.pagination-btn {
+  border: none;
+  background-color: inherit;
+}
+.month-arrow-prev {
+  transform: rotate(90deg);
+}
+.month-arrow-next {
+  transform: rotate(-90deg);
+}
+.btn-active {
+  fill: #5d5d5d;
+}
+.btn-disabled {
+  fill: #efefef;
+}

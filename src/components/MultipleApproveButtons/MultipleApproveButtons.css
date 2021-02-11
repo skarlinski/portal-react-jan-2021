@@ -1,0 +1,52 @@
+.c-multiple-approve-buttons {
+  display: flex;
+  color: #5d5d5d;
+  padding: 11px 16px 0 16px;
+}
+.multiple-button-wrap {
+  display: flex;
+  align-items: center;
+}
+.multiple-button-wrap:first-child {
+  margin-left: auto;
+  position: relative;
+}
+.multiple-button-wrap:nth-child(2) {
+  margin-left: 19px;
+}
+.multiple-button {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #707070;
+  border-radius: 50%;
+}
+.multiple-input {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -o-appearance: none;
+}
+.multiple-button-checked {
+  border: 1px solid #707070;
+  border-radius: 50%;
+  background-color: #fff;
+  margin-bottom: 0;
+}
+.multiple-button-approve {
+  background-color: #a1d47f;
+}
+.multiple-button-reject {
+  background-color: #ffa1a1;
+}
+.multiple-button-label {
+  display: block;
+  font-size: 10px;
+  line-height: 9px;
+  margin-right: 7px;
+}
+.c-multiple-approve-buttons .checked-icon {
+  width: 11px;
+  height: 11px;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+}
