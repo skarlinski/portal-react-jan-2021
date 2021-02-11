@@ -7,12 +7,8 @@ import LoginPage from './login/LoginPage';
 
 
 
-class ComponentZoo extends React.Component{
+import PortalSearchBar from '../components/searchbar/PortalSearchBar';
 
-    clickme = (thebutton)=>{
-        console.log(thebutton.label);
-
-    }
     render(){
         const myprops=[
             {key:'off', label:'עובדים פעילים'},
@@ -26,11 +22,6 @@ class ComponentZoo extends React.Component{
                         {header:"עובדים", view:(<div>עובדים</div>)},
                         {header:"דיווח", view:(<div>דיווח</div>)}   
                     ]
-
-        return <div>
-           
-           <PortalTabView array={myarray}/>
-        </div>
     }
 }
 export default ComponentZoo;
