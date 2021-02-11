@@ -1,5 +1,5 @@
 .p-course-details .bottom-shadow{
-    box-shadow: 0 0 2px 0;
+    border-bottom: 1px solid;
 }
 .p-course-details{
     margin: 0 18px;
