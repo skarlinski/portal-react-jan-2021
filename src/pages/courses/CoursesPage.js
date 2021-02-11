@@ -5,7 +5,7 @@ import PortalTable from '../../components/PortalTable';
 import ActiveUserContext from '../../shared/activeUserContext'
 import { Redirect } from 'react-router-dom'
 import server from '../../shared/server';
-import ButtonSet from '../../components/ButtonSet';
+
 import PortalSearchBar from '../../components/searchbar/PortalSearchBar';
 
 const CoursesPage = (props) => {
@@ -31,9 +31,7 @@ const CoursesPage = (props) => {
         return <Redirect to='/' />
     };
     const handleClick = (data) => {
-        console.log(data);
-        console.log(data.courseid);
-        // return <Redirect push to="/#/courses/data.courseid" />
+                // return <Redirect push to="/#/courses/data.courseid" />
         window.location = "/#/courses/" + data.courseid;
     };
     // const clickCoursestatus = (data) => {
@@ -78,7 +76,8 @@ const CoursesPage = (props) => {
                 key: 'teachers'
             }
         ];
-        const buttons =
+
+    const buttons =
             [
                 {key:'on', label:'קורסים פעילים'},
                 {key:'off', label:'קורסים לא פעילים'},
@@ -99,7 +98,8 @@ const CoursesPage = (props) => {
 		// 		year: "2017"
         //     }
 		//   ];
-        const coursesList = courses.courses
+    const coursesList = courses.courses
+
     return (
         <div className="p-courses">
             <PortalNavbar handleLogout={handleLogout}/>
