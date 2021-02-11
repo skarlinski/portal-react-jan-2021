@@ -6,7 +6,8 @@ class PortalTabView extends React.Component {
     constructor(props) {
         super(props) ;
         this.state = {
-            current : (this.props.array) ? this.props.array[0] : null
+            current : (this.props.array) ? this.props.array[0] : null,
+            currentkey : 0
         }
     }
    
@@ -14,9 +15,9 @@ class PortalTabView extends React.Component {
     
     render() {
         const styleActiveTab={fontWeight:"bold" , borderBottom: "3px solid"} 
-        const listHeadrs = this.props.array.map((item) => {
-           return <li  style ={(this.state.current.header === item.header)? styleActiveTab : {}}>
-               <a onClick={() => this.setState({ current : {header : item.header , view : item.view}})}> {item.header}</a></li>
+        const listHeadrs = this.props.array.map((item, index) => {
+           return <li key={index} style ={(this.state.currentkey === index)? styleActiveTab : {}}>
+               <a onClick={() => this.setState({ current : {header : item.header , view : item.view}, currentkey : index})}> {item.header}</a></li>
         })
         return (
             <div className="c-portal-table-view">
