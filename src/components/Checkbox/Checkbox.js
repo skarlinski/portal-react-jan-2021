@@ -34,9 +34,10 @@ class Checkbox extends React.Component {
   }
 
   sendChecked = () => {
-    if (this.state.isChecked) {
-      this.props.getChecked(this.props.label)
-    }
+    // if (this.state.isChecked === true) {
+      this.props.getChecked(this.props.label, this.state.isChecked)
+    // }
+    // console.log(this.state.isChecked);
   }
 
   render() {

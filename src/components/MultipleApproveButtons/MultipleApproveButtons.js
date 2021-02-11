@@ -36,6 +36,10 @@ class MultipleApproveButtons extends React.Component {
       status: 1}, 'SetReportApproval')
       .then(res => {
         console.log(res);
+        this.props.updateReports();
+        if (this.state.isChecked) {
+          this.handleAllChecked();
+        }
       })
   }
 
@@ -45,6 +49,11 @@ class MultipleApproveButtons extends React.Component {
       status: -1}, 'SetReportApproval')
       .then(res => {
         console.log(res);
+        this.props.updateReports();
+        if (this.state.isChecked) {
+          this.handleAllChecked();
+        }
+        
       })
     }
 

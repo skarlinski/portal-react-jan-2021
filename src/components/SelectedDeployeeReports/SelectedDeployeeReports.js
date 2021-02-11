@@ -37,11 +37,14 @@ class SelectedDeployeeReports extends React.Component {
     this.handleSelectedReports()
   }
 
-  getChecked = (checked) => {
-    console.log(checked);
-    this.state.arrChecked.push(checked);
-    console.log(this.state.arrChecked);
-    this.props.getArrChecked(this.state.arrChecked);
+  getChecked = (checked, isChecked) => {
+    // console.log(checked, isChecked);
+    // if (isChecked === true) {
+      this.state.arrChecked.push(checked);
+      console.log(this.state.arrChecked);
+      this.props.getArrChecked(this.state.arrChecked);
+    // }
+    
   }
    
   // isAllChecked = () => {
