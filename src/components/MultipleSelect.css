@@ -1,0 +1,21 @@
+.c-multiple-select .selectedValue{
+    width: 100%;
+    color: #555;
+    min-height: 4vh;
+    padding: 0.5vw 0.75vw;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.c-multiple-select .addOptionSign{
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.c-multiple-select .title, .c-multiple-select-modal .title {
+    font-weight: bold;
+}
+.c-multiple-select-modal .modal-header{
+    background-color:#f1efef;
+}

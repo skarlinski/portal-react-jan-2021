@@ -14,7 +14,10 @@ const UsersPage = (props) => {
     
     return (
         <div className="p-users">
-            <PortalNavbar handleLogout={handleLogout}/>
+            <PortalNavbar 
+            handleLogout={handleLogout}
+            activeUser={activeUser}
+            pageName={'משתמשים'}/>
             <h1>משתמשים</h1>
             <img src={profileIcon}/> 
         </div>

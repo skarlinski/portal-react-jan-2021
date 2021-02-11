@@ -1,0 +1,112 @@
+.rest-page-bg {
+  background-color: #49494970;
+  width: 25.6vw;
+  min-height: 100vh;
+  left: 0px;
+  position: fixed;
+}
+.sidebar {
+  width: 74.4vw;
+  height: 100vh;
+  border: #665d5d5d solid 1px;
+  font-size: 20px;
+  position: fixed;
+  z-index: 1;
+}
+.main-header {
+  width: 100vw;
+  height: 5vh;
+  display: flex;
+  align-items: center;
+}
+.main-header > img {
+  margin: 5px;
+  height: 4vh;
+}
+.main-header > span {
+  margin: auto;
+  font-size: 20px;
+  color: #5d5d5d;
+}
+
+.sidebar-header {
+  background-color: #1b166e;
+  width: 100%;
+  height: 19.5vh;
+}
+
+.c-liItemBorder {
+  border-top: #665d5d5d 1px solid;
+}
+
+.c-UserLiItem {
+  font-size: 24px;
+  padding: 1.8vh 0 1.8vh 0;
+  color: #5d5d5d;
+  height: 10.86vh;
+  font-family: Assistant-SemiBold;
+}
+.sidebar-options {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.arrow {
+  position: absolute;
+  left: 2.5vh;
+}
+
+.c-subLiItem {
+  height: 7.65vh;
+  padding-top: 2vh;
+  color: #15457d;
+}
+
+.c-liItem {
+  height: 7.65vh;
+  padding-top: 2vh;
+  color: #15457d;
+  position: relative;
+}
+
+.log-out > div > .c-liItem {
+  position: absolute;
+  bottom: 0px;
+  height: 16.3vh;
+  padding-top: 5vh;
+}
+
+.c-subLiItem img {
+  visibility: hidden;
+}
+
+.sidebar-header {
+  position: relative;
+}
+.sidebar-header > span {
+  position: absolute;
+  left: 1.5vh;
+  top: 2.2vh;
+  color: white;
+  width: 2.8vh;
+  height: 2.8vh;
+}
+.sidebar-header > img {
+  position: absolute;
+  top: 5vh;
+  right: 3vw;
+  height: 10vh;
+}
+
+.users-li-item {
+  margin: 0 0.7rem 0 0.61rem;
+}
+
+.sidebar a {
+  color: inherit;
+  text-decoration: none;
+}
+.sidebar a:active {
+  text-decoration: none;
+}
