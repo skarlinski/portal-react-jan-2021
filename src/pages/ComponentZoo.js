@@ -8,7 +8,7 @@ import LoginPage from './login/LoginPage';
 
 
 import PortalSearchBar from '../components/searchbar/PortalSearchBar';
-
+class ComponentZoo extends React.Component {
     render(){
         const myprops=[
             {key:'off', label:'עובדים פעילים'},
@@ -17,11 +17,16 @@ import PortalSearchBar from '../components/searchbar/PortalSearchBar';
             {key:'what', label:'david'}
             ];
 
+        
+
         const myarray =[{header:"פרופיל", view:<ButtonSet buttons={myprops} handleClick={this.clickme}/>},
                         {header:"קורסים", view:(<div>קורסים</div>)},
                         {header:"עובדים", view:(<div>עובדים</div>)},
                         {header:"דיווח", view:(<div>דיווח</div>)}   
                     ]
+                    return null;
     }
+
+    
 }
 export default ComponentZoo;
