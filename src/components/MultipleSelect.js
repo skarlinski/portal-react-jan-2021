@@ -15,9 +15,9 @@ class MultipleSelect extends React.Component{
         return (arrOfObj.sort((a, b) => (a.label > b.label) ? 1 : -1));
     }
 
-    handleSelectionAdd = (ChossenOption)=>{
-        if (!ChossenOption.target.value){return};
-        const index = ChossenOption.target.value;
+    handleSelectionAdd = (chosenOption)=>{
+        if (!chosenOption.target.value){return};
+        const index = chosenOption.target.value;
         const obj = this.state.unselectedOptions[index];
         const array =this.state.unselectedOptions;
         array.splice(index,1);
