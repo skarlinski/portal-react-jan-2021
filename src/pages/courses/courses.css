@@ -9,3 +9,9 @@ h1 {
 .search-courses{
     margin: 20px;
 }
+.p-course-details .bottom-shadow{
+    border-bottom: 1px solid;
+}
+.p-course-details{
+    margin: 0 18px;
+}

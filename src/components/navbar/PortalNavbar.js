@@ -33,7 +33,7 @@ class PortalNavbar extends Component {
     componentDidMount(){
         server(this.props.activeUser, {}, 'GetMyProfile').then( (res ) => {
             this.setState({userData: res.data});
-            console.log(this.state.userData)
+        
         })
     }
 

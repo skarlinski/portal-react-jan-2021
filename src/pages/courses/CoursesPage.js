@@ -3,12 +3,12 @@ import './courses.css'
 import PortalNavbar from '../../components/navbar/PortalNavbar';
 import PortalTable from '../../components/PortalTable';
 import ActiveUserContext from '../../shared/activeUserContext'
-import { Redirect } from 'react-router-dom'
 import server from '../../shared/server';
 
 import PortalSearchBar from '../../components/searchbar/PortalSearchBar';
 import ButtonSet from '../../components/ButtonSet';
-
+import { Redirect } from 'react-router-dom'
+ 
 const CoursesPage = (props) => {
     const { handleLogout } = props;
     const activeUser = useContext(ActiveUserContext);
@@ -100,6 +100,7 @@ const CoursesPage = (props) => {
         //     }
 		//   ];
     const coursesList = courses.courses
+
 
     return (
         <div className="p-courses">
