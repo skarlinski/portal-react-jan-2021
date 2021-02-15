@@ -91,14 +91,13 @@ class PortalNavbar extends Component {
                     arrowDown={arrowDownTern}
                      >
                         <div style={collapsedStyle}>
-                            <SubLiItem title="עובדים" icon={bookIcon}/>
-                            <SubLiItem title="חניכים" icon={bookIcon}/>
-                            <SubLiItem title="משתמשים חדשים" icon={bookIcon}/>
+                            <SubLiItem  route={"/#/users"} title="עובדים" icon={bookIcon}/>
+                            <SubLiItem  route={"/#/users"} title="חניכים" icon={bookIcon}/>
+                            <SubLiItem  route={"/#/users"} title="משתמשים חדשים" icon={bookIcon}/>
                         </div>
                     </UsersLiItem>
                     <div className="itemsUnderUsers">
                     <LiItem route={"/#/courses"} title="קורסים" icon={bookIcon}/>
-                    <LiItem route={"/#/hours-report"} title="דיווח שעות" icon={timeIcon}/>
                     <LiItem route={"/#/hours-approve"} title="אישור שעות" icon={checkBoxIcon}/>
                     </div>
                 </div>
