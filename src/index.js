@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import { HashRouter } from 'react-router-dom';
 
 ReactDOM.render(
-    <HashRouter>
+    <HashRouter  basename="/calendarportal-react-jan-2021">
       <App />
     </HashRouter>,
   document.getElementById('root')

@@ -32,7 +32,7 @@ const CoursesPage = (props) => {
     };
     const handleClick = (data) => {
                 // return <Redirect push to="/#/courses/data.courseid" />
-        window.location = "/#/courses/" + data.courseid;
+        window.location = "/portal-react-jan-2021/#/courses/" + data.courseid;
     };
     // const clickCoursestatus = (data) => {
     //     console.log(data);

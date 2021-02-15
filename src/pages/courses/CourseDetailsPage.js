@@ -45,7 +45,7 @@ const CourseDetailsPage = (props) => {
             activeUser={activeUser}
             pageName={'פרטי קורסים'}/>
             <div className="bottom-shadow">
-                <h1>{shortName}</h1>
+
                 <h2>{fullName}</h2>
             </div> 
             <PortalTabView array={headers}/>

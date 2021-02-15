@@ -12,7 +12,7 @@ class SubLiItem extends Component {
         <div>
             <div className="c-subLiItem">
                 <span className="m-3"><img src={icon}/></span>
-                <span><a href={this.props.route}>{title}</a></span>
+                <span><a href={"/portal-react-jan-2021" + this.props.route}>{title}</a></span>
             </div>
         </div>
          );
