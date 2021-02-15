@@ -24,11 +24,9 @@ const CourseDetailsPage = (props) => {
     useEffect( () => {
         // This is the same as componentDidMount(){}
         server(activeUser, {courseid: id}, 'GetCourseById').then( (res) => {
-            console.log(res)
+            setCourseData(res.data);
             setShortName(res.data.subname);
             setFullName(res.data.name);
-            setCourseData(res.data);
-            console.log(courseData)
         })
     },[])
     if (!activeUser) {

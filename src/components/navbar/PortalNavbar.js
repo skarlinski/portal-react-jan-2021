@@ -72,7 +72,7 @@ class PortalNavbar extends Component {
         const currentUserIcon = (userData.image !== '')? userData.image : profileIcon;
 
         return ( 
-        <div className="sidebar-bg" >
+        <div className="sidebar-bg c-navbar" >
             <div className="sidebar">
                 <div className="sidebar-header">
                     <span onClick={this.toggleSideNav}>
@@ -103,7 +103,7 @@ class PortalNavbar extends Component {
                     </div>
                 </div>
                 <div className="log-out" onClick={() => {localStorage.clear()}}>
-                <LiItem title="התנתקות"  icon={onOffIcon}/>
+                <LiItem title="התנתקות"  route={"/#/"}icon={onOffIcon}/>
                 </div>
 
             </div>

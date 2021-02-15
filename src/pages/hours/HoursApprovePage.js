@@ -20,7 +20,6 @@ const HoursApprovePage = (props) => {
             activeUser={activeUser}
             pageName={'אישור שעות'}
             />
-            <h1>אישור שעות</h1>
             <HoursApprove activeUser={activeUser} />
         </div>
     );

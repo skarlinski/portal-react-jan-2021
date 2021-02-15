@@ -21,9 +21,8 @@ const CoursesPage = (props) => {
     useEffect(() => {
         server(activeUser, {"search": searchText, "sorting": "courseid", "desc": false, 
         "coursestatus": courseStatus, "page": currentPage}, 'SearchCourses').then( res => {
-            console.log(res)
-            console.log(res.data.courses)
-            setCourses({courses: res.data.courses});
+
+            setCourses( res.data.courses);
             setPageNum(res.data.pages);
         });
     }, [searchText, courseStatus, currentPage]);
@@ -99,7 +98,7 @@ const CoursesPage = (props) => {
 		// 		year: "2017"
         //     }
 		//   ];
-    const coursesList = courses.courses
+    const coursesList = courses
 
 
     return (

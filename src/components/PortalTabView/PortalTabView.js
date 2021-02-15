@@ -13,7 +13,7 @@ class PortalTabView extends React.Component {
     render() {
         const styleActiveTab={fontWeight:"bold" , borderBottom: "3px solid"} 
         const listHeadrs = this.props.array.map((item, index) => {
-           return <li key={index} style ={(this.state.currentkey === index)? styleActiveTab : {}}>
+           return <li style ={(this.state.currentkey === index)? styleActiveTab : {}}>
                <a onClick={() => this.setState({ current : {header : item.header , view : item.view}, currentkey : index})}> {item.header}</a></li>
         })
         return (
@@ -24,7 +24,7 @@ class PortalTabView extends React.Component {
                     </ul>
                </nav>
                <Container>
-               {this.state.current.view}
+                  {this.state.current.view}
                </Container>
           </div>
         )

@@ -6,26 +6,19 @@ import Select from "../Select";
 const CourseGeneralDetails = function(props){
     const {courseData} = props;
     const [fullName, setFullName] = useState('');
-    
-    
-    
-    console.log("courseData",courseData)
-    //arr=[{label:"fsfsd", value:"2"},{label:"dsf",value:"dsf"}]-->courseData.subject , courseData.subjectid
-    
+    console.log({courseData})
     const deatilsCourse = ()=>{
         const courses=[];
-        if (courseData){
+        if (courseData && courseData.subjects){
             const arr =courseData.subjects.map((item,index)=>{
                 courses[index]={label:item.subject ,value: item.subjectid};
+                })
             }
-            )
-    }
-        return courses;
-}
+                return courses;
+        }
 
 
-    const deatilsListCourse =deatilsCourse();
-    console.log("Arr",deatilsListCourse);
+    const deatilsListCourse = deatilsCourse();
     
     return (
         <div className="p-course-general-details">
