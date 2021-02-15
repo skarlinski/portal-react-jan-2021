@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/portal-react-jan-2021/static/css/main.78ca99cd.chunk.css",
-    "main.js": "/portal-react-jan-2021/static/js/main.d9ba734f.chunk.js",
-    "main.js.map": "/portal-react-jan-2021/static/js/main.d9ba734f.chunk.js.map",
+    "main.js": "/portal-react-jan-2021/static/js/main.2b9293a7.chunk.js",
+    "main.js.map": "/portal-react-jan-2021/static/js/main.2b9293a7.chunk.js.map",
     "runtime-main.js": "/portal-react-jan-2021/static/js/runtime-main.07741b95.js",
     "runtime-main.js.map": "/portal-react-jan-2021/static/js/runtime-main.07741b95.js.map",
     "static/css/2.150d169a.chunk.css": "/portal-react-jan-2021/static/css/2.150d169a.chunk.css",
@@ -39,6 +39,6 @@
     "static/css/2.150d169a.chunk.css",
     "static/js/2.83b9fa4f.chunk.js",
     "static/css/main.78ca99cd.chunk.css",
-    "static/js/main.d9ba734f.chunk.js"
+    "static/js/main.2b9293a7.chunk.js"
   ]
 }
