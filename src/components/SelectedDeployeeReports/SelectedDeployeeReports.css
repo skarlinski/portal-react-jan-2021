@@ -1,0 +1,104 @@
+.report-details-header {
+  height: 76px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+.report-details {
+  width: 100%;
+}
+.approval {
+  background-color: #a1d47f;
+  border-color: #a1d47f;
+}
+.label-approval {
+  color: #a1d47f;
+}
+.pending {
+  background-color: #ffd300;
+  border-color: #ffd300;
+}
+.label-pending {
+  color: #ffd300;
+}
+.reject {
+  background-color: #ffa1a1;
+  border-color: #ffa1a1;
+}
+.label-reject {
+  color: #ffa1a1;
+}
+.report-wrap {
+  width: 92%;
+  margin: 0 auto;
+  padding-left: 38px;
+}
+.details-row {
+  padding-top: 9px;
+  align-items: center;
+  display: flex;
+}
+.report-checkbox {
+  margin-left: 29px;
+}
+.report-row {
+  margin-top: 11px;
+  display: flex;
+  justify-content: space-between;
+}
+.report-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.details-text {
+  font-family: "Assistant-SemiBold";
+  font-size: 10px;
+  line-height: 9px;
+  margin-left: 22px;
+}
+.report-head {
+  font-family: "Assistant-Regular";
+  font-size: 8px;
+  line-height: 9px;
+  margin-bottom: 4px;
+}
+.report-text {
+  font-family: "Assistant-SemiBold";
+  font-size: 8px;
+  line-height: 9px;
+  padding-bottom: 16px;
+}
+.buttons-wrap {
+  width: 121px;
+  display: flex;
+  justify-content: space-between;
+  padding: 11px 16px;
+}
+.report-btn {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  background-color: #f8f8f8;
+  border-width: 0.5px;
+  border-style: solid;
+  /* border-color: #707070; */
+  border-radius: 50px;
+  cursor: pointer;
+}
+.btn-circle {
+  /* display: none; */
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.btn-label {
+  font-family: "Assistant-Regular";
+  font-size: 9px;
+  line-height: 10px;
+  margin-bottom: 11px;
+  display: inline-block;
+}

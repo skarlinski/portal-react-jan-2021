@@ -1,0 +1,17 @@
+.p-courses {
+    color: #5d5d5d;
+}
+h1 {
+    text-align: center;
+    font-family: Assistant-SemiBold;
+    font-size: small;
+}
+.search-courses{
+    margin: 20px;
+}
+.p-course-details .bottom-shadow{
+    border-bottom: 1px solid;
+}
+.p-course-details{
+    margin: 0 18px;
+}

@@ -1,0 +1,44 @@
+.c-portal-table-view{
+    width: 100%;
+}
+
+.c-portal-table-view nav {
+    width: 360px;
+    margin: auto;
+}
+
+.c-portal-table-view li {
+    list-style: none;
+}
+.c-portal-table-view nav > ul {
+    display : flex;
+    justify-content: space-between;
+}
+
+.c-portal-table-view ul {
+    padding-right: 0px;
+
+    
+}
+.c-portal-table-view nav > ul > li {
+    padding: 20px;
+ 
+}
+
+.c-portal-table-view nav > ul > li > a {
+    /* padding-right: 20px; */
+    text-decoration: none;
+    color: #1b166e;
+}
+.c-portal-table-view a:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* nav > ul .active {
+    background-color: lightblue;
+} */
+
+.c-portal-table-view nav > ul a:active {
+    background-color: lightblue;
+}
