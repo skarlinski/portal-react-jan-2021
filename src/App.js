@@ -24,7 +24,7 @@ const App = () => {
     setActiveUser(null);
     localStorage.removeItem("activeUser");
   }
-
+  // A comment for git
   return (
     <ActiveUserContext.Provider value={activeUser}>
       <Switch>

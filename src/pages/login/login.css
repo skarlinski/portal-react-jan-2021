@@ -3,10 +3,11 @@
 .p-login {
     height: 100vh;
     text-align: center;
-    background-color: #1b166e;
+    background-color: hsl(242, 81%, 86%);
     padding: 20px 0px;
     color : white;
-    font-weight: bold;
+    font-weight: normal;
+    font-size:20px;
 }
 
 
